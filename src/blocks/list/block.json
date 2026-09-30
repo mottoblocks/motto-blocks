@@ -1,0 +1,76 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/list",
+	"version": "0.1.0",
+	"title": "Motto List",
+	"category": "text",
+	"icon": "editor-ul",
+	"description": "List block with configurable default, image, icon, SVG, counter, or no bullets.",
+	"providesContext": {
+		"motto/bulletOptions": "bulletOptions"
+	},
+	"attributes": {
+		"bulletOptions": {
+			"type": "object",
+			"default": {
+				"type": "icon",
+				"image": {
+					"id": 0,
+					"url": ""
+				},
+				"svg": {
+					"source": "lucide",
+					"inline": "",
+					"lucideIcon": "star"
+				},
+				"counter": {
+					"style": "decimal",
+					"start": 1
+				}
+			}
+		},
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["wide", "full"]
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoDefaults": {
+		"css": {
+			"desktop": [
+				{
+					"name": "--bullet-size",
+					"value": "30px"
+				},
+				{
+					"name": "--bullet-color",
+					"value": "blue"
+				}
+			]
+		},
+		"blockSelectors": [
+			{
+				"selector": "&{BLOCK} :is(.motto-list-item)",
+				"label": "List Items",
+				"description": "",
+				"css": {
+					"desktop": [
+						{
+							"name": "padding"
+						}
+					],
+					"tablet": [],
+					"landscapePhone": [],
+					"phone": []
+				}
+			}
+		]
+	}
+}

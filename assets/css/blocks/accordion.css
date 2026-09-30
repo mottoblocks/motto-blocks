@@ -1,0 +1,82 @@
+@charset "UTF-8";
+/* =============================================================================
+   Accordion — Frontend Styles
+   Animated height is driven by accordion-frontend.js through CSS variables.
+   ============================================================================= */
+.motto-accordion :where(.motto-accordion-item) {
+  overflow: clip;
+}
+.motto-accordion :where(.motto-accordion-item__trigger) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  width: 100%;
+  padding: 0.75em 1em;
+  background: none;
+  border: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+.motto-accordion :where(.motto-accordion-item__trigger) p {
+  margin: 0;
+}
+.motto-accordion :where(.motto-accordion-item__trigger-main) {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.motto-accordion :where(.motto-tab-trigger__content) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  min-width: 0;
+}
+.motto-accordion :where(.motto-tab-trigger__label) {
+  min-width: 0;
+}
+.motto-accordion :where(.motto-tab-trigger__icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.motto-accordion :where(.motto-tab-trigger__icon) :where(svg) {
+  width: 1em;
+  height: auto;
+}
+.motto-accordion :where(.motto-tab-trigger__icon) :where(svg.lucide) {
+  stroke: currentColor;
+}
+.motto-accordion :where(.motto-tab-trigger__icon) :where(.motto-button__icon-media) {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+.motto-accordion :where(.motto-tab-trigger__icon) :where(.motto-button__icon-media-inline) :where(svg, svg *) {
+  fill: currentColor;
+}
+.motto-accordion :where(.motto-accordion-item__chevron) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: transform 0.25s ease;
+}
+.motto-accordion :where(.motto-accordion-item.is-open .motto-accordion-item__chevron) {
+  transform: rotate(180deg);
+}
+.motto-accordion :where(.motto-accordion-item__panel) {
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.motto-accordion :where(.motto-accordion-item.is-open .motto-accordion-item__panel) {
+  max-height: var(--motto-accordion-panel-height, 0px);
+}
+.motto-accordion :where(.motto-accordion-item__panel-inner) {
+  padding: 0 1em 1em;
+}

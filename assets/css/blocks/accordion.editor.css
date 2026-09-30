@@ -1,0 +1,31 @@
+@charset "UTF-8";
+/* =============================================================================
+   Accordion — Editor Styles
+   Editor respects item open state while keeping trigger editing comfortable.
+   ============================================================================= */
+.motto-accordion .motto-accordion-item__trigger {
+  min-height: 44px;
+}
+.motto-accordion .motto-accordion-item__chevron {
+  transition: transform 0.25s ease;
+}
+.motto-accordion .motto-accordion-item__panel {
+  will-change: max-height;
+}
+.motto-accordion .motto-accordion-item:not(.is-open) .motto-accordion-item__panel {
+  max-height: 0;
+}
+.motto-accordion .motto-accordion-item:not(.is-open) .motto-accordion-item__chevron {
+  transform: rotate(0deg);
+}
+.motto-accordion .motto-accordion-item.is-open .motto-accordion-item__panel {
+  max-height: none;
+  overflow: visible;
+}
+.motto-accordion .motto-accordion-item.is-open .motto-accordion-item__chevron {
+  transform: rotate(180deg);
+}
+
+.motto-accordion-item .motto-tab-trigger__label {
+  cursor: text;
+}

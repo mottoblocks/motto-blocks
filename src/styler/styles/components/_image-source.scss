@@ -1,0 +1,42 @@
+// Shared image source controls — media source, focal point, and size variants
+:is(
+	.motto-background-image-control,
+	.motto-image-source-position-control,
+	.motto-image-source-control
+) {
+	display: grid;
+	gap: var(--motto-space-lg);
+	justify-content: stretch;
+
+	& .components-base-control {
+		margin-bottom: 0;
+	}
+}
+
+.motto-background-image-control {
+	& .motto-background-image-control__layout {
+		width: 100%;
+	}
+}
+
+.motto-image-url-input {
+	flex: 1 1 auto;
+	margin-bottom: 0 !important;
+
+	& .components-base-control__field {
+		margin-bottom: 0 !important;
+	}
+}
+
+.motto-image-select-button,
+.motto-image-remove-button {
+	flex: 0 0 auto;
+	// margin-top: 2px;
+}
+
+.motto-focal-point-controls {
+	& .focal-point-picker__controls-position-unit-control.components-base-control {
+		margin-bottom: 0 !important;
+		width: 100%;
+	}
+}

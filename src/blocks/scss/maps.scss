@@ -1,0 +1,40 @@
+/* =============================================================================
+   Maps — Frontend Styles
+   Google Maps embed with info window typography.
+   ============================================================================= */
+
+.motto-maps {
+	position: relative;
+	width: 100%;
+
+	// Map canvas
+	& :where(.motto-maps__canvas) {
+		width: 100%;
+		min-height: 120px;
+	}
+
+	// ---------------------------------------------------------------------------
+	// Info window content
+	// ---------------------------------------------------------------------------
+	& :where(.motto-maps__marker-title) {
+		margin: 0 0 4px;
+		font-size: 14px;
+		line-height: 1.2;
+	}
+
+	& :where(.motto-maps__marker-description) {
+		margin: 0;
+		font-size: 13px;
+		line-height: 1.35;
+	}
+
+	& :where(.motto-maps__marker-link) {
+		display: inline-block;
+		margin-top: 6px;
+		font-size: 12px;
+	}
+
+	&.motto-maps--missing-api :where(.motto-maps__notice) {
+		margin: 0;
+	}
+}

@@ -1,0 +1,36 @@
+# motto/svg
+
+## Purpose
+
+Renders a single icon or graphic from one of three interchangeable sources — a bundled Lucide icon, an uploaded/linked SVG media file (rendered as `<img>`), or hand-pasted inline SVG markup — with an optional full-block link overlay. Dynamic block: server-rendered via `render_callback` on every request. `save()` returns `null`.
+
+## Attributes contract
+
+Non-obvious fields only — see `block.json` for the full list and defaults.
+
+- **`svgAsset`**: single object attribute holding `source` (`'lucide' | 'media' | 'inline'`) plus parallel `media` (for the "media" `<img>` path) and `svg` (`lucideIcon`/`lucideSvg`/`inline` for the two inline paths) sub-objects. `normalizeSvgAsset()` (`svg-asset.js`) and its PHP mirror `motto_blocks_normalize_svg_asset()` (`includes/helpers.php`) both coerce/clamp this shape on every read. Switching `source` doesn't discard the other sources' data — all three are kept side-by-side so re-selecting a prior source restores it.
+- **`svgAsset.svg.lucideSvg`**: not meaningfully independent user input — `normalizeSvgAsset()` regenerates it from `svgAsset.svg.lucideIcon` via `buildLucideSvgMarkup()` whenever it's empty (`lucideSvg || buildLucideSvgMarkup(lucideIcon)`), so `lucideIcon` is the real source of truth for the Lucide path.
+- **`linkUrl` / `linkNewTab` / `linkNoFollow`**: same shape as `motto/container`'s link overlay; renders as an absolutely-positioned `<a class="motto-svg__link-overlay">` sibling *after* the icon markup (see `svg.scss`), not as a wrapper around it.
+
+## Behavior
+
+- **Source switching is non-destructive**: changing `svgAsset.source` in the toolbar only changes which sub-object is read for preview/render — the other two sources' data stays in the attribute (see above).
+- **"Convert to inline"** (media source only): `handleConvertToInline()` in `index.jsx` fetches the selected media URL client-side (`window.fetch`, `credentials: "same-origin"`), sanitizes the response text through `sanitizeInlineSvgMarkup()`, and — only if that returns non-empty — switches `source` to `"inline"` and writes the sanitized markup into both `svgAsset.media.inlineSvg` and `svgAsset.svg.inline`. A non-SVG or unparsable file surfaces `"The selected media file is not a valid SVG."` via a `Notice` instead of silently falling back to something else.
+- **Editor preview always re-sanitizes before display**: `resolveSvgAssetForEditor()` (`svg-asset.js`) runs `lucide` and `inline` sources through `sanitizeInlineSvgMarkup()` before rendering via `dangerouslySetInnerHTML`; the `media` source renders as a plain `<img>`, which needs no sanitization since browsers don't execute markup from an `<img src>`.
+- **Frontend render is a from-scratch reconstruction**, not a reuse of any editor-produced HTML: `motto_blocks_render_svg()` (`includes/helpers.php`) builds `media` as `<img loading="lazy" decoding="async">`, and `inline`/`lucide` via `motto_blocks_prepare_responsive_svg_markup()`, which strips any `width`/`height`/`style`/`class` attributes off the root `<svg>` and re-adds a merged class list plus `focusable="false" aria-hidden="true" preserveAspectRatio="xMidYMid meet"` — so the block's own sizing (`width`/`height: auto`/`color` in `mottoDefaults`) always wins over whatever the source markup specified.
+- **Direct pasting into "Inline SVG Markup" (`PlainTextField`) is not sanitized on input** — `svgAsset.svg.inline` is written to the attribute exactly as typed. It's only sanitized when actually *displayed*: in the editor preview (`sanitizeInlineSvgMarkup()`) or on the frontend (`motto_blocks_sanitize_svg()`) — never at rest.
+
+## Implementation notes (security-relevant)
+
+- Two independent sanitizers exist and neither trusts the other. `src/lib/inline-svg-sanitizer.js` (`sanitizeInlineSvgMarkup()`, `DOMParser`/`XMLSerializer`-based, browser-only) is used only for the editor preview and the client-side "Convert to inline" step. `motto_blocks_sanitize_svg()` (`includes/helpers.php`, `wp_kses()`-based) is the actual security boundary — it runs on every `motto_blocks_render_svg()` call, i.e. on every real page load, regardless of what's stored in the attribute.
+- `motto_blocks_sanitize_svg()` fast-path-rejects (returns `''`) before even reaching `wp_kses()` if the raw string contains `<script>`/`<iframe>`/`<object>`/`<embed>`/`<foreignObject>`, any `on*=` attribute, or a `javascript:`/`data:` URI anywhere; it then applies a strict per-tag/per-attribute `wp_kses()` allowlist (`svg`, `g`, `path`, `circle`, `ellipse`, `rect`, `line`, `polyline`/`polygon`, `defs`, `clipPath`, `mask`, `*Gradient`, `stop`, `title`, `desc`, `style`, `animate`, `animateTransform`, `set`).
+- **SMIL `attributeName` retargeting is specifically closed off**: `motto_blocks_strip_unsafe_svg_animations()` (PHP) and the `SVG_ANIMATION_TAGS` check in `sanitizeSvgElementTree()` (JS) both drop `<animate>`/`<animateTransform>`/`<set>` elements whose `attributeName` isn't in a small safe allowlist (`fill`, `transform`, `d`, `x`/`y`/`cx`/`cy`/`r`, etc.). `attributeName` can otherwise be used to animate arbitrary DOM properties (e.g. targeting `onmouseover` or `href`) and bypass the `on*=`/`javascript:` string checks, since those only scan literal attribute text in the markup.
+- `<style>` blocks are preserved but their CSS is filtered too: `motto_blocks_sanitize_inline_svg_style_css()` (PHP) / `sanitizeInlineSvgStyleCss()` (JS) both strip comments and reject the whole block if it contains `@import`, `url()`, `expression()`, `javascript:`/`data:`/`vbscript:`, `behavior:`, `-moz-binding:`, a stray `<`/`>`, or exceeds 10,000 characters.
+- `SVG_ALLOWED_TAGS` (JS, shared between `svg-asset.js` and `inline-svg-sanitizer.js`) and the PHP `$allowed_tags` array in `motto_blocks_sanitize_svg()` are hand-kept in sync, not generated from one shared source — extending allowed tags/attributes on one side requires manually mirroring the change to the other.
+- `buildLucideSvgMarkup()` (`svg-asset.js`) reconstructs Lucide icon markup itself node-by-node (via `serializeLucideNode()`, filtering each tag/attribute through `SVG_ALLOWED_TAGS`) rather than trusting the rendered React output as markup, then still pipes the result through `sanitizeInlineSvgMarkup()` before use — defense in depth even for a first-party icon source.
+
+## Known limitations
+
+- The two sanitizer implementations (JS/`DOMParser` vs PHP/`wp_kses`) are maintained independently. A tag/attribute allowed on one side but not the other is only caught at whichever layer runs last (PHP, on the frontend) — the editor preview could theoretically show markup that then gets stripped on the actual page, or vice versa, if the two allowlists ever drift apart.
+- Raw pasted "Inline" markup is stored unsanitized in the attribute at rest (see Behavior) — anyone with read access to the draft's post content/REST attributes sees the original unsanitized paste, even though it never reaches a published page unsanitized.
+- No dimension/`viewBox` validation — an SVG with a huge or degenerate `viewBox` still passes sanitization and can visually break layout; sizing is left entirely to the block's `width`/`height`/`color` `mottoDefaults` CSS and the source markup's own path data.

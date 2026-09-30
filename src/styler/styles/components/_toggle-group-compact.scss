@@ -1,0 +1,14 @@
+// ToggleGroupControl compact variant used by track/repeat controls
+.motto-toggle-group-compact {
+	--motto-input-height: 28px;
+	width: auto;
+	flex: 1;
+
+	& button {
+		text-transform: uppercase;
+		font-size: 10px;
+		& * {
+			font-size: inherit;
+		}
+	}
+}

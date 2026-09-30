@@ -1,0 +1,29 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/tab",
+	"version": "0.1.0",
+	"title": "Tab Panel",
+	"category": "design",
+	"icon": "table-col-after",
+	"description": "Single content panel for Motto Tabs.",
+	"parent": ["motto/tab-panels"],
+	"usesContext": ["motto/tabs-activeTabId"],
+	"attributes": {
+		"tabId": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"reusable": false
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Content panel inside motto/tab-panels. Set tabId to the same unique string as its corresponding motto/tab-button. Accepts any inner blocks as panel content.",
+		"examplePrompts": []
+	}
+}

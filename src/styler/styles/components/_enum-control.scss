@@ -1,0 +1,54 @@
+// EnumControl — 2-column option grid
+.motto-enum-options {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(3em, 1fr));
+	gap: var(--motto-space-sm);
+	& .motto-enum-option {
+		// 	white-space: wrap !important;
+		// 	line-height: 1;
+		padding-inline: var(--motto-space-md);
+	}
+}
+
+// .motto-enum-option-icon {
+// 	display: inline-flex;
+// 	margin-right: 0.35em;
+// }
+
+:is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) {
+	& svg {
+		display: block;
+		transition: transform 0.2s ease-in-out;
+	}
+}
+
+/* Modifier: flex-direction axis icon rotation
+ * Classes: is-prop-{prop} + is-flex-{direction}
+ * justify-content / justify-items — main axis icons */
+:is(.motto-enum-options, .motto-row-value-toggle):is(
+	.is-prop-justify-content,
+	.is-prop-justify-items
+) {
+	&.is-flex-column :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+		transform: rotate(90deg);
+	}
+	&.is-flex-column-reverse :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+		transform: rotate(-90deg);
+	}
+	&.is-flex-row-reverse :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+		transform: rotate(180deg);
+	}
+}
+
+/* align-items / align-content — cross axis icons */
+:is(.motto-enum-options, .motto-row-value-toggle):is(.is-prop-align-items, .is-prop-align-content) {
+	&.is-flex-column :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+		transform: rotate(-90deg);
+	}
+	&.is-flex-column-reverse :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+		transform: rotate(90deg);
+	}
+	&.is-flex-row-reverse :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+		transform: rotate(180deg);
+	}
+}

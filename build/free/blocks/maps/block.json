@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "motto/maps",
+  "version": "0.1.1",
+  "title": "Motto Maps",
+  "category": "design",
+  "icon": "location-alt",
+  "description": "Google Maps block with customizable pins.",
+  "attributes": {
+    "height": {
+      "type": "number",
+      "default": 420
+    },
+    "centerLat": {
+      "type": "number",
+      "default": 40.7128
+    },
+    "centerLng": {
+      "type": "number",
+      "default": -74.006
+    },
+    "zoom": {
+      "type": "number",
+      "default": 12
+    },
+    "mapType": {
+      "type": "string",
+      "default": "roadmap"
+    },
+    "controls": {
+      "type": "object",
+      "default": {
+        "zoomControl": true,
+        "fullscreenControl": true,
+        "streetViewControl": false,
+        "mapTypeControl": false
+      }
+    },
+    "pins": {
+      "type": "array",
+      "default": []
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"]
+  },
+  "mottoBaseLayout": "flow",
+  "textdomain": "motto-blocks"
+}

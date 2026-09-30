@@ -1,0 +1,16 @@
+/* =============================================================================
+   List — Editor Styles
+   Text width reset and last-item margin fix for the editor canvas.
+   ============================================================================= */
+
+.editor-styles-wrapper {
+	& .motto-list {
+		& .motto-list-item:last-child {
+			margin-bottom: 0;
+		}
+
+		& .motto-list-item__text {
+			width: 100%;
+		}
+	}
+}

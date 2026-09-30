@@ -1,0 +1,110 @@
+@charset "UTF-8";
+/* =============================================================================
+   Classic Menu — Frontend Styles
+   Horizontal nav with dropdown submenus (hover/focus or JS toggle).
+   Supports accordion mode for mobile/vertical layouts.
+   ============================================================================= */
+.motto-classic-menu {
+  --menu-text-color: currentColor;
+  --menu-bg-color: transparent;
+  --menu-gap: 1em;
+  --menu-link-height: auto;
+  --menu-lineheight: 1.2;
+  --submenu-bg-color: #fff;
+  --submenu-text-color: currentColor;
+  --submenu-border-radius: 0;
+  --submenu-padding: 0.25em;
+  --submenu-link-height: auto;
+  --submenu-duration: 0.2s;
+  --submenu-top-initial-position: 5px;
+  --link-padding: var(--menu-link-padding, 0.25em 0.5em);
+  margin: 0;
+  padding: 0;
+  color: var(--menu-text-color);
+  background: var(--menu-bg-color);
+  line-height: var(--menu-lineheight);
+}
+.motto-classic-menu :where(.motto-classic-menu__container) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--menu-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.motto-classic-menu :where(.motto-classic-menu__item) {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.motto-classic-menu :where(.motto-classic-menu__item-content) {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--menu-link-height);
+  padding: var(--link-padding);
+  color: inherit;
+  text-decoration: none;
+}
+.motto-classic-menu :where(.motto-classic-menu__submenu-icon) {
+  border: 0;
+  background: transparent;
+  color: currentColor;
+  width: 0.8em;
+  height: 0.8em;
+  padding: 0;
+  margin: 0 0 0 0.25em;
+  line-height: 0;
+  cursor: pointer;
+}
+.motto-classic-menu :where(.motto-classic-menu__submenu-icon):focus {
+  outline: 0;
+}
+.motto-classic-menu :where(.motto-classic-menu__submenu-icon)[aria-expanded=true] {
+  transform: rotate(180deg);
+}
+.motto-classic-menu :where(.motto-classic-menu__submenu-icon) svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+}
+.motto-classic-menu :where(.motto-classic-menu__submenu-container) {
+  position: absolute;
+  top: 100%;
+  left: -999em;
+  z-index: 1;
+  min-width: 200px;
+  opacity: 0;
+  transform: translate(0, var(--submenu-top-initial-position));
+  transition: transform var(--submenu-duration) ease, opacity var(--submenu-duration) ease;
+}
+.motto-classic-menu :where(.motto-classic-menu__submenu) {
+  margin: 0;
+  padding: var(--submenu-padding);
+  list-style: none;
+  color: var(--submenu-text-color);
+  background: var(--submenu-bg-color);
+  border-radius: var(--submenu-border-radius);
+}
+.motto-classic-menu :where(.motto-classic-menu__submenu) :where(.motto-classic-menu__item-content) {
+  min-height: var(--submenu-link-height);
+}
+.motto-classic-menu [aria-expanded=true] + .motto-classic-menu__submenu-container {
+  left: 0;
+  opacity: 1;
+  transform: none;
+}
+.motto-classic-menu :where(.motto-classic-menu__container.accordion-submenu) :where(.motto-classic-menu__submenu-container) {
+  position: relative;
+  top: auto;
+  left: auto;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 1;
+  transform: none;
+  transition: max-height calc(var(--submenu-duration) * var(--items-count, 1)) ease;
+}
+.motto-classic-menu :where(.motto-classic-menu__container.accordion-submenu) [aria-expanded=true] + .motto-classic-menu__submenu-container {
+  max-height: calc(3em * var(--items-count, 1));
+}

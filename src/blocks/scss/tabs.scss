@@ -1,0 +1,83 @@
+/* =============================================================================
+   Tabs — Frontend Styles
+   Nav built by tabs-frontend.js; show/hide via .is-active class.
+   ============================================================================= */
+
+.motto-tabs {
+	& :where(.motto-tabs__nav) {
+		flex-wrap: wrap;
+		gap: var(--motto-space-md);
+	}
+
+	& :where(.motto-tabs__nav-item) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		background: none;
+		border: none;
+		padding: 0.5em 2em;
+		font-size: inherit;
+		font-family: inherit;
+		background: #eee;
+		& p {
+			margin: 0;
+		}
+	}
+
+	& :where(.motto-tab-trigger__content) {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+	}
+
+	& :where(.motto-tab-trigger__icon) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		& :where(svg) {
+			width: 1em;
+			height: auto;
+		}
+
+		& :where(svg.lucide) {
+			stroke: currentColor;
+		}
+
+		& :where(.motto-button__icon-media) {
+			display: block;
+			width: 1em;
+			height: 1em;
+		}
+
+		& :where(.motto-button__icon-media-inline) :where(svg, svg *) {
+			fill: currentColor;
+		}
+	}
+
+	& :where(.motto-tab__trigger-template[hidden]) {
+		display: none !important;
+	}
+
+	// Panels are hidden only after JS initializes (data-motto-tabs-init set by tabs-frontend.js).
+	// Before init (and in the editor), all panels remain visible.
+	&[data-motto-tabs-init] :where(.motto-tab:not(.is-active)) {
+		display: none;
+	}
+
+	// Restarts on every activation because the panel toggles from display:none.
+	&[data-motto-tabs-init] :where(.motto-tab.is-active) {
+		animation: motto-tab-opening var(--tab-opening-duration, 0.2s) ease;
+	}
+}
+
+@keyframes motto-tab-opening {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}

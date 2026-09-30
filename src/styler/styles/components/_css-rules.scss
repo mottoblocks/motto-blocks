@@ -1,0 +1,203 @@
+/* StylerCssList, CssRuleRow — CSS property rule list
+ * → src/styler/components/StylerCssList.jsx, CssRuleRow.jsx
+ */
+
+@use "drag-reorder";
+
+.motto-css-rules {
+	display: grid;
+	gap: var(--motto-space-lg);
+	justify-content: stretch;
+}
+
+// StylerCssList — scrollable rule list container
+.motto-css-list {
+	display: grid;
+	gap: var(--motto-space-sm);
+	&:empty {
+		display: none;
+	}
+}
+
+// StylerCssList — section heading with title + extra actions
+.motto-section-heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--motto-space-sm);
+	min-height: var(--motto-button-height);
+
+	& .motto-section-title {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--motto-space-sm);
+		margin: 0;
+		font-size: var(--motto-font-size-lg);
+	}
+
+	& .motto-section-title-text {
+		margin: 0;
+	}
+}
+
+// CssRuleRow — single CSS property/value row with inline actions
+.motto-css-rule {
+	align-items: center;
+	display: flex;
+	gap: var(--motto-space-sm);
+	position: relative;
+
+	@include drag-reorder.states;
+
+	&[draggable="true"] {
+		cursor: grab;
+	}
+
+	& .components-base-control {
+		margin-bottom: 0 !important;
+	}
+
+	& .motto-css-rule-content {
+		align-items: center;
+		display: flex;
+		gap: var(--motto-space-sm);
+		flex: 1;
+		position: relative;
+	}
+	& :is(.motto-css-name-wrapper, .motto-css-rule-value-wrapper) {
+		flex: 1;
+	}
+
+	& .motto-rules-actions {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		border-radius: var(--motto-input-border-radius);
+
+		& > * {
+			position: relative;
+			z-index: 1;
+		}
+	}
+	&.is-reordered {
+		animation: motto-row-reorder-fade 220ms ease-out;
+	}
+}
+
+.motto-css-name-wrapper {
+	position: relative;
+}
+
+// Code — monospace font for CSS name/value inputs
+
+:is(.motto-css-rule-name, .motto-css-rule-value) :is(input, textarea) {
+	font-family: var(--motto-code-font-family) !important;
+}
+
+.motto-css-rule-name {
+	&.is-var :is(input) {
+		font-style: italic;
+		color: var(--wp-components-color-gray-800);
+	}
+}
+
+.motto-row-value-toggle-font-size {
+	align-items: center;
+	// color: var(--motto-color-black);
+	display: inline-flex;
+	font-size: var(--motto-font-size-xs);
+	text-transform: uppercase;
+	// font-weight: 600;
+	// height: 16px;
+	justify-content: center;
+	line-height: 1;
+	max-width: 44px;
+	min-width: 16px;
+	overflow: hidden;
+	padding-inline: 1px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.motto-css-rule-value {
+	width: auto;
+	& textarea.components-textarea-control__input {
+		// font-size: var(--motto-font-size-sm) !important;
+		field-sizing: content;
+		min-block-size: var(--motto-input-height);
+		min-inline-size: 12ch;
+		max-inline-size: 100%;
+		resize: none;
+	}
+}
+.motto-composite-field-group {
+	// display: flex;
+	// flex-wrap: wrap;
+	// gap: var(--motto-space-sm);
+	// & > * {
+	// 	flex: 1 0 8em;
+	// }
+}
+
+// CssRuleRow — tooltip trigger for CSS property docs
+.motto-tooltip-trigger {
+	margin: 0 0.3em;
+	& svg {
+		display: block;
+	}
+	border-radius: 999em;
+	// &:focus-visible{
+	// 	outline: none;
+	// }
+}
+
+.components-button.motto-tooltip-button {
+	background: transparent !important;
+	padding: 0;
+	box-shadow: 0;
+}
+
+.components-tooltip:has(.motto-tooltip-button) {
+	max-width: 200px;
+}
+
+// CssRuleRow — warning badges (overlaid top-left of the row)
+.motto-rule-warnings {
+	display: inline-flex;
+	gap: 0.2em;
+	left: -0.5em;
+	position: absolute;
+	top: -0.5em;
+}
+
+.motto-rule-warning {
+	margin: 0;
+	color: var(--motto-warning-color-600);
+	& svg {
+		fill: white !important;
+	}
+}
+
+.motto-css-rule-drag {
+	@include drag-reorder.handle;
+}
+
+// StylerCssList — add rule / reset actions bar
+// .motto-css-actions {
+// 	display: flex;
+// 	flex-wrap: wrap;
+// 	justify-content: flex-end;
+// 	gap: var(--motto-space-sm);
+// 	margin-bottom: var(--motto-space-sm);
+// }
+
+.motto-css-actions-row {
+	display: flex;
+	gap: var(--motto-space-md);
+	& :is(.motto-ui-button) {
+		padding-inline: var(--motto-space-md);
+	}
+}

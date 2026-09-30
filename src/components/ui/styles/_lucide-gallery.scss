@@ -1,0 +1,70 @@
+/* LucideGallery — shared editor icon picker grid */
+
+.motto-lucide-gallery {
+	--motto-lucide-grid-max-height: 180px;
+	--motto-lucide-row-columns: 6;
+	--motto-lucide-button-height: 30px;
+	--motto-lucide-icon-size: 20px;
+	--motto-lucide-hover-scale: 1.5;
+
+	&.motto-lucide-gallery--lg {
+		--motto-lucide-grid-max-height: 280px;
+		--motto-lucide-row-columns: 7;
+		--motto-lucide-button-height: 40px;
+		--motto-lucide-icon-size: 26px;
+		--motto-lucide-hover-scale: 1.2;
+	}
+
+	& .motto-lucide-gallery__search {
+		margin-bottom: 8px;
+	}
+
+	& .motto-lucide-gallery__grid {
+		max-height: var(--motto-lucide-grid-max-height);
+		overflow: auto;
+		padding: 2px;
+		border: 1px solid var(--wp-components-color-gray-600);
+		border-radius: 2px;
+	}
+
+	& .motto-lucide-gallery__row {
+		--columns: var(--motto-lucide-row-columns);
+		display: grid;
+		grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+		gap: 3px;
+		margin-bottom: 3px;
+	}
+
+	& .motto-lucide-gallery__row:last-child {
+		margin-bottom: 0;
+	}
+
+	& .motto-lucide-gallery__empty {
+		align-items: center;
+		color: var(--wp-components-color-gray-700);
+		display: flex;
+		font-size: var(--motto-font-size-sm);
+		justify-content: center;
+		min-height: calc(var(--motto-lucide-button-height) * 3);
+		padding: 12px;
+		text-align: center;
+	}
+
+	& .motto-lucide-gallery__button {
+		height: var(--motto-lucide-button-height);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4px;
+		transition: all 0.1s ease-in-out;
+
+		& svg {
+			width: var(--motto-lucide-icon-size);
+			height: var(--motto-lucide-icon-size);
+		}
+
+		&:is(:hover, :focus) {
+			scale: var(--motto-lucide-hover-scale);
+		}
+	}
+}

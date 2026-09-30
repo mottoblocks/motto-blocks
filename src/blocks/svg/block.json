@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/svg",
+	"version": "0.1.0",
+	"title": "Motto SVG",
+	"category": "design",
+	"icon": "format-image",
+	"description": "Render a Lucide icon, uploaded SVG, or inline SVG markup.",
+	"attributes": {
+		"svgAsset": {
+			"type": "object",
+			"default": {
+				"source": "lucide",
+				"media": {
+					"id": 0,
+					"url": "",
+					"alt": "",
+					"title": "",
+					"width": 0,
+					"height": 0,
+					"mime": "",
+					"inlineSvg": ""
+				},
+				"svg": {
+					"lucideIcon": "star",
+					"lucideSvg": "",
+					"inline": ""
+				}
+			}
+		},
+		"linkUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"linkNewTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"linkNoFollow": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["left", "center", "right", "wide", "full"]
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoDefaults": {
+		"css": {
+			"desktop": [
+				{
+					"name": "width",
+					"value": "80px"
+				},
+				{
+					"name": "height",
+					"value": "auto"
+				},
+				{
+					"name": "color"
+				}
+			]
+		}
+	}
+}

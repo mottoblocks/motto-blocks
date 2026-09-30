@@ -1,0 +1,8 @@
+{
+	"order": {
+		"globalBuckets": ["global", "class", "instance", "conditional"],
+		"instanceSort": ["depthAsc", "treeIndexAsc"],
+		"withinInstance": ["base", "inner"]
+	},
+	"breakpointsOrder": ["desktop", "tablet", "landscapePhone", "phone"]
+}

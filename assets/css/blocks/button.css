@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/* =============================================================================
+   Button — Frontend Styles
+   Styles for `.motto-button` used inside `.wp-block-buttons`.
+   Icon color and size are controlled via CSS custom properties.
+   ============================================================================= */
+:where(.motto-buttons) .motto-button {
+  width: auto;
+}
+
+.motto-button {
+  align-items: center;
+}
+
+.motto-button {
+  --button-gap: 0.5em;
+  --icon-color: currentColor;
+  --icon-size: 1em;
+}
+:where(.motto-button, .motto-button).wp-block-button__link {
+  align-items: center;
+}
+.motto-button {
+  gap: var(--button-gap);
+}
+.motto-button :where(.motto-button__icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.motto-button :where(.motto-button__icon) :where(svg) {
+  width: var(--icon-size);
+  height: auto;
+}
+.motto-button :where(.motto-button__icon) :where(svg.lucide) {
+  stroke: var(--icon-color);
+}
+.motto-button :where(.motto-button__icon) :where(.motto-button__icon-media-inline) :where(svg, svg *) {
+  fill: var(--icon-color);
+}
+.motto-button :where(.motto-button__icon-media) {
+  display: block;
+  width: 1em;
+  height: 1em;
+}

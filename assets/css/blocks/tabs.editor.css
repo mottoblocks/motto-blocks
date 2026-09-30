@@ -1,0 +1,27 @@
+@charset "UTF-8";
+/* =============================================================================
+   Tabs — Editor Styles
+   All panels visible and stacked; nav shows active state for orientation.
+   Selected tab buttons expose inline label editing and drag reordering.
+   ============================================================================= */
+.motto-tabs :where(.motto-tabs__nav) {
+  gap: var(--motto-space-md);
+}
+.motto-tabs :where(.motto-tabs__nav-item) {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+}
+.motto-tabs .motto-tabs__panels :where(.motto-tab) {
+  padding: 12px;
+}
+.motto-tabs .motto-tabs__panels :where(.motto-tab) + :where(.motto-tab) {
+  margin-top: var(--motto-space-2);
+}
+.motto-tabs .motto-tabs__panels :where(.motto-tab:not(.is-active)) {
+  display: none;
+}
+
+.motto-tab-trigger__label {
+  cursor: text;
+}

@@ -1,0 +1,52 @@
+/* MottoButton + MottoEnumOption — base panel action button and enum option */
+.motto-ui-button {
+	flex-grow: 1;
+	font-size: var(--motto-button-font-size);
+	height: var(--motto-button-height);
+	border-radius: var(--motto-button-border-radius);
+	justify-content: center;
+	padding: 0.5em var(--motto-space-lg);
+	text-align: center;
+	gap: var(--motto-space-sm);
+
+	&.motto-fw {
+		width: 100%;
+	}
+	&.motto-is-active {
+		background: var(--wp-admin-theme-color) !important;
+		color: white !important;
+	}
+	& :is(svg, img) {
+		width: var(--motto-icon-size);
+		// height: var(--motto-icon-size);
+		height: auto;
+	}
+	&:is(.is-icon-only) {
+		flex-grow: 0;
+		padding: var(--motto-space-xs);
+	}
+	&:focus:not(:active) {
+		outline-offset: 0;
+	}
+}
+
+// square-like buttons
+
+:is(
+	.motto-section-actions .motto-ui-button,
+	.motto-rules-actions .motto-ui-button,
+	.is-icon-only.is-primary
+) {
+	aspect-ratio: 0.9/1;
+}
+
+.motto-enum-option {
+	white-space: wrap !important;
+	line-height: 1;
+	justify-content: flex-start;
+	text-align: left;
+	height: 3em;
+}
+
+// Icon-only buttons are detected by direct SVG-only content.
+// .components-button.motto-ui-button

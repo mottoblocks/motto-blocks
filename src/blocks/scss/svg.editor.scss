@@ -1,0 +1,50 @@
+/* =============================================================================
+   SVG — Editor Styles
+   Minimal structural selectors for the Motto SVG block in the editor.
+   ============================================================================= */
+
+.editor-styles-wrapper .motto-svg {
+	& .motto-svg__link-overlay {
+		pointer-events: none;
+	}
+
+	& .motto-svg__empty {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: var(--motto-space-2xs);
+		min-height: 40px;
+		padding: var(--motto-space-md);
+		border: 1px dashed currentColor;
+		border-radius: 4px;
+		opacity: 0.6;
+		color: inherit;
+		text-align: center;
+	}
+
+	& .motto-svg__empty-message {
+		margin: 0;
+		font-size: 12px;
+	}
+}
+
+.motto-svg {
+	& .motto-svg__media-preview {
+	}
+
+	& .motto-svg__media-preview-image {
+	}
+
+	& .motto-svg__image {
+	}
+
+	& .motto-svg__inline {
+	}
+
+	& .motto-svg__inline--lucide {
+	}
+
+	& .motto-svg__inline--custom {
+	}
+}

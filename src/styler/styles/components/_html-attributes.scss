@@ -1,0 +1,17 @@
+// HtmlAttributesControl — key/value attribute row list
+.motto-html-attributes-list {
+	display: grid;
+	gap: var(--motto-space-sm);
+}
+
+.motto-html-attribute-row {
+	display: flex;
+	gap: var(--motto-space-sm);
+	align-items: flex-end;
+	& .components-base-control {
+		flex: 1 1 10rem;
+	}
+	& .motto-ui-button {
+		flex: 0 0 auto;
+	}
+}

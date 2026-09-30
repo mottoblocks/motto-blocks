@@ -1,0 +1,24 @@
+/* InlineSelectControl — label + select in a single row */
+.motto-inline-select {
+	display: flex;
+	align-items: center;
+	gap: calc(var(--motto-space-md) + (var(--motto-space-sm) / 2));
+
+	& + .motto-inline-select {
+		margin-top: 8px;
+	}
+
+	& .motto-inline-select-label {
+		flex: 0 0 96px;
+		font-weight: 500;
+	}
+
+	& .motto-inline-select-control {
+		flex: 1 1 auto;
+		margin-bottom: 0;
+	}
+
+	& .motto-inline-select-control .components-base-control__field {
+		margin-bottom: 0;
+	}
+}

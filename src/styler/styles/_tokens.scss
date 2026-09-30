@@ -1,0 +1,74 @@
+@use "./tools.fluid" as fluid;
+
+:root {
+	--wp-components-color-gray-100: hsl(208 65% 98%);
+	--wp-components-color-gray-200: hsl(208, 60%, 92%);
+	--wp-components-color-gray-300: hsl(203, 40%, 88%);
+	--wp-components-color-gray-400: hsl(205, 30%, 81%);
+	--wp-components-color-gray-500: hsl(205, 30%, 78%);
+	--wp-components-color-gray-600: hsl(205, 30%, 75%);
+	--wp-components-color-gray-700: hsl(205, 30%, 60%);
+	--wp-components-color-gray-800: hsl(205, 30%, 50%);
+	--wp-components-color-gray-900: hsl(205, 30%, 35%);
+
+	--motto-warning-color-100: hsla(30, 70%, 95%, 1);
+	--motto-warning-color-500: hsla(30, 80%, 50%, 1);
+	--motto-warning-color-600: hsl(30, 80%, 40%);
+
+	--motto-color-white: #fff;
+	--motto-color-black: #111;
+	--motto-button-border-radius: 4px;
+	--motto-card-border-radius: 1rem;
+	--motto-button-font-size: 12px;
+	--motto-button-height: 28px;
+	--motto-button-height-sm: 24px;
+	// --motto-button-icon-width: 24px;
+	--motto-icon-size: 1.2em;
+	--motto-tab-height: 36px;
+	--motto-font-size-xs: 8px;
+	--motto-font-size-sm: 10px;
+	--motto-font-size-md: 12px;
+	--motto-font-size-lg: 13px;
+	--motto-font-size-xl: 16px;
+	--motto-font-size-xxl: 18px;
+	--motto-popup-dialog-width: min(700px, 90vw);
+	--motto-code-font-family:
+		ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+		monospace;
+
+	--motto-heading-font-size-md: #{fluid.motto-fluid-clamp(1rem, 1.6rem)};
+	--motto-heading-font-size-lg: #{fluid.motto-fluid-clamp(1.2rem, 2rem)};
+	--motto-heading-font-size-xl: #{fluid.motto-fluid-clamp(2rem, 3.75rem)};
+
+	--motto-gray: #9196a7;
+	--motto-input-border-color: var(--wp-components-color-gray-600);
+	--motto-input-border-radius: 4px;
+	--motto-input-height: 32px;
+
+	--motto-lucide-stroke-width: 1.8;
+	--motto-popup-border-radius: 10px;
+	--motto-popup-border-color: #eee;
+	--motto-popup-box-shadow: 2px 2px 10px hsla(205, 30%, 35%, 0.3);
+	--motto-popup-width: 250px;
+	--motto-space-xl: 1.25rem;
+	--motto-space-lg: 0.8rem;
+	--motto-space-md: 0.5rem;
+	--motto-space-sm: 0.25rem;
+	--motto-space-xs: 0.125rem;
+
+	/* Prop-row column widths */
+	--motto-label-width: 5rem;
+	/* text label: "Easing", "Duration", "Delay" */
+	--motto-prop-select-width: 7rem;
+	--motto-font-size-select: var(--motto-font-size-md);
+	--motto-font-size-textarea: var(--motto-font-size-md);
+	/* type select: "Translate X", "Perspective" */
+	--motto-prop-input-width: 5rem;
+	/* numeric/unit input: fixed width in input+slider rows */
+	--motto-prop-slider-width: 11rem;
+
+	--motto-var-trigger-offset: 25px;
+	--motto-class-editor-min-height: calc(100vh - 220px);
+
+	--motto-toggle-height-lg: 40px;
+}

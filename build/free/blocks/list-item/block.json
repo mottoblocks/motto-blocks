@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "motto/list-item",
+  "version": "0.1.0",
+  "title": "List Item",
+  "category": "text",
+  "icon": "marker",
+  "description": "List item with optional bullet override.",
+  "parent": ["motto/list"],
+  "allowedBlocks": ["motto/list"],
+  "usesContext": ["motto/bulletOptions"],
+  "attributes": {
+    "content": {
+      "type": "rich-text",
+      "source": "rich-text",
+      "selector": ".motto-list-item__text",
+      "role": "content"
+    },
+    "overrideBullet": {
+      "type": "boolean",
+      "default": false
+    },
+    "bulletOptions": {
+      "type": "object",
+      "default": {
+        "type": "icon",
+        "image": {
+          "id": 0,
+          "url": ""
+        },
+        "svg": {
+          "source": "lucide",
+          "inline": "",
+          "lucideIcon": "star"
+        },
+        "counter": {
+          "style": "decimal",
+          "start": 1
+        }
+      }
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "reusable": false,
+    "splitting": true
+  },
+  "mottoBaseLayout": "flex",
+  "textdomain": "motto-blocks"
+}

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* =============================================================================
+   Button — Editor Styles
+   Disables pointer events on the button wrapper so only the RichText is editable.
+   ============================================================================= */
+.wp-block-motto-button .motto-button {
+  pointer-events: none;
+}
+.wp-block-motto-button .motto-button .motto-button__text {
+  pointer-events: auto;
+}

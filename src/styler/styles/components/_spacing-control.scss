@@ -1,0 +1,73 @@
+/* SpacingControl — size presets and custom value inputs */
+.motto-spacing-sizes-control {
+	--motto-button-height: 28px;
+	--motto-icon-size: 20px;
+	--motto-spacing-control-gap: var(--motto-space-sm);
+
+	& .motto-spacing-sizes-control__body {
+		display: grid;
+		gap: var(--motto-space-sm);
+	}
+	& .motto-spacing-sizes-control__header {
+		margin-bottom: var(--motto-space-md);
+		display: flex;
+		align-items: center;
+		& .motto-label {
+			flex: 1;
+		}
+	}
+	& .motto-spacing-control {
+		flex-grow: 1;
+	}
+
+	& .motto-control-icon {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--motto-muted-color);
+		& svg {
+			width: var(--motto-icon-size);
+			height: var(--motto-icon-size);
+		}
+	}
+
+	& .motto-spacing-sizes-control__custom-value-range {
+		grid-column: 1 / -1;
+	}
+	&
+		:is(
+			.motto-spacing-sizes-control__range-control,
+			.motto-spacing-sizes-control__custom-value-input
+		) {
+		margin-bottom: 0 !important;
+	}
+	& .components-unit-control__select {
+		width: 24px;
+	}
+	& .components-base-control__field {
+		margin-bottom: 0;
+	}
+	& .components-range-control__root {
+		min-height: var(--motto-input-height);
+	}
+	& .components-toggle-control {
+		align-self: end;
+	}
+}
+
+.motto-spacing-preview-control {
+	--motto-spacing-control-gap: var(--motto-space-md);
+	display: grid;
+	gap: var(--motto-spacing-control-gap);
+}
+
+.motto-spacing-preview-body {
+	display: grid;
+	gap: var(--motto-space-sm);
+}
+
+.motto-spacing-single-control {
+	display: grid;
+	gap: var(--motto-space-sm);
+	flex: 1;
+}

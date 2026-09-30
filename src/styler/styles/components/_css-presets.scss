@@ -1,0 +1,42 @@
+// CSS presets grid — StylerCssList preset picker modal
+.motto-presets-list {
+	align-content: start;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: var(--motto-space-lg);
+	min-height: 400px;
+}
+
+.motto-apply-preset-button {
+	--motto-button-height: 150px;
+	--motto-button-border-radius: 8px;
+	justify-content: flex-start;
+	min-height: var(--motto-button-height);
+	display: grid;
+	padding: var(--motto-space-lg);
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: left;
+	gap: var(--motto-space-md);
+	white-space: normal !important;
+	align-content: start;
+	line-height: 1.3;
+	transition: background 0.15s ease-in-out;
+
+	& .motto-preset-text {
+		display: grid;
+		gap: var(--motto-space-sm);
+		& > * {
+			display: block;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+	}
+	& .motto-preset-name {
+		font-size: var(--motto-font-size-xxl);
+	}
+	& .motto-preset-icon svg {
+		width: 20px;
+		height: 20px;
+	}
+}

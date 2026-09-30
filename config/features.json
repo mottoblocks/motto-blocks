@@ -1,0 +1,595 @@
+{
+	"schemaVersion": 1,
+	"lastUpdated": "2026-09-29",
+	"plugin": "motto-blocks",
+	"vocabulary": {
+		"tier": {
+			"free": "Available in motto-blocks (free plugin)",
+			"pro": "Available in motto-blocks-pro (addon plugin, requires license)"
+		},
+		"pillar": {
+			"governance": "Governance & Control — agencies and teams",
+			"power-ux": "Power UX & Ergonomics — advanced individual users",
+			"premium-blocks": "Premium Blocks — specific project needs",
+			"null": "Not applicable (free feature)"
+		},
+		"status": {
+			"shipped": "Live in current public version",
+			"planned": "Designed or in progress, not yet released",
+			"proposed": "Idea captured, not yet designed or scheduled",
+			"labeled": "Visible in editor with Pro badge, no gate enforced (Phase 2)",
+			"gated": "Pro gate enforced in editor (Phase 3+)"
+		},
+		"gate": {
+			"soft": "Feature exists in free in a basic form; Pro upgrades ergonomics",
+			"hard": "Feature is absent in free entirely",
+			"none": "Not applicable (free feature)"
+		},
+		"category": {
+			"block": "A block exposed in the inserter",
+			"styler-core": "Part of the Styler engine (always free)",
+			"styler-governance": "Pro governance layer on top of Styler",
+			"styler-power-ux": "Pro ergonomics layer on top of Styler",
+			"operational": "Site/admin operational tooling"
+		},
+		"migrationRisk": {
+			"none": "No existing user content depends on this feature",
+			"low": "Some content may exist; behavior preserved on Pro deactivation",
+			"high": "Existing content depends on this; gating requires migration plan"
+		},
+		"optionalFields": {
+			"parent": "Slug of the parent feature this entry extends (e.g. a Pro sub-feature on a free block)",
+			"includes": "List of inner block slugs grouped under this feature",
+			"note": "Free-form clarification visible to humans",
+			"icon": "Lucide icon name (kebab-case) this block's assets/icons/blocks/<slug>.svg was sourced from — not read by render-tabs.php, reference only for regenerating the SVG"
+		}
+	},
+	"features": [
+		{
+			"slug": "container",
+			"name": "Container",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "button",
+			"name": "Button",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "buttons",
+			"name": "Buttons",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "image",
+			"name": "Image",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "svg",
+			"name": "SVG",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "counter",
+			"name": "Counter",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "list",
+			"name": "List",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"includes": ["list-item"]
+		},
+		{
+			"slug": "accordion",
+			"name": "Accordion",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"includes": ["accordion-item"]
+		},
+		{
+			"slug": "tabs",
+			"name": "Tabs",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"includes": ["tab", "tab-button", "tab-container", "tab-panels"]
+		},
+		{
+			"slug": "slider",
+			"name": "Slider",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"includes": ["slide"]
+		},
+		{
+			"slug": "maps",
+			"name": "Maps",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "classic-menu",
+			"name": "Classic Menu",
+			"category": "block",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"note": "Block stays free. Specific advanced features may be added later as separate Pro entries with parent: 'classic-menu'."
+		},
+		{
+			"slug": "panel-trigger",
+			"name": "Panel Trigger",
+			"description": "Toggleable panel block. Two types: modal (9-point positioning, fade) and drawer (4-side, slide).",
+			"category": "block",
+			"tier": "pro",
+			"status": "shipped",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"includes": ["panel-trigger-trigger", "panel-trigger-panel", "panel-trigger-close"],
+			"note": "Pro-only composite block family. Free does not register the real block or ship its block-specific assets."
+		},
+		{
+			"slug": "container-dynamic-bg",
+			"name": "Container dynamic background image",
+			"category": "block",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "low",
+			"parent": "container",
+			"note": "Background image sourced dynamically from current post featured image, referenced post featured image, ACF field, or post meta. The dynamic attribute must be declared in the free block.json schema so Gutenberg preserves it across edit cycles without Pro. If the user switches to a static value and saves while in free, the dynamic config is permanently replaced — this is intentional behavior, not a bug."
+		},
+		{
+			"slug": "image-dynamic-src",
+			"name": "Image dynamic source",
+			"category": "block",
+			"tier": "pro",
+			"status": "shipped",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "low",
+			"parent": "image",
+			"note": "Image source resolved dynamically from current post featured image, referenced post featured image, ACF field, or post meta. Same attribute-preservation constraint as container-dynamic-bg: attribute must be in free block.json schema. Switching to static while in free is a one-way operation."
+		},
+		{
+			"slug": "image-parallax",
+			"name": "Image parallax",
+			"category": "block",
+			"tier": "pro",
+			"status": "proposed",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "low",
+			"parent": "image",
+			"note": "Scroll parallax for the Image block's <img>, reusing motto/container's parallax math (transform: translateY, requestAnimationFrame scroll tween, --motto-parallax-offset). imageParallax/imageParallaxOffset live in the free block.json for content preservation; the UI and the actual scroll-tween activation are Pro-only. Free renders a static, correctly-cropped object-fit: cover image if Pro is deactivated. See SDD-018."
+		},
+		{
+			"slug": "link-dynamic-src",
+			"name": "Dynamic link source (Container + Button)",
+			"category": "block",
+			"tier": "pro",
+			"status": "shipped",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "low",
+			"parent": "container",
+			"note": "Link URL resolved dynamically from post/term permalink, ACF or meta field, or wildcard-based custom URL. Applies to both Container and Button via BLOCKS_HOOKS.linkSourceDynamicSection. The linkDynamic attribute is declared in the free block.json schemas so Gutenberg preserves it across edit cycles without Pro."
+		},
+		{
+			"slug": "conditional",
+			"name": "Motto Conditional",
+			"description": "Wrapper block that renders or hides its inner blocks based on a single request condition (device, URL param, cookie, or language).",
+			"category": "block",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"note": "Wrapper block that conditionally renders/hides its inner blocks based on a single condition: device (server-side, wp_is_mobile), media query (CSS-only, breakpoint-based), URL param (exists/equals), cookie (exists/equals), or language (Polylang/WPML). Consolidates the former 'block-conditional-visibility' entry below — media query is one of this block's condition types, not a separate feature."
+		},
+		{
+			"slug": "hotspots-image",
+			"name": "Motto Hotspots Image",
+			"description": "Image with clickable/hoverable hotspot markers, each opening a popover with custom content.",
+			"category": "block",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "marquee",
+			"name": "Motto Marquee",
+			"description": "Looping marquee with arbitrary inner content.",
+			"category": "block",
+			"tier": "pro",
+			"status": "shipped",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"includes": ["marquee-track"]
+		},
+		{
+			"slug": "charts",
+			"name": "Motto Charts",
+			"description": "Data chart block (bar, line, pie, etc.) with editor-configurable series and styling.",
+			"category": "block",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "particle-bg",
+			"name": "Motto Particle Background",
+			"description": "Particle background block: select/upload a particle image, mouse interaction, and animation controls.",
+			"category": "block",
+			"tier": "pro",
+			"status": "proposed",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"icon": "sparkles",
+			"note": "Idea from TODO.md, not yet designed."
+		},
+		{
+			"slug": "gallery",
+			"name": "Motto Gallery",
+			"description": "Interactive gallery block: slider, masonry, frame-by-frame navigation, hover interactions.",
+			"category": "block",
+			"tier": "pro",
+			"status": "proposed",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"icon": "gallery-horizontal",
+			"note": "Idea from TODO.md, not yet designed."
+		},
+		{
+			"slug": "video",
+			"name": "Motto Video",
+			"description": "Video block with a custom player.",
+			"category": "block",
+			"tier": "pro",
+			"status": "proposed",
+			"pillar": "premium-blocks",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"icon": "video",
+			"note": "Idea from TODO.md, not yet designed."
+		},
+		{
+			"slug": "styler-engine",
+			"name": "Styler Engine (all props)",
+			"category": "styler-core",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"note": "The engine and all CSS props (font-size, spacing, border, color, background, transform, filter, grid, etc.) are always free. Per the contract: free always renders."
+		},
+		{
+			"slug": "css-classes",
+			"name": "CSS Classes",
+			"category": "styler-core",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"note": "Includes the inline class editor flow inside the Styler."
+		},
+		{
+			"slug": "block-selectors",
+			"name": "Block Selectors",
+			"category": "styler-core",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "composite-selector-input",
+			"name": "Composite selector input",
+			"category": "styler-core",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"note": "SDD-005."
+		},
+		{
+			"slug": "defaults-auto-apply",
+			"name": "Defaults auto-apply on insert",
+			"category": "styler-core",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"note": "SDD-003."
+		},
+		{
+			"slug": "css-variables",
+			"name": "CSS Variables (global custom properties)",
+			"category": "styler-core",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"note": "Create, edit, and use global CSS custom properties (motto_css_variable CPT). Injected as :root declarations. Used via autocomplete in any CSS rule. Managing variables at scale (groups, derived values, cross-site sync) is Pro."
+		},
+		{
+			"slug": "clipboard-styles",
+			"name": "Copy/Paste styles (block-level and list-level)",
+			"category": "styler-core",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"note": "Block-level: copy/paste Main Styles and Classes from the block topbar. List-level: copy/paste CSS rules within a specific Styler section. Both stay free. Pro amplifications (apply to all blocks of a type, sync between instances) are separate Pro entries."
+		},
+		{
+			"slug": "reorder-props",
+			"name": "Reorder CSS rules and Selectors",
+			"category": "styler-core",
+			"tier": "free",
+			"status": "shipped",
+			"pillar": null,
+			"gate": "none",
+			"migrationRisk": "none",
+			"note": "Manual reorder (up/down buttons) for both CSS rules and Block Selectors. Always free. Sort A→Z is a separate Pro feature."
+		},
+		{
+			"slug": "prop-lock-unlock",
+			"name": "Lock/unlock individual prop",
+			"category": "styler-governance",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "prop-enable-disable",
+			"name": "Enable/disable individual prop",
+			"category": "styler-governance",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "restrict-props-per-block",
+			"name": "Restrict properties per block type",
+			"category": "styler-governance",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "class-role-control",
+			"name": "Class editing control by author role",
+			"category": "styler-governance",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "selector-description",
+			"name": "Selector description field",
+			"category": "styler-governance",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "system-tokens",
+			"name": "Presets / System Tokens",
+			"category": "styler-governance",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"note": "Pro implies cloud sync of token sets across sites. Server-dependent feature anchor."
+		},
+		{
+			"slug": "config-export-import",
+			"name": "Export/Import Styler configuration",
+			"category": "styler-governance",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "sort-az-css-list",
+			"name": "Sort CSS rules alphabetically (A→Z)",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "shipped",
+			"pillar": "power-ux",
+			"gate": "soft",
+			"migrationRisk": "none",
+			"note": "Soft gate: user can reorder manually in free. Pro adds one-click A→Z sort. Already stubbed in StylerCssList with proBadge:true via STYLER_ACTION_IDS.cssListSortAz."
+		},
+		{
+			"slug": "duplicate-selector",
+			"name": "Duplicate Selector",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "power-ux",
+			"gate": "soft",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "clamp-generator-fontsize",
+			"name": "Clamp generator (font-size prop)",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "power-ux",
+			"gate": "soft",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "clamp-generator-css-vars",
+			"name": "Clamp generator (CSS variables panel)",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "power-ux",
+			"gate": "soft",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "custom-spacing-override",
+			"name": "Custom spacing (preset overrides + manual values)",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "power-ux",
+			"gate": "soft",
+			"migrationRisk": "high",
+			"note": "Currently active in free SpacingControl/BorderRadiusControl. Pending UX adjustments before gating. Phase 5: requires usage audit, content compatibility check, announcement and grace period."
+		},
+		{
+			"slug": "css-variables-groups",
+			"name": "CSS Variables organization (groups/categories)",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "power-ux",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"note": "Pro management layer on top of the free css-variables feature. Allows organizing variables into named groups/categories for large design systems."
+		},
+		{
+			"slug": "css-variables-derived",
+			"name": "Derived CSS Variables",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "power-ux",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"note": "UI wizard to generate tint/shade/alpha variants from a base variable using color-mix() and relative color syntax. Late-phase feature; requires broad browser support baseline. User defines a root variable; Pro generates the derived scale automatically."
+		},
+		{
+			"slug": "block-spacing",
+			"name": "Block Spacing (gap / column-gap / row-gap presets)",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "power-ux",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"note": "Pro section injected into the Styler panel via STYLER_HOOKS.blockSpacingSection. Identified by STYLER_FEATURE_IDS.blockSpacing ('styler.blockSpacing'). Conflict warning shown in free when blockSpacing.enabled is true on an existing block."
+		},
+		{
+			"slug": "breakpoints-direction",
+			"name": "Mobile-first / desktop-first breakpoints",
+			"category": "styler-power-ux",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "power-ux",
+			"gate": "hard",
+			"migrationRisk": "none"
+		},
+		{
+			"slug": "rebuild-frontend-caches",
+			"name": "Rebuild Frontend Caches admin action",
+			"category": "operational",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"note": "Lazy invalidation/regeneration remains the free baseline. Pro adds the explicit admin prewarm action as operational tooling."
+		},
+		{
+			"slug": "global-css-editor",
+			"name": "Global CSS Editor (WP Admin)",
+			"category": "operational",
+			"tier": "pro",
+			"status": "planned",
+			"pillar": "governance",
+			"gate": "hard",
+			"migrationRisk": "none",
+			"note": "Site-wide CSS editor in Motto Settings. Must store and output CSS safely, and use a predictable enqueue/injection strategy (frontend + editor as applicable)."
+		}
+	]
+}

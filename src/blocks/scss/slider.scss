@@ -1,0 +1,62 @@
+/* =============================================================================
+   Slider — Frontend Styles
+   Swiper-based slider. Navigation and pagination visibility controlled via
+   data attributes; custom nav icons replace Swiper's default ::after arrows.
+   ============================================================================= */
+
+.motto-slider {
+	--swiper-navigation-size: 20px;
+	position: relative;
+
+	// ---------------------------------------------------------------------------
+	// Visibility overrides — controlled by block attributes
+	// ---------------------------------------------------------------------------
+	&:has(.swiper-navigation-disabled) {
+		& :is(.swiper-button-next, .swiper-button-prev) {
+			display: none !important;
+		}
+	}
+
+	&:has(.swiper-pagination-disabled) {
+		& .swiper-pagination {
+			display: none !important;
+		}
+	}
+
+	// Slide box-sizing reset
+	& :where(.motto-slide) {
+		box-sizing: border-box;
+	}
+
+	// ---------------------------------------------------------------------------
+	// Navigation buttons — reset Swiper defaults for custom icon layout
+	// ---------------------------------------------------------------------------
+	& :is(.swiper-button-next, .swiper-button-prev) {
+		background: none;
+		border: none;
+		outline: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		// Suppress default ::after arrow when a custom icon is present
+		&.is-custom-nav-icon::after {
+			content: none;
+		}
+	}
+
+	// ---------------------------------------------------------------------------
+	// Custom nav icon wrapper
+	// ---------------------------------------------------------------------------
+	& :where(.motto-slider__nav-icon) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	& :is(.motto-slider__nav-icon) :is(svg, img) {
+		display: block;
+		width: var(--swiper-navigation-size);
+		height: var(--swiper-navigation-size);
+	}
+}

@@ -1,0 +1,68 @@
+[
+	{
+		"id": "display-flex-layout",
+		"breakpoints": "*",
+		"normalize": true,
+		"conditions": [
+			{
+				"prop": "display",
+				"match": {
+					"value": ["grid", "inline-grid", "flex", "inline-flex"],
+					"type": "in"
+				}
+			}
+		],
+		"class": "motto-is-layout-flex--{bp}"
+	},
+	{
+		"id": "display-flow-layout",
+		"breakpoints": "*",
+		"normalize": true,
+		"conditions": [
+			{
+				"prop": "display",
+				"match": {
+					"value": ["block", "inline-block", "inline"],
+					"type": "in"
+				}
+			}
+		],
+		"class": "motto-is-layout-flow--{bp}"
+	},
+	{
+		"id": "position-absolute",
+		"breakpoints": "*",
+		"normalize": true,
+		"conditions": [
+			{
+				"prop": "position",
+				"match": {
+					"value": ["absolute"],
+					"type": "in"
+				}
+			}
+		],
+		"class": "has-position-absolute"
+	},
+	{
+		"id": "has-aspect-ratio",
+		"breakpoints": "*",
+		"normalize": true,
+		"conditions": [{ "prop": "aspect-ratio" }],
+		"class": "motto-has-aspect-ratio"
+	},
+	{
+		"id": "has-background-color",
+		"breakpoints": "*",
+		"normalize": true,
+		"conditions": [{ "prop": "background-color" }],
+		"class": "motto-has-bg-color"
+	},
+	{
+		"id": "has-border-radius",
+		"breakpoints": "*",
+		"normalize": true,
+		"conditions": [{ "prop": "border-radius" }],
+		"class": "motto-has-border-radius"
+	}
+]

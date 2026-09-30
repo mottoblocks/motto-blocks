@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/* =============================================================================
+   Maps — Editor Styles
+   Canvas wrapper for the editor preview and pin management sidebar UI.
+   ============================================================================= */
+.wp-block-motto-maps .motto-maps__preview-shell {
+  position: relative;
+}
+.wp-block-motto-maps .motto-maps__canvas {
+  width: 100%;
+  min-height: 120px;
+}
+
+.motto-map-pin-editor {
+  margin-top: var(--motto-space-xs);
+}
+
+.motto-map-pin-editor__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.motto-map-pin-icon-control {
+  margin-top: var(--motto-space-xs);
+}

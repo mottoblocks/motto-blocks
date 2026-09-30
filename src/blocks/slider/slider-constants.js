@@ -1,0 +1,12 @@
+export {
+	DEVICE_ORDER,
+	RESPONSIVE_KEYS,
+	PREVIEW_STORE_KEY,
+	SWIPER_NAVIGATION_DEFAULTS,
+	SWIPER_PAGINATION_DEFAULTS,
+	TRANSITION_EFFECT_OPTIONS,
+	TRANSITION_EFFECT_VALUES,
+} from "@components/slider/constants";
+
+export const ALLOWED_BLOCKS = ["motto/slide"];
+export const TEMPLATE = [["motto/slide"]];

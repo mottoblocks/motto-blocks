@@ -1,0 +1,27 @@
+node_modules/
+.DS_Store
+NOTAS.md
+motto-blocks.zip
+motto-blocks-pro.zip
+*.zip
+
+# Sourcemaps — excluded from production zip, no value in git history
+*.map
+
+# Local Claude Code settings — personal overrides and worktree artifacts, not shared
+.claude/settings.local.json
+.claude/worktrees/
+.claude/motto-blocks/
+
+# Local notes scratchpad
+notes/
+
+# Local WordPress site sync targets — personal machine paths, not shared
+scripts/sync-config.local.mjs
+
+# Playwright auth state (contains session cookies)
+tests/e2e/.auth/
+
+# Playwright test results and reports
+test-results/
+playwright-report/

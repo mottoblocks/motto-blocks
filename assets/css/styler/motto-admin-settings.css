@@ -1,0 +1,715 @@
+@charset "UTF-8";
+:root {
+  --wp-components-color-gray-100: hsl(208 65% 98%);
+  --wp-components-color-gray-200: hsl(208, 60%, 92%);
+  --wp-components-color-gray-300: hsl(203, 40%, 88%);
+  --wp-components-color-gray-400: hsl(205, 30%, 81%);
+  --wp-components-color-gray-500: hsl(205, 30%, 78%);
+  --wp-components-color-gray-600: hsl(205, 30%, 75%);
+  --wp-components-color-gray-700: hsl(205, 30%, 60%);
+  --wp-components-color-gray-800: hsl(205, 30%, 50%);
+  --wp-components-color-gray-900: hsl(205, 30%, 35%);
+  --motto-warning-color-100: hsla(30, 70%, 95%, 1);
+  --motto-warning-color-500: hsla(30, 80%, 50%, 1);
+  --motto-warning-color-600: hsl(30, 80%, 40%);
+  --motto-color-white: #fff;
+  --motto-color-black: #111;
+  --motto-button-border-radius: 4px;
+  --motto-card-border-radius: 1rem;
+  --motto-button-font-size: 12px;
+  --motto-button-height: 28px;
+  --motto-button-height-sm: 24px;
+  --motto-icon-size: 1.2em;
+  --motto-tab-height: 36px;
+  --motto-font-size-xs: 8px;
+  --motto-font-size-sm: 10px;
+  --motto-font-size-md: 12px;
+  --motto-font-size-lg: 13px;
+  --motto-font-size-xl: 16px;
+  --motto-font-size-xxl: 18px;
+  --motto-popup-dialog-width: min(700px, 90vw);
+  --motto-code-font-family:
+  	ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+  	monospace;
+  --motto-heading-font-size-md: clamp(1rem, 1rem + (1.6rem - 1rem) * (100vw - 420px) / (1200px - 420px), 1.6rem);
+  --motto-heading-font-size-lg: clamp(1.2rem, 1.2rem + (2rem - 1.2rem) * (100vw - 420px) / (1200px - 420px), 2rem);
+  --motto-heading-font-size-xl: clamp(2rem, 2rem + (3.75rem - 2rem) * (100vw - 420px) / (1200px - 420px), 3.75rem);
+  --motto-gray: #9196a7;
+  --motto-input-border-color: var(--wp-components-color-gray-600);
+  --motto-input-border-radius: 4px;
+  --motto-input-height: 32px;
+  --motto-lucide-stroke-width: 1.8;
+  --motto-popup-border-radius: 10px;
+  --motto-popup-border-color: #eee;
+  --motto-popup-box-shadow: 2px 2px 10px hsla(205, 30%, 35%, 0.3);
+  --motto-popup-width: 250px;
+  --motto-space-xl: 1.25rem;
+  --motto-space-lg: 0.8rem;
+  --motto-space-md: 0.5rem;
+  --motto-space-sm: 0.25rem;
+  --motto-space-xs: 0.125rem;
+  /* Prop-row column widths */
+  --motto-label-width: 5rem;
+  /* text label: "Easing", "Duration", "Delay" */
+  --motto-prop-select-width: 7rem;
+  --motto-font-size-select: var(--motto-font-size-md);
+  --motto-font-size-textarea: var(--motto-font-size-md);
+  /* type select: "Translate X", "Perspective" */
+  --motto-prop-input-width: 5rem;
+  /* numeric/unit input: fixed width in input+slider rows */
+  --motto-prop-slider-width: 11rem;
+  --motto-var-trigger-offset: 25px;
+  --motto-class-editor-min-height: calc(100vh - 220px);
+  --motto-toggle-height-lg: 40px;
+}
+
+/* Motto Panels primitives
+ *
+ * Intention:
+ * - shared panel layout primitives
+ * - reusable control/layout helpers used across repos
+ *
+ */
+/* Layout Primitives
+ * Composable flex/grid helpers — use in combination, not alone.
+ * Example: <div className="motto-flex align-center gap-md">
+ */
+/* Display */
+.motto-flex {
+  display: flex;
+}
+
+.motto-grid {
+  display: grid;
+}
+
+.motto-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.motto-flex-rows {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+.motto-flex-rows > :is(button) {
+  margin-block: var(--motto-space-sm);
+}
+
+/* WP components override: strip default margin inside any flex/grid container */
+:is(.motto-flex, .motto-grid) .components-base-control {
+  margin-bottom: 0 !important;
+}
+:is(.motto-flex, .motto-grid) .components-toggle-control {
+  min-height: var(--motto-input-height);
+}
+
+/* Alignment */
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+/* Gap */
+.gap-xs {
+  gap: var(--motto-space-xs);
+}
+
+.gap-sm {
+  gap: var(--motto-space-sm);
+}
+
+.gap-md {
+  gap: var(--motto-space-md);
+}
+
+.gap-lg {
+  gap: var(--motto-space-lg);
+}
+
+/* Flex items */
+.flex-1 {
+  flex: 1 1 0;
+}
+
+.flex-2 {
+  flex: 2 1 0;
+}
+
+.flex-none {
+  flex: 0 0 auto;
+}
+
+.motto-prop-select {
+  flex: 1 0 auto;
+  width: var(--motto-prop-select-width);
+}
+
+.motto-toggle-large {
+  min-height: var(--motto-toggle-height-lg);
+  align-items: center;
+  display: flex;
+  margin: 0 !important;
+}
+
+:is(.motto-prop-input) {
+  flex: 1 0 0;
+  min-width: var(--motto-prop-input-width);
+}
+
+.motto-prop-input:has(.motto-control-unit) {
+  --motto-prop-input-width: 5.5rem;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.motto-prop-input:has(.motto-control-unit) > :not(.motto-control-unit) {
+  flex-grow: 1;
+}
+
+/* Grid columns */
+.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Focus ring opt-out. WP paints the ring with `outline` at (0,3,0), so !important.
+ * Only outline is cleared: is-secondary buttons draw their border with box-shadow.
+ * Provide another focus indicator where this is used — keyboard users lose the ring.
+ */
+.motto-no-focus-ring:focus, .motto-no-focus-ring:focus-visible {
+  outline: none !important;
+}
+
+/* Shared primitive: color/gradient swatch trigger */
+.motto-color-gradient-swatch-button {
+  min-width: 34px;
+  padding: 6px !important;
+}
+
+.motto-color-gradient-swatch {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid #d0d5dd;
+}
+
+.motto-label {
+  min-width: var(--motto-label-width);
+  text-transform: uppercase;
+  font-size: var(--motto-font-size-sm);
+  margin: 0;
+  font-weight: normal;
+}
+
+.motto-class-input-with-prefix {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--motto-space-md);
+}
+.motto-class-input-with-prefix .motto-class-input-prefix {
+  font-weight: bold;
+}
+.motto-class-input-with-prefix .motto-class-slug {
+  flex-grow: 1;
+}
+
+.motto-notice {
+  font-size: var(--motto-font-size-sm);
+  line-height: 1.2;
+  padding: var(--motto-space-sm);
+  margin: 0;
+  color: var(--motto-warning-color-500, hsl(40, 80%, 50%));
+  display: flex;
+  align-items: start;
+  gap: var(--motto-space-md);
+}
+.motto-notice .motto-notice-icon {
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+}
+.motto-notice .motto-notice-text {
+  flex-grow: 1;
+}
+.motto-notice :is(p, ol, ul, h1, h2, h3, h4, h5, h6) {
+  font-size: inherit;
+  margin: 0;
+}
+
+/* Admin Cards — shared card primitive for admin-tab grids (Blocks, Classes, future Target) */
+:root :is(.motto-admin-card) {
+  border: 1px solid var(--wp-components-color-gray-500);
+  border-radius: var(--motto-card-border-radius);
+  padding: var(--motto-space-lg);
+  margin: 0;
+}
+
+.motto-admin-card--block {
+  cursor: pointer;
+  display: grid;
+  justify-items: start;
+  align-content: flex-start;
+  gap: var(--motto-space-lg);
+  user-select: none;
+  height: 14rem;
+}
+.motto-admin-card--block.is-disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+.motto-admin-card--block.is-disabled .motto-toggle__track {
+  opacity: 0.5;
+}
+
+.motto-admin-card--block-target {
+  height: auto;
+}
+
+:root .motto-admin-card--class {
+  display: block;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  position: static;
+  aspect-ratio: unset;
+  translate: initial;
+  scale: initial;
+  rotate: initial;
+  transform: initial;
+}
+:root .motto-admin-card--class .motto-admin-card-content {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  height: 10rem;
+  width: 100%;
+}
+
+.motto-admin-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--motto-space-3xs, 6px);
+  align-items: start;
+}
+
+.motto-admin-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--motto-space-md, 6px);
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: var(--motto-button-border-radius);
+  align-self: end;
+}
+.motto-admin-card__actions :is(a, button) {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #222;
+  cursor: pointer;
+  line-height: 1;
+  text-decoration: none;
+}
+.motto-admin-card__actions :is(.dashicons, .dashicons:before) {
+  width: 1em;
+  height: 1em;
+  font-size: 1rem !important;
+}
+
+.motto-admin-card-title {
+  font-size: inherit;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.motto-admin-card-icon {
+  flex-shrink: 0;
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.motto-admin-card-badges {
+  display: flex;
+  align-items: center;
+  gap: var(--motto-space-2xs, 6px);
+}
+
+.motto-admin-card-description {
+  margin: 0;
+  font-size: var(--motto-font-size-sm);
+  color: var(--wp-components-color-gray-600);
+}
+
+.motto-admin-card-slug {
+  display: block;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  margin-block: 0;
+  font-size: 0.9rem !important;
+  background: white;
+  color: #222;
+  border-radius: var(--motto-button-border-radius);
+  padding: 0.5em 0.75em;
+  line-height: 1;
+  font-weight: normal;
+}
+
+.motto-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--motto-font-size-sm);
+  line-height: 1;
+  font-weight: 600;
+  padding: 0.25em 0.5em;
+  border-radius: 999px;
+  border: 1px solid var(--wp-components-color-gray-300);
+  background: var(--wp-components-color-gray-100);
+  color: var(--motto-color-black);
+}
+
+.motto-badge--pro {
+  border-color: rgba(121, 80, 242, 0.25);
+  background: rgba(121, 80, 242, 0.1);
+  color: rgb(68, 45, 150);
+}
+
+.motto-badge--soon {
+  border-color: var(--wp-components-color-gray-300);
+  background: var(--wp-components-color-gray-100);
+  color: var(--wp-components-color-gray-600);
+}
+
+/* motto-toggle — CSS-only pill switch for PHP-rendered admin pages
+ * → usage: includes/motto-settings.php
+ *
+ * HTML:
+ *   <label class="motto-toggle">
+ *     <input type="checkbox" class="motto-toggle__input" />
+ *     <span class="motto-toggle__track"></span>
+ *     Label text
+ *   </label>
+ */
+.motto-toggle {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  gap: var(--motto-space-md, 0.5rem);
+  user-select: none;
+}
+
+.motto-toggle__input {
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.motto-toggle__track {
+  --toggle-width: 2.25rem;
+  --toggle-height: 1.25rem;
+  --toggle-thumb: calc(var(--toggle-height) - 4px);
+  --toggle-off-bg: var(--wp-components-color-gray-400, #ccc);
+  --toggle-on-bg: var(--wp-admin-theme-color, #3858e9);
+  --toggle-transition: 0.15s ease;
+  background: var(--toggle-off-bg);
+  border-radius: 99px;
+  display: inline-block;
+  flex-shrink: 0;
+  height: var(--toggle-height);
+  position: relative;
+  transition: background var(--toggle-transition);
+  width: var(--toggle-width);
+}
+.motto-toggle__track::after {
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  content: "";
+  height: var(--toggle-thumb);
+  left: 2px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: left var(--toggle-transition);
+  width: var(--toggle-thumb);
+}
+
+.motto-toggle__input:checked + .motto-toggle__track {
+  background: var(--toggle-on-bg);
+}
+.motto-toggle__input:checked + .motto-toggle__track::after {
+  left: calc(var(--toggle-width) - var(--toggle-thumb) - 2px);
+}
+
+.motto-toggle__input:focus-visible + .motto-toggle__track {
+  outline: 2px solid var(--wp-admin-theme-color, #3858e9);
+  outline-offset: 2px;
+}
+
+.motto-toggle__input:disabled + .motto-toggle__track {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root .button {
+  display: inline-flex;
+  align-items: center;
+}
+
+:where(.motto-blocks-settings-page) {
+  font-size: 16px;
+  line-height: 1.4;
+}
+:where(.motto-blocks-settings-page) .postbox {
+  --padding: 1.25rem;
+  border-radius: 0.75em;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+  border-color: #eee;
+  max-width: 80rem;
+}
+:where(.motto-blocks-settings-page) .postbox .postbox-header {
+  padding-inline: var(--padding);
+  border-color: inherit;
+}
+:where(.motto-blocks-settings-page) .postbox .inside {
+  font-size: inherit;
+  padding: var(--padding);
+  margin: 0;
+}
+:where(.motto-blocks-settings-page) .nav-tab {
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+}
+:where(.motto-blocks-settings-page) :is(h2, h3, h4, h5, h6) {
+  margin-block: 1.5rem;
+}
+:where(.motto-blocks-settings-page) h2 {
+  font-size: var(--motto-heading-font-size-xl);
+  margin-block: 1rem;
+  line-height: 1;
+}
+:where(.motto-blocks-settings-page) h3 {
+  font-size: var(--motto-heading-font-size-lg);
+  line-height: 1;
+}
+:where(.motto-blocks-settings-page) .lead {
+  font-size: var(--motto-heading-font-size-md) !important;
+  line-height: 1.4;
+}
+:where(.motto-blocks-settings-page) .lead > * {
+  line-height: inherit;
+}
+:where(.motto-blocks-settings-page) p {
+  font-size: inherit;
+}
+
+.motto-blocks-settings-tabs {
+  margin-bottom: 1em;
+}
+
+.motto-styler-overview-card {
+  max-width: 50em;
+}
+
+.motto-blocks-logo {
+  width: 300px;
+  display: block;
+  max-width: 100%;
+  margin: 1.5em;
+}
+.motto-blocks-logo.inline {
+  width: auto;
+  height: 1.25em;
+  margin: 0;
+  display: inline-flex;
+}
+
+.motto-custom-css-editor .motto-custom-css-editor__textarea, .motto-custom-css-editor .CodeMirror {
+  min-height: 32rem;
+  resize: vertical;
+}
+.motto-custom-css-editor .CodeMirror {
+  height: 32rem;
+  overflow: auto;
+}
+.motto-custom-css-editor .CodeMirror-scroll {
+  min-height: inherit;
+}
+
+/* Shared Controls */
+.motto-styler-tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--motto-space-2xs, 10px);
+  flex-wrap: wrap;
+  margin: 0 0 1em;
+}
+
+.motto-styler-tab-header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--motto-space-2xs, 10px);
+  flex-wrap: wrap;
+}
+
+.motto-styler-classes-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--motto-space-2xs, 10px);
+  margin: 0;
+}
+
+.button.motto-styler-icon-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.button.motto-styler-icon-action .dashicons {
+  line-height: 1;
+}
+
+/* Classes */
+/* Variables */
+.motto-styler-variables-table.widefat {
+  border-color: var(--wp-components-color-gray-500);
+  border-radius: var(--motto-card-border-radius);
+  overflow: hidden;
+}
+.motto-styler-variables-table.widefat :is(td, th) {
+  padding: 1em;
+}
+.motto-styler-variables-table .motto-styler-variable-drag-column, .motto-styler-variables-table .motto-styler-variable-drag-cell {
+  width: 44px;
+  text-align: center;
+}
+.motto-styler-variables-table .motto-styler-variable-row.is-dragging {
+  opacity: 0.5;
+}
+.motto-styler-variables-table .motto-styler-variable-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--motto-space-3xs, 6px);
+}
+.motto-styler-variables-table .motto-styler-variable-actions [hidden] {
+  display: none !important;
+}
+.motto-styler-variables-table .motto-styler-variable-drag-handle {
+  cursor: grab;
+}
+.motto-styler-variables-table .motto-styler-variable-edit-actions[hidden] {
+  display: none;
+}
+.motto-styler-variables-table .motto-styler-variable-edit-actions:not([hidden]) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--motto-space-3xs, 6px);
+}
+
+.motto-styler-variable-input[disabled] {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  color: currentColor;
+}
+
+/* Targeting & Blocks */
+.motto-styler-target-groups.is-disabled {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.motto-styler-target-group {
+  margin-bottom: 1em;
+  border-radius: var(--motto-card-border-radius);
+}
+
+.motto-target-group-title {
+  align-items: center;
+  display: flex;
+  gap: var(--motto-space-2xs, 10px);
+  cursor: pointer;
+  user-select: none;
+  margin-block: 1rem;
+}
+
+:is(.motto-blocks-grid, .motto-styler-classes-grid) {
+  display: grid;
+  gap: var(--motto-space-lg, 1rem);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.motto-styler-namespace-section {
+  flex: 0 0 100%;
+  width: 100%;
+}
+
+.motto-namespace-section-blocks {
+  display: flex;
+  gap: var(--motto-space-md);
+  flex-wrap: wrap;
+  margin-top: var(--motto-space-md);
+}
+.motto-namespace-section-blocks > * {
+  flex: 0 1 18%;
+  min-width: 15rem;
+}
+
+.motto-admin-notice {
+  border-radius: 0.2em;
+}
+.motto-admin-notice .notice-dismiss {
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.progress-bar {
+  width: 100%;
+  margin: 1em 0;
+}

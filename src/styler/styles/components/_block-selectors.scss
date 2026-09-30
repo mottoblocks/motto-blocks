@@ -1,0 +1,114 @@
+/* BlockSelectorsList — per-selector expandable rule panels
+ * → src/styler/components/BlockSelectorsList.jsx
+ */
+
+@use "drag-reorder";
+
+.motto-inner-selectors {
+	display: grid;
+	gap: var(--motto-space-md);
+	justify-content: stretch;
+
+	& .motto-inner-selectors-list {
+		display: grid;
+		gap: var(--motto-space-md);
+		margin-bottom: var(--motto-space-md);
+	}
+
+	& .motto-inner-selector-item {
+		border: 1px solid var(--wp-components-color-gray-200);
+		border-radius: var(--motto-button-border-radius);
+
+		@include drag-reorder.states;
+
+		&[draggable="true"] {
+			cursor: grab;
+		}
+
+		&.is-reordered {
+			animation: motto-row-reorder-fade 220ms ease-out;
+		}
+	}
+
+	& .motto-inner-selector-drag {
+		@include drag-reorder.handle;
+	}
+
+	& .motto-inner-selector-row {
+		display: flex;
+		gap: var(--motto-space-sm);
+		align-items: center;
+		padding: var(--motto-space-sm) var(--motto-space-md);
+
+		& .motto-inner-selector-summary {
+			flex: 1;
+		}
+
+		& .motto-inner-selector-header {
+			position: relative;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: var(--motto-space-sm);
+			min-height: var(--motto-input-height);
+		}
+
+		& .motto-inner-selector-panel-toggle {
+			display: flex;
+			flex-grow: 1;
+			justify-content: space-between;
+			align-items: center;
+			gap: var(--motto-space-sm);
+			padding: 0;
+			text-align: start;
+
+			&:focus {
+				box-shadow: none;
+			}
+		}
+
+		& .motto-inner-selector-label {
+			font-weight: bold;
+			font-size: var(--motto-font-size-lg);
+			margin: 0;
+		}
+	}
+
+	& .motto-inner-selector-css {
+		border-top: 1px solid var(--wp-components-color-gray-200);
+		animation: motto-inner-selector-reveal 160ms ease-out;
+		transform-origin: top;
+		padding: var(--motto-space-md);
+	}
+
+	& .motto-css-rules .motto-section-heading {
+		& .motto-section-title-text {
+			font-weight: normal;
+			opacity: 0.35;
+			padding-left: var(--motto-space-sm);
+		}
+	}
+}
+
+@keyframes motto-inner-selector-reveal {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes motto-row-reorder-fade {
+	from {
+		opacity: 0.45;
+	}
+
+	to {
+		opacity: 1;
+	}
+}

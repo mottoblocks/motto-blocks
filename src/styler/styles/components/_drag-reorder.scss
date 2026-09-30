@@ -1,0 +1,26 @@
+/* DragReorder — shared native drag-and-drop state/handle styles
+ * → src/components/hooks/use-drag-reorder.js
+ */
+
+@mixin states {
+	&.is-dragging {
+		opacity: 0.55;
+	}
+
+	&.is-drop-target {
+		outline: 1px dashed var(--wp-components-color-gray-600);
+		outline-offset: -1px;
+	}
+}
+
+@mixin handle {
+	align-items: center;
+	color: var(--wp-components-color-gray-600);
+	cursor: grab;
+	display: inline-flex;
+	justify-content: center;
+
+	&:active {
+		cursor: grabbing;
+	}
+}

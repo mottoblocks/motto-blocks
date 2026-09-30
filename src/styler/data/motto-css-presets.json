@@ -1,0 +1,936 @@
+[
+	{
+		"label": "Responsive Grid",
+		"slug": "responsive-grid",
+		"category": "Layout",
+		"icon": "Grid2x2",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "--columns",
+						"value": "4"
+					},
+					{
+						"name": "display",
+						"value": "grid"
+					},
+					{
+						"name": "gap",
+						"value": "1em"
+					},
+					{
+						"name": "grid-template-columns",
+						"value": "repeat(var(--columns), minmax(0,1fr))"
+					}
+				],
+				"tablet": [
+					{
+						"name": "--columns",
+						"value": "3"
+					}
+				],
+				"landscapePhone": [
+					{
+						"name": "--columns",
+						"value": "2"
+					}
+				],
+				"phone": [
+					{
+						"name": "--columns",
+						"value": "1"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Flex Columns column count",
+		"slug": "flex-columns-column-count",
+		"category": "Layout",
+		"icon": "Columns3",
+		"description": "Wrapped flex columns with a shared gap and fixed column count.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "--columns",
+						"value": "4"
+					},
+					{
+						"name": "--gap",
+						"value": "1rem"
+					},
+					{
+						"name": "display",
+						"value": "flex"
+					},
+					{
+						"name": "flex-wrap",
+						"value": "wrap"
+					},
+					{
+						"name": "gap",
+						"value": "var(--gap)"
+					},
+					{
+						"name": "justify-content",
+						"value": "center"
+					}
+				],
+				"tablet": [
+					{
+						"name": "--columns",
+						"value": "3"
+					}
+				],
+				"landscapePhone": [
+					{
+						"name": "--columns",
+						"value": "2"
+					}
+				],
+				"phone": [
+					{
+						"name": "--columns",
+						"value": "1"
+					}
+				]
+			},
+			"blockSelectors": [
+				{
+					"selector": "&{BLOCK} > *",
+					"label": "Direct children",
+					"css": {
+						"desktop": [
+							{
+								"name": "flex",
+								"value": "0 0 calc((100% - (var(--columns) - 1) * var(--gap)) / var(--columns))"
+							}
+						]
+					}
+				}
+			] 
+		}
+	},
+	{
+		"label": "Row - Left",
+		"slug": "row-left",
+		"category": "Layout",
+		"icon": "AlignHorizontalJustifyStart",
+		"description": "Items in a row, aligned to the left.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "align-items",
+						"value": "center"
+					},
+					{
+						"name": "display",
+						"value": "flex"
+					},
+					{
+						"name": "flex-direction",
+						"value": "row"
+					},
+					{
+						"name": "gap",
+						"value": "1em"
+					},
+					{
+						"name": "justify-content",
+						"value": "flex-start"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Row - Center",
+		"slug": "row-center",
+		"category": "Layout",
+		"icon": "AlignHorizontalJustifyCenter",
+		"description": "Items in a row, centered.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "align-items",
+						"value": "center"
+					},
+					{
+						"name": "display",
+						"value": "flex"
+					},
+					{
+						"name": "flex-direction",
+						"value": "row"
+					},
+					{
+						"name": "gap",
+						"value": "1em"
+					},
+					{
+						"name": "justify-content",
+						"value": "center"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Row - Right",
+		"slug": "row-right",
+		"category": "Layout",
+		"icon": "AlignHorizontalJustifyEnd",
+		"description": "Items in a row, aligned to the right.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "align-items",
+						"value": "center"
+					},
+					{
+						"name": "display",
+						"value": "flex"
+					},
+					{
+						"name": "flex-direction",
+						"value": "row"
+					},
+					{
+						"name": "gap",
+						"value": "1em"
+					},
+					{
+						"name": "justify-content",
+						"value": "flex-end"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Column - Top",
+		"slug": "column-top",
+		"category": "Layout",
+		"icon": "AlignVerticalJustifyStart",
+		"description": "Items stacked vertically, aligned to the top.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "align-items",
+						"value": "flex-start"
+					},
+					{
+						"name": "display",
+						"value": "flex"
+					},
+					{
+						"name": "flex-direction",
+						"value": "column"
+					},
+					{
+						"name": "gap",
+						"value": "1em"
+					},
+					{
+						"name": "justify-content",
+						"value": "flex-start"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Column - Center",
+		"slug": "column-center",
+		"category": "Layout",
+		"icon": "AlignVerticalJustifyCenter",
+		"description": "Items stacked vertically, centered.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "align-items",
+						"value": "center"
+					},
+					{
+						"name": "display",
+						"value": "flex"
+					},
+					{
+						"name": "flex-direction",
+						"value": "column"
+					},
+					{
+						"name": "gap",
+						"value": "1em"
+					},
+					{
+						"name": "justify-content",
+						"value": "center"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Column - Bottom",
+		"slug": "column-bottom",
+		"category": "Layout",
+		"icon": "AlignVerticalJustifyEnd",
+		"description": "Items stacked vertically, aligned to the bottom.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "align-items",
+						"value": "flex-start"
+					},
+					{
+						"name": "display",
+						"value": "flex"
+					},
+					{
+						"name": "flex-direction",
+						"value": "column"
+					},
+					{
+						"name": "gap",
+						"value": "1em"
+					},
+					{
+						"name": "justify-content",
+						"value": "flex-end"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Text Size - Small",
+		"slug": "text-size-small",
+		"category": "Typography",
+		"icon": "Type",
+		"description": "WordPress core preset: small.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "font-size",
+						"value": "var(--wp--preset--font-size--small, 13px)"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Text Size - Medium",
+		"slug": "text-size-medium",
+		"category": "Typography",
+		"icon": "Type",
+		"description": "WordPress core preset: medium.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "font-size",
+						"value": "var(--wp--preset--font-size--medium, 20px)"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Text Size - Large",
+		"slug": "text-size-large",
+		"category": "Typography",
+		"icon": "Type",
+		"description": "WordPress core preset: large.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "font-size",
+						"value": "var(--wp--preset--font-size--large, 36px)"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Text Size - X-Large",
+		"slug": "text-size-x-large",
+		"category": "Typography",
+		"icon": "Type",
+		"description": "WordPress core preset: x-large.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "font-size",
+						"value": "var(--wp--preset--font-size--x-large, 42px)"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Card Base",
+		"slug": "card-base",
+		"category": "Elements",
+		"icon": "IdCard",
+		"description": "Simple card container with rounded corners and soft shadow.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "border-radius",
+						"value": "1em"
+					},
+					{
+						"name": "box-shadow",
+						"value": "0 4px 16px rgba(0,0,0,0.08)"
+					},
+					{
+						"name": "padding",
+						"value": "1em"
+					}
+				]
+			},
+			"blockSelectors": [
+				{
+					"selector": "&{BLOCK} h3",
+					"label": "Heading",
+					"css": {
+						"desktop": [
+							{
+								"name": "margin",
+								"value": "0 0 8px 0"
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	{
+		"label": "Soft Card",
+		"slug": "soft-card",
+		"category": "Appearance",
+		"icon": "SquareStack",
+		"description": "Soft panel look for cards and content boxes.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "background-color",
+						"value": "#ffffff"
+					},
+					{
+						"name": "border-radius",
+						"value": "14px"
+					},
+					{
+						"name": "box-shadow",
+						"value": "0 10px 30px rgba(15,23,42,0.08)"
+					},
+					{
+						"name": "padding",
+						"value": "20px"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Glass Surface",
+		"slug": "glass-surface",
+		"category": "Appearance",
+		"icon": "PanelTop",
+		"description": "Translucent glass panel with subtle blur.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "-webkit-backdrop-filter",
+						"value": "blur(10px)"
+					},
+					{
+						"name": "background-color",
+						"value": "rgba(255,255,255,0.68)"
+					},
+					{
+						"name": "backdrop-filter",
+						"value": "blur(10px)"
+					},
+					{
+						"name": "border",
+						"value": "1px solid rgba(255,255,255,0.5)"
+					},
+					{
+						"name": "border-radius",
+						"value": "1em"
+					},
+					{
+						"name": "padding",
+						"value": "1em"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Highlight Strip",
+		"slug": "highlight-strip",
+		"category": "Appearance",
+		"icon": "Highlighter",
+		"description": "Attention box with left accent and balanced spacing.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "background-color",
+						"value": "rgba(250,204,21,0.16)"
+					},
+					{
+						"name": "border-radius",
+						"value": "0.5em"
+					},
+					{
+						"name": "border-left",
+						"value": "4px solid #facc15"
+					},
+					{
+						"name": "padding",
+						"value": "1em"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Testimonial Card",
+		"slug": "testimonial-card",
+		"category": "Appearance",
+		"icon": "MessageSquareQuote",
+		"description": "Quote style card for reviews and testimonials.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "background-color",
+						"value": "#f8fafc"
+					},
+					{
+						"name": "border-radius",
+						"value": "1em"
+					},
+					{
+						"name": "padding",
+						"value": "1em"
+					},
+					{
+						"name": "position",
+						"value": "relative"
+					}
+				]
+			},
+			"blockSelectors": [
+				{
+					"selector": "&{BLOCK} p",
+					"label": "Paragraph",
+					"css": {
+						"desktop": [
+							{
+								"name": "margin",
+								"value": "0"
+							},
+							{
+								"name": "font-style",
+								"value": "italic"
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	{
+		"label": "Pill Badge",
+		"slug": "pill-badge",
+		"category": "Elements",
+		"icon": "BadgeCheck",
+		"description": "Small rounded badge style for labels.",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "align-items",
+						"value": "center"
+					},
+					{
+						"name": "background-color",
+						"value": "rgba(59,130,246,0.12)"
+					},
+					{
+						"name": "border-radius",
+						"value": "999em"
+					},
+					{
+						"name": "color",
+						"value": "#1d4ed8"
+					},
+					{
+						"name": "display",
+						"value": "inline-flex"
+					},
+					{
+						"name": "font-size",
+						"value": "var(--wp--preset--font-size--small, 0.875rem)"
+					},
+					{
+						"name": "font-weight",
+						"value": "bold"
+					},
+					{
+						"name": "padding",
+						"value": "0.5em 1em"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Motto Button",
+		"slug": "motto-button",
+		"category": "Buttons",
+		"icon": "RectangleHorizontal",
+		"description": "",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "background-color"
+					},
+					{
+						"name": "padding"
+					},
+					{
+						"name": "width"
+					},
+					{
+						"name": "display",
+						"value": "inline-flex"
+					}
+				]
+			}
+		}
+	},
+	{
+		"label": "Motto Button w/ Icon",
+		"slug": "motto-button-with-icon",
+		"category": "Buttons",
+		"icon": "RectangleHorizontal",
+		"description": "",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "--button-bg-color",
+						"value": "blue"
+					},
+					{
+						"name": "--button-height",
+						"value": "50px"
+					},
+					{
+						"name": "background",
+						"value": "none"
+					},
+					{
+						"name": "display",
+						"value": "inline-flex"
+					},
+					{
+						"name": "gap",
+						"value": "0"
+					},
+					{
+						"name": "height",
+						"value": "var(--button-height)"
+					},
+					{
+						"name": "line-height",
+						"value": "1"
+					},
+					{
+						"name": "padding",
+						"value": "0"
+					},
+					{
+						"name": "padding-right",
+						"value": "0px"
+					},
+					{
+						"name": "position",
+						"value": "relative"
+					},
+					{
+						"name": "transition",
+						"value": "padding 200ms"
+					},
+					{
+						"name": "width"
+					}
+				]
+			},
+			"ui": {
+				"spacing": {},
+				"defaults": {
+					"appliedOnInsert": true
+				}
+			},
+			"blockSpacing": {
+				"enabled": false,
+				"values": {}
+			},
+			"blockSelectors": [
+				{
+					"selector": "&{BLOCK} .motto-button__text",
+					"label": "Text",
+					"description": "",
+					"css": {
+						"desktop": [
+							{
+								"name": "align-items",
+								"value": "center"
+							},
+							{
+								"name": "background-color",
+								"value": "var(--button-bg-color)"
+							},
+							{
+								"name": "border-radius",
+								"value": "var(--wp--preset--spacing--md, clamp(22.8px, 2.639vw, 38px))"
+							},
+							{
+								"name": "box-sizing",
+								"value": "border-box"
+							},
+							{
+								"name": "display",
+								"value": "flex"
+							},
+							{
+								"name": "height",
+								"value": "100%"
+							},
+							{
+								"name": "padding",
+								"value": "var(--wp--preset--spacing--2-xs, clamp(9.6px, 1.111vw, 16px)) var(--wp--preset--spacing--md, clamp(22.8px, 2.639vw, 38px))"
+							},
+							{
+								"name": "transition",
+								"value": "padding 300ms ease, background-color 300ms ease"
+							}
+						]
+					}
+				},
+				{
+					"selector": "&{BLOCK} .motto-button__icon",
+					"label": "Icon",
+					"description": "",
+					"css": {
+						"desktop": [
+							{
+								"name": "background-color",
+								"value": "var(--button-bg-color)"
+							},
+							{
+								"name": "border-radius",
+								"value": "var(--wp--preset--spacing--md, clamp(22.8px, 2.639vw, 38px))"
+							},
+							{
+								"name": "box-sizing",
+								"value": "border-box"
+							},
+							{
+								"name": "height",
+								"value": "100%"
+							},
+							{
+								"name": "padding",
+								"value": "var(--wp--preset--spacing--2-xs, clamp(9.6px, 1.111vw, 16px))"
+							},
+							{
+								"name": "position",
+								"value": "absolute"
+							},
+							{
+								"name": "right",
+								"value": "0%"
+							},
+							{
+								"name": "top",
+								"value": "50%"
+							},
+							{
+								"name": "translate",
+								"value": "0px -50%"
+							},
+							{
+								"name": "width",
+								"value": "var(--button-height)"
+							},
+							{
+								"name": "scale",
+								"value": "0 0"
+							},
+							{
+								"name": "transition",
+								"value": "scale 300ms ease, background-color 300ms ease"
+							},
+							{
+								"name": "transform-origin",
+								"value": "100% 50%"
+							}
+						]
+					}
+				},
+				{
+					"selector": "&{BLOCK}:is(:hover,:focus)",
+					"label": "Hover/Focus",
+					"description": "",
+					"css": {
+						"desktop": [
+							{
+								"name": "--button-bg-color",
+								"value": "blue"
+							},
+							{
+								"name": "outline",
+								"value": "none"
+							},
+							{
+								"name": "padding-right",
+								"value": "calc(var(--button-height) + 2px)"
+							}
+						]
+					}
+				},
+				{
+					"selector": "&{BLOCK}:is(:hover,:focus) .motto-button__icon",
+					"label": "Hover/Focus Icon",
+					"description": "",
+					"css": {
+						"desktop": [
+							{
+								"name": "scale",
+								"value": "1"
+							}
+						]
+					}
+				},
+				{
+					"selector": "&{BLOCK}:is(:hover,:focus) .motto-button__text",
+					"label": "Hover/Focus Text",
+					"description": "",
+					"css": {
+						"desktop": [
+							{
+								"name": "padding",
+								"value": "var(--wp--preset--spacing--2-xs, clamp(9.6px, 1.111vw, 16px)) var(--wp--preset--spacing--sm, clamp(16.8px, 1.944vw, 28px))"
+							}
+						]
+					}
+				}
+			]
+		}
+	},
+	{
+		"label": "Standard Motto Slider",
+		"slug": "standard-motto-slider",
+		"category": "Sliders / Galleries",
+		"icon": "GalleryThumbnails",
+		"description": "",
+		"mottoStyler": {
+			"css": {
+				"desktop": [
+					{
+						"name": "--swiper-theme-color"
+					}
+				]
+			},
+			"blockSelectors": [
+				{
+					"selector": "&{BLOCK} :is(.motto-slide)",
+					"label": "Slides",
+					"description": "",
+					"css": {
+						"desktop": [
+							{
+								"name": "align-content",
+								"value": "center"
+							},
+							{
+								"name": "background-color"
+							},
+							{
+								"name": "display",
+								"value": "grid"
+							},
+							{
+								"name": "min-height",
+								"value": "10em"
+							},
+							{
+								"name": "padding",
+								"value": "1em"
+							}
+						]
+					}
+				},
+				{
+					"selector": "&{BLOCK} :is(.swiper-pagination)",
+					"label": "Pagination",
+					"description": "",
+					"css": {
+						"desktop": [
+							{
+								"name": "--swiper-pagination-bullet-horizontal-gap"
+							},
+							{
+								"name": "--swiper-pagination-bullet-size"
+							}
+						]
+					}
+				},
+				{
+					"selector": "&{BLOCK} :is(.swiper-button-next,.swiper-button-prev)",
+					"label": "Navigation",
+					"description": "",
+					"css": {
+						"desktop": [
+							{
+								"name": "--swiper-navigation-size"
+							},
+							{
+								"name": "position",
+								"value": "absolute"
+							},
+							{
+								"name": "top"
+							}
+						]
+					}
+				}
+			]
+		}
+	}
+]

@@ -1,0 +1,97 @@
+// LayerTabs, BoxShadow — layer-based multi-value controls
+// .motto-box-shadow-row, .motto-box-shadow-unit-control, .motto-box-shadow-unit-slider — layout via primitives
+@use "drag-reorder";
+
+.motto-box-shadow-fields {
+	display: grid;
+	gap: 0.5rem;
+}
+
+.motto-layer-tabs {
+	--motto-button-height: 24px;
+	display: grid;
+	flex-wrap: wrap;
+	gap: var(--motto-space-sm);
+	// border-bottom: 1px solid var(--motto-input-border-color);
+	padding-bottom: var(--motto-space-sm);
+
+	& :where(.motto-layer-tab-add) {
+		justify-content: center;
+	}
+
+	& :where(.motto-layer-tab) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: space-between;
+		border: 1px solid var(--motto-input-border-color);
+		padding-left: 0.5em;
+		border-radius: var(--motto-input-border-radius);
+		opacity: 0.55;
+
+		&[draggable="true"] {
+			cursor: grab;
+		}
+
+		&:hover {
+			opacity: 0.75;
+		}
+
+		&.motto-is-active {
+			opacity: 1;
+		}
+
+		@include drag-reorder.states;
+	}
+
+	& .motto-layer-tab-label {
+		flex-grow: 1;
+		color: inherit !important;
+		background: none !important;
+		box-shadow: none !important;
+		justify-content: start;
+		padding: 0;
+		min-width: 0;
+	}
+
+	& .motto-layer-tab-label-text {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	& .motto-layer-tab-actions {
+		display: inline-flex;
+		align-items: center;
+		gap: calc(var(--motto-space-sm) / 4);
+	}
+
+	& .motto-layer-tab-drag {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 14px;
+		color: var(--wp-components-color-gray-600);
+	}
+
+	& .motto-layer-tab-add {
+		flex: 1 0 100%;
+	}
+}
+
+.motto-box-shadow-panel {
+	padding: 1em 0;
+	display: grid;
+	gap: var(--motto-space-md);
+}
+
+// Row entrance animation
+@keyframes motto-slide-in {
+	from {
+		transform: translateX(25%);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}

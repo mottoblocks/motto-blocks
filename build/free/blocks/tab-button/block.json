@@ -1,0 +1,34 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/tab-button",
+	"version": "0.1.0",
+	"title": "Tab Button",
+	"category": "design",
+	"icon": "button",
+	"description": "Single navigation button for Motto Tabs.",
+	"parent": ["motto/tab-container"],
+	"usesContext": ["motto/tabs-activeTabId", "motto/tabs-syncUrlHash"],
+	"attributes": {
+		"tabId": {
+			"type": "string",
+			"default": ""
+		},
+		"urlSlug": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"reusable": false
+	},
+	"mottoBaseLayout": "inline-flex",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Navigation button inside motto/tab-container. Set tabId to a unique string shared with its corresponding motto/tab panel. Content is a core/paragraph text child plus an optional motto/svg icon child, in either order.",
+		"supportsIcon": true,
+		"examplePrompts": []
+	}
+}

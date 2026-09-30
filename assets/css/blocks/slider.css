@@ -1,0 +1,40 @@
+@charset "UTF-8";
+/* =============================================================================
+   Slider — Frontend Styles
+   Swiper-based slider. Navigation and pagination visibility controlled via
+   data attributes; custom nav icons replace Swiper's default ::after arrows.
+   ============================================================================= */
+.motto-slider {
+  --swiper-navigation-size: 20px;
+  position: relative;
+}
+.motto-slider:has(.swiper-navigation-disabled) :is(.swiper-button-next, .swiper-button-prev) {
+  display: none !important;
+}
+.motto-slider:has(.swiper-pagination-disabled) .swiper-pagination {
+  display: none !important;
+}
+.motto-slider :where(.motto-slide) {
+  box-sizing: border-box;
+}
+.motto-slider :is(.swiper-button-next, .swiper-button-prev) {
+  background: none;
+  border: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.motto-slider :is(.swiper-button-next, .swiper-button-prev).is-custom-nav-icon::after {
+  content: none;
+}
+.motto-slider :where(.motto-slider__nav-icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.motto-slider :is(.motto-slider__nav-icon) :is(svg, img) {
+  display: block;
+  width: var(--swiper-navigation-size);
+  height: var(--swiper-navigation-size);
+}

@@ -1,0 +1,201 @@
+/* Motto Panels WP overrides
+ *
+ * Intention:
+ * - targeted overrides for @wordpress/components internals
+ * - avoid mixing WP internals with component-specific styles
+ *
+ */
+
+svg.motto-icon {
+	width: 28px;
+	height: 28px;
+	display: block;
+}
+
+:is(svg.lucide) {
+	fill: none !important;
+	aspect-ratio: 1;
+	stroke-width: var(--motto-lucide-stroke-width, 1.4) !important;
+
+	& path {
+		fill: none !important;
+	}
+}
+
+.block-editor-link-control__search-input-wrapper:last-child {
+	margin-bottom: 0;
+}
+
+.block-editor-autocompleters__block.is-selected .block-editor-block-icon svg.lucide path,
+.block-editor-list-view-leaf.is-selected
+	.block-editor-list-view-block-select-button
+	svg.lucide
+	path {
+	fill: none !important;
+}
+
+:is(.motto-panel-body, .motto-popup, .components-popover[class*="motto-"]) {
+	position: relative;
+	font-size: var(--motto-button-font-size);
+}
+
+:is(.motto-panel-body) {
+	min-height: var(--motto-panel-body-min-height, 0);
+	transition: min-height 200ms ease;
+}
+
+// .components-popover[class*="motto-"]
+:is(.motto-panel-body, .motto-popup) {
+	// &
+	// 	:is(
+	// 		.components-base-control__label,
+	// 		.components-form-token-field__label,
+	// 		.components-input-control__label
+	// 	) {
+	// 	// font-size: var(--motto-font-size-sm);
+	// 	font-weight: normal !important;
+	// 	// margin-bottom: var(--motto-space-sm);
+	// }
+
+	& .components-placeholder.is-small {
+		padding: var(--motto-space-sm);
+	}
+
+	& .block-editor-html-element-control:where(:not(:last-child)),
+	& .block-editor-image-size-control:where(:not(:last-child)),
+	& .components-base-control:where(:not(:last-child)),
+	& .components-radio-control:where(:not(:last-child)) {
+		margin-bottom: var(--motto-space-md);
+	}
+
+	& :is(.components-placeholder, .components-placeholder__fieldset) {
+		gap: var(--motto-space-md);
+	}
+
+	& .components-input-base {
+		border-radius: var(--motto-input-border-radius);
+	}
+
+	& .components-button {
+		&:not(
+			.components-panel__body-toggle,
+			.motto-ui-button,
+			.components-tab-panel__tabs-item,
+			.components-circular-option-picker__option,
+			.components-custom-gradient-picker__control-point-button,
+			.components-border-box-control-linked-button,
+			.components-form-token-field__remove-token
+		) {
+			height: var(--motto-button-height);
+			font-size: var(--motto-button-font-size);
+			border-radius: var(--motto-button-border-radius);
+			gap: var(--motto-space-sm);
+
+			&.motto-is-active {
+				background: var(--wp-admin-theme-color) !important;
+				color: white !important;
+			}
+		}
+
+		&.motto-fw {
+			width: 100%;
+		}
+
+		&.is-small {
+			height: var(--motto-button-height-sm);
+		}
+	}
+
+	&
+		input:is([type="text"], [type="number"], [type="email"]):not(
+			.components-form-token-field__input
+		) {
+		font-size: var(--motto-font-size-md) !important;
+		height: var(--motto-input-height) !important;
+		min-height: 0 !important;
+		padding: 8px !important;
+		border-radius: var(--motto-input-border-radius);
+		border-color: var(--wp-components-color-gray-300);
+	}
+
+	& :is(textarea) {
+		font-size: var(--motto-font-size-textarea) !important;
+		min-height: var(--motto-input-height) !important;
+		padding: 0.5em !important;
+		border-radius: var(--motto-input-border-radius);
+		border-color: var(--wp-components-color-gray-300);
+	}
+
+	& :is(select.components-select-control__input, .components-range-control__root) {
+		font-size: var(--motto-font-size-select) !important;
+		height: var(--motto-input-height) !important;
+		min-height: 0 !important;
+	}
+
+	& .components-base-control__field {
+		margin: 0;
+	}
+
+	& .components-color-palette__custom-color-value {
+		white-space: wrap !important;
+	}
+
+	& .components-toggle-group-control {
+		border: 1px solid var(--wp-components-color-gray-300);
+		width: 100%;
+		height: var(--motto-input-height);
+		border-radius: var(--motto-input-border-radius);
+
+		&::before {
+			border-radius: var(--motto-input-border-radius);
+		}
+	}
+
+	& .components-circular-option-picker__swatches {
+		justify-content: center;
+	}
+
+	& .components-combobox-control__suggestions-container {
+		border-color: var(--wp-components-color-gray-600);
+		border-radius: var(--motto-input-border-radius);
+
+		& .components-flex {
+			min-height: 0;
+			height: var(--motto-input-height);
+		}
+
+		& .components-form-token-field__suggestion {
+			min-height: var(--motto-input-height);
+		}
+	}
+
+	& .components-range-control {
+		flex: 1 1 var(--motto-prop-slider-width);
+	}
+
+	& .components-toggle-control {
+		// min-height: var(--motto-input-height) ;
+		display: flex;
+		align-items: center;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+// Toolbar
+.motto-toolbar-group {
+	align-items: center;
+	& .motto-toolbar-logo {
+		padding-inline: 6px;
+		display: flex;
+		align-items: center;
+	}
+}
+
+.has-motto-styler .block-list-appender {
+	right: 0;
+	bottom: 0;
+	position: absolute;
+}

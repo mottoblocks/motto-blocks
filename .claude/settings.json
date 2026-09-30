@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find *)",
+      "Bash(git blame *)",
+      "Bash(git branch *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)",
+      "Bash(git status *)",
+      "Bash(grep *)",
+      "Bash(grep-*)",
+      "Bash(node:*)",
+      "Bash(npm run:*)",
+      "Bash(npx jest:*)",
+      "Bash(npx sass:*)",
+      "Bash(npx vite:*)",
+      "Bash(npx vitest:*)"
+    ]
+  },
+  "accessibility.voice.speechLanguage": "es-ES",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const d=JSON.parse(require('fs').readFileSync(0,'utf8'));const f=d&&d.tool_input&&d.tool_input.file_path||'';process.exit(/src\\/.*\\.(jsx?|scss)$/.test(f)?0:1)\" && npm run build 2>/dev/null || true",
+            "async": true,
+            "statusMessage": "Building..."
+          }
+        ]
+      }
+    ]
+  }
+}

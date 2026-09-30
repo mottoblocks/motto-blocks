@@ -1,0 +1,23 @@
+/* GridTemplateTracksControl
+ * → src/styler/controls/GridTemplateTracksControl.jsx
+ */
+
+.motto-grid-template-tracks-control {
+	& .motto-grid-template-tracks-control__panel {
+		align-items: stretch;
+	}
+
+	& .motto-grid-template-tracks-control__content {
+		align-items: stretch;
+	}
+
+	& .motto-grid-template-tracks-control__track-group {
+		align-items: stretch;
+	}
+
+	& .motto-grid-template-tracks-control__repeat-group {
+		border-top: 1px solid var(--wp-components-color-gray-500);
+		padding-top: var(--motto-space-lg);
+		padding-bottom: var(--motto-space-md);
+	}
+}

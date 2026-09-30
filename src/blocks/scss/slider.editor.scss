@@ -1,0 +1,40 @@
+/* =============================================================================
+   Slider — Editor Styles
+   Slide outline for visual editing, nav button reset, and fade mode stacking.
+   ============================================================================= */
+
+.motto-slider {
+	// Outline to show slide boundaries in the editor canvas
+	& .motto-slide {
+		outline: 1px dashed rgba(0, 0, 0, 0.15);
+		outline-offset: -1px;
+		padding: 12px;
+		min-width: 0;
+		max-width: none;
+	}
+}
+
+.motto-slider {
+	& :is(.swiper-button-next, .swiper-button-prev) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	// In fade mode slides overlap; only active slide should be interactive in editor.
+	& .swiper.swiper-fade .wp-block-motto-slide {
+		pointer-events: none;
+	}
+
+	& .swiper.swiper-fade .wp-block-motto-slide.swiper-slide-active {
+		pointer-events: auto;
+		z-index: 2;
+	}
+}
+
+// Hack to fix height: 100% issues
+// :not(.is-iframed)
+// 	> .editor-resizable-editor
+// 	> :is(div[style*="height: 100%"], div[style*="height:100%"]) {
+// 	height: auto !important;
+// }

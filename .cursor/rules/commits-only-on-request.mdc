@@ -1,0 +1,10 @@
+---
+description: Only commit when user explicitly asks
+alwaysApply: true
+---
+
+# Git commits
+
+- Only create git commits when the user explicitly asks for a commit.
+- Do not stage files or run `git commit` proactively (even if changes look complete).
+- If a commit was created accidentally, stop and ask whether to revert/reset it.

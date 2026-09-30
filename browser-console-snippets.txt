@@ -1,0 +1,67 @@
+// Selected block quick refs
+window.top.wp?.data?.select('core/block-editor').getSelectedBlock()
+wp.data.select('core/block-editor').getSelectedBlock()
+wp.data.select('core/block-editor').getSelectedBlock()?.name
+wp.data.select('core/block-editor').getSelectedBlock()?.clientId
+wp.data.select('core/block-editor').getSelectedBlock()?.attributes
+wp.data.select('core/block-editor').getSelectedBlock()?.attributes?.mottoStyler
+
+// Selected block as window var (easy reuse)
+window.__b = wp.data.select('core/block-editor').getSelectedBlock(); __b
+window.__attrs = __b?.attributes || {}; __attrs
+window.__motto = __attrs?.mottoStyler || __attrs?.mottoProps || {}; __motto
+
+// MottoStyler helpers
+Object.keys(window.__motto || {})
+JSON.stringify(window.__motto, null, 2)
+
+// Common attr checks
+window.__attrs?.style
+window.__attrs?.className
+window.__attrs?.anchor
+
+// List selected block inner blocks
+(window.__b?.innerBlocks || []).map((b) => ({ name: b.name, clientId: b.clientId }))
+
+// Current post/editor basics
+wp.data.select('core/editor').getCurrentPostType()
+wp.data.select('core/editor').getEditedPostAttribute('title')
+wp.data.select('core/editor').isEditedPostDirty()
+
+// Device preview (desktop/tablet/mobile)
+wp.data.select('core/edit-post')?.__experimentalGetPreviewDeviceType?.()
+
+// Global blocks tree snapshot (name + clientId)
+wp.data
+  .select('core/block-editor')
+  .getBlocks()
+  .map((b) => ({ name: b.name, clientId: b.clientId }))
+
+// Find blocks that have MottoStyler payload
+wp.data
+  .select('core/block-editor')
+  .getBlocks()
+  .filter((b) => b?.attributes?.mottoStyler || b?.attributes?.mottoProps)
+  .map((b) => ({ name: b.name, clientId: b.clientId, mottoStyler: b.attributes.mottoStyler || b.attributes.mottoProps }))
+
+// Subscribe to selection changes (unsubscribe with __unsubSel())
+window.__unsubSel?.();
+window.__unsubSel = wp.data.subscribe(() => {
+  const b = wp.data.select('core/block-editor').getSelectedBlock();
+  if (!b) return;
+  const next = `${b.clientId}:${b.name}`;
+  if (window.__lastSel === next) return;
+  window.__lastSel = next;
+  console.log('[selected]', { name: b.name, clientId: b.clientId, mottoStyler: b.attributes?.mottoStyler || b.attributes?.mottoProps });
+});
+
+// Subscribe to MottoStyler changes on selected block (unsubscribe with __unsubMotto())
+window.__unsubMotto?.();
+window.__lastMottoJson = '';
+window.__unsubMotto = wp.data.subscribe(() => {
+  const b = wp.data.select('core/block-editor').getSelectedBlock();
+  const json = JSON.stringify(b?.attributes?.mottoStyler || b?.attributes?.mottoProps || {});
+  if (json === window.__lastMottoJson) return;
+  window.__lastMottoJson = json;
+  console.log('[mottoStyler changed]', b?.name, b?.clientId, JSON.parse(json));
+});

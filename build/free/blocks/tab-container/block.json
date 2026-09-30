@@ -1,0 +1,60 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/tab-container",
+	"version": "0.1.0",
+	"title": "Tab Container",
+	"category": "design",
+	"icon": "table-row-before",
+	"description": "Navigation container for Motto Tabs.",
+	"parent": ["motto/tabs"],
+	"usesContext": ["motto/tabs-activeTabId"],
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"reusable": false,
+		"inserter": false
+	},
+	"mottoDefaults": {
+		"css": {
+			"desktop": [
+				{ "name": "display", "value": "flex" },
+				{ "name": "gap", "value": "0.5em" },
+				{ "name": "padding" }
+			]
+		},
+		"blockSelectors": [
+			{
+				"selector": "&{BLOCK} :is(.motto-tabs__nav-item)",
+				"label": "Tab button",
+				"css": {
+					"desktop": [
+						{ "name": "padding" },
+						{ "name": "background-color", "value": "#eee" },
+						{ "name": "color" },
+						{ "name": "font-size" },
+						{ "name": "border-radius" },
+						{ "name": "cursor", "value": "pointer" }
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-tabs__nav-item.is-active)",
+				"label": "Tab button (active)",
+				"css": {
+					"desktop": [
+						{ "name": "background-color", "value": "black" },
+						{ "name": "color", "value": "white" },
+						{ "name": "font-weight" }
+					]
+				}
+			}
+		]
+	},
+	"mottoBaseLayout": "flex",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Navigation bar inside motto/tabs. Contains one motto/tab-button per tab. Always the first child of motto/tabs, paired with a motto/tab-panels sibling.",
+		"examplePrompts": []
+	}
+}

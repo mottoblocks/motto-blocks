@@ -1,0 +1,161 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/counter",
+	"version": "0.1.0",
+	"title": "Motto Counter",
+	"category": "design",
+	"icon": "editor-ol",
+	"description": "Animated counter block with inline prefix, suffix, and label.",
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"prefix": {
+			"type": "string",
+			"default": ""
+		},
+		"startValue": {
+			"type": "number",
+			"default": 0
+		},
+		"endValue": {
+			"type": "number",
+			"default": 100
+		},
+		"suffix": {
+			"type": "string",
+			"default": ""
+		},
+		"label": {
+			"type": "string",
+			"default": ""
+		},
+		"showLabel": {
+			"type": "boolean",
+			"default": true
+		},
+		"labelPosition": {
+			"type": "string",
+			"default": "bottom"
+		},
+		"duration": {
+			"type": "number",
+			"default": 2
+		},
+		"delay": {
+			"type": "number",
+			"default": 0
+		},
+		"easing": {
+			"type": "string",
+			"default": "power2.out"
+		},
+		"step": {
+			"type": "number",
+			"default": 1
+		},
+		"replayMode": {
+			"type": "string",
+			"default": "once"
+		},
+		"respectReducedMotion": {
+			"type": "boolean",
+			"default": true
+		},
+		"thousandsSeparatorMode": {
+			"type": "string",
+			"default": "locale"
+		},
+		"thousandsSeparator": {
+			"type": "string",
+			"default": ""
+		},
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["wide", "full"]
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoDefaults": {
+		"css": {
+		},
+		"blockSelectors": [
+			{
+				"selector": "&{BLOCK} :is(.motto-counter__content)",
+				"label": "Counter row",
+				"css": {
+					"desktop": [
+						{ "name": "display", "value": "inline-flex" },
+						{ "name": "align-items", "value": "baseline" },
+						{ "name": "gap", "value": "0.15em" }
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-counter__prefix)",
+				"label": "Prefix",
+				"css": {
+					"desktop": [
+						{ "name": "font-size" },
+						{ "name": "color" }
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-counter__value)",
+				"label": "Value",
+				"css": {
+					"desktop": [
+						{ "name": "font-size" },
+						{ "name": "font-weight" },
+						{ "name": "line-height" },
+						{ "name": "min-width" }
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-counter__suffix)",
+				"label": "Suffix",
+				"css": {
+					"desktop": [
+						{ "name": "font-size" },
+						{ "name": "color" }
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-counter__label)",
+				"label": "Label",
+				"css": {
+					"desktop": [
+						{ "name": "font-size" },
+						{ "name": "color" },
+						{ "name": "margin-top", "value": "0.35em" }
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK}.is-counting :is(.motto-counter__value)",
+				"label": "Counting state",
+				"css": {
+					"desktop": [{ "name": "opacity" }]
+				}
+			},
+			{
+				"selector": "&{BLOCK}.is-complete :is(.motto-counter__value)",
+				"label": "Complete state",
+				"css": {
+					"desktop": [{ "name": "opacity" }]
+				}
+			}
+		]
+	}
+}

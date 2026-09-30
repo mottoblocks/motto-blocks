@@ -1,0 +1,15 @@
+/* =============================================================================
+   Classic Menu — Editor Styles
+   Resets placeholder margins and disables pointer events on nav links.
+   ============================================================================= */
+
+.motto-classic-menu {
+	& .components-placeholder,
+	& .wp-block {
+		margin: 0;
+	}
+
+	& .motto-classic-menu__item-content {
+		pointer-events: none;
+	}
+}

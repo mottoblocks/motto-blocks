@@ -1,0 +1,59 @@
+/* =============================================================================
+   Image — Frontend Styles
+   Minimal structural selectors for the Motto Image block.
+   ============================================================================= */
+
+.motto-image {
+	--motto-parallax-offset: 120px;
+	min-width: 5px;
+	& > :where(.motto-image__media) {
+		display: block;
+		width: inherit;
+		max-width: 100%;
+		object-fit: inherit;
+		aspect-ratio: inherit;
+	}
+
+	// Clip overflow when the media layer is extended for parallax translate room.
+	&:has(> .motto-image__media.is-parallax) {
+		position: relative;
+		overflow: hidden;
+	}
+
+	// Parallax variant: stays in normal flow (default position) — unlike
+	// Container's background layer, .motto-image has no other content to
+	// size the wrapper, so position:absolute here would drop the <img> out
+	// of flow and collapse the wrapper to 0 height. Negative margin-block
+	// lets the image spill past its flow box on both sides instead, giving
+	// translateY() room to move without exposing empty edges.
+	& > .motto-image__media.is-parallax {
+		margin-block: calc(var(--motto-parallax-offset) * -1);
+		min-height: calc(100% + var(--motto-parallax-offset) * 1);
+		transform: translate3d(0, 0, 0);
+		will-change: transform;
+	}
+	&.aligncenter > .motto-image__media {
+		margin-inline: auto;
+	}
+}
+
+.motto-image__dynamic-placeholder {
+	display: flex !important;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--wp-components-color-gray-200);
+	min-height: 40px;
+	border: 1px dashed currentColor;
+	border-radius: 4px;
+	opacity: 0.4;
+	color: inherit;
+	box-sizing: border-box;
+
+	& svg {
+		display: block;
+		max-width: 90%;
+		height: auto;
+		margin-inline: auto;
+	}
+}

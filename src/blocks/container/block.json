@@ -1,0 +1,154 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/container",
+	"version": "0.1.0",
+	"title": "Motto Container",
+	"category": "design",
+	"icon": "screenoptions",
+	"description": "Flexible container block for grouping content.",
+	"usesContext": ["postId", "termId"],
+	"attributes": {
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		},
+		"backgroundImageUrl": {
+			"type": "string",
+			"default": ""
+		},
+		"backgroundImageId": {
+			"type": "number",
+			"default": 0
+		},
+		"backgroundImageEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"backgroundPosition": {
+			"type": "string",
+			"default": "center center"
+		},
+		"backgroundFocalPoint": {
+			"type": "object",
+			"default": {
+				"x": 0.5,
+				"y": 0.5
+			}
+		},
+		"backgroundSize": {
+			"type": "string",
+			"default": "cover"
+		},
+		"backgroundRepeat": {
+			"type": "string",
+			"default": "no-repeat"
+		},
+		"backgroundAttachment": {
+			"type": "string",
+			"default": "scroll"
+		},
+		"backgroundParallax": {
+			"type": "boolean",
+			"default": false
+		},
+		"backgroundParallaxOffset": {
+			"type": "number",
+			"default": 120
+		},
+		"overlayColor": {
+			"type": "string",
+			"default": ""
+		},
+		"overlayEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"overlayOpacity": {
+			"type": "number",
+			"default": 0.4
+		},
+		"overlayStyle": {
+			"type": "string",
+			"default": "color"
+		},
+		"overlayGradient": {
+			"type": "string",
+			"default": ""
+		},
+		"linkContainerEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"linkContainerUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".motto-container__link-overlay",
+			"attribute": "href",
+			"role": "content",
+			"default": ""
+		},
+		"linkContainerNewTab": {
+			"type": "boolean",
+			"role": "content",
+			"default": false
+		},
+		"linkContainerNoFollow": {
+			"type": "boolean",
+			"role": "content",
+			"default": false
+		},
+		"linkDynamic": {
+			"type": "object",
+			"default": {}
+		},
+		"backgroundDynamic": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["wide", "full"],
+		"layout": true
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Primary layout container. Use for sections, rows, cards, column wrappers, and any structural wrapper. To create a multi-column row: set display:flex + flex-wrap:wrap + gap on the outer container; set flex:1 1 <min-width> on each inner container. Supports mottoStyler for all CSS. Accepts any inner blocks.",
+		"examplePrompts": ["create a section", "add a hero area", "create a card", "add a row with background", "create columns", "add a 3-column layout"],
+		"features": {
+			"overlay": "Set overlayEnabled:true to add a color or gradient overlay. overlayColor (CSS color), overlayOpacity (0-1, default 0.4), overlayStyle ('color' or 'gradient'), overlayGradient (CSS gradient string).",
+			"parallax": "Set backgroundParallax:true to enable parallax scroll on the background image. backgroundParallaxOffset controls depth (number, default 120).",
+			"backgroundImage": "backgroundImageUrl and backgroundImageEnabled control the background image. AI cannot pick media URLs — only set these in modify mode when a URL is already present.",
+			"linkContainer": "Set linkContainerEnabled:true to make the entire container a link. linkContainerUrl (string), linkContainerNewTab (bool), linkContainerNoFollow (bool)."
+		}
+	},
+	"mottoDefaults": {
+		"blockSelectors": [
+				{
+					"selector": "&{BLOCK} a",
+					"label": "Links",
+					"css": {
+						"desktop": [
+							{
+								"name": "color"
+							}
+						]
+					}
+				},
+				{
+					"selector": "&{BLOCK} a:is(:hover,:focus)",
+					"label": "Links Hover / Focus",
+					"css": {
+						"desktop": [
+							{
+								"name": "color"
+							}
+						]
+					}
+				}
+			]
+	}
+}

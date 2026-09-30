@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* =============================================================================
+   Slider — Editor Styles
+   Slide outline for visual editing, nav button reset, and fade mode stacking.
+   ============================================================================= */
+.motto-slider .motto-slide {
+  outline: 1px dashed rgba(0, 0, 0, 0.15);
+  outline-offset: -1px;
+  padding: 12px;
+  min-width: 0;
+  max-width: none;
+}
+
+.motto-slider :is(.swiper-button-next, .swiper-button-prev) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.motto-slider .swiper.swiper-fade .wp-block-motto-slide {
+  pointer-events: none;
+}
+.motto-slider .swiper.swiper-fade .wp-block-motto-slide.swiper-slide-active {
+  pointer-events: auto;
+  z-index: 2;
+}

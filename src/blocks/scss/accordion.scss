@@ -1,0 +1,101 @@
+/* =============================================================================
+   Accordion — Frontend Styles
+   Animated height is driven by accordion-frontend.js through CSS variables.
+   ============================================================================= */
+
+.motto-accordion {
+	& :where(.motto-accordion-item) {
+		// border-bottom: 1px solid var(--motto-accordion-border-color, #ddd);
+		// border-radius: var(--motto-accordion-radius, 6px);
+		// background: var(--motto-accordion-background, transparent);
+		overflow: clip;
+	}
+
+	& :where(.motto-accordion-item__trigger) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1em;
+		width: 100%;
+		padding: 0.75em 1em;
+		background: none;
+		border: none;
+		font: inherit;
+		text-align: left;
+		cursor: pointer;
+		outline: none;
+		& p {
+			margin: 0;
+		}
+	}
+
+	& :where(.motto-accordion-item__trigger-main) {
+		display: flex;
+		align-items: center;
+		min-width: 0;
+		flex: 1 1 auto;
+	}
+
+	& :where(.motto-tab-trigger__content) {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		min-width: 0;
+	}
+
+	& :where(.motto-tab-trigger__label) {
+		min-width: 0;
+	}
+
+	& :where(.motto-tab-trigger__icon) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+
+		& :where(svg) {
+			width: 1em;
+			height: auto;
+		}
+
+		& :where(svg.lucide) {
+			stroke: currentColor;
+		}
+
+		& :where(.motto-button__icon-media) {
+			display: block;
+			width: 1em;
+			height: 1em;
+		}
+
+		& :where(.motto-button__icon-media-inline) :where(svg, svg *) {
+			fill: currentColor;
+		}
+	}
+
+	& :where(.motto-accordion-item__chevron) {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 auto;
+		transition: transform 0.25s ease;
+	}
+
+	& :where(.motto-accordion-item.is-open .motto-accordion-item__chevron) {
+		transform: rotate(180deg);
+	}
+
+	& :where(.motto-accordion-item__panel) {
+		margin: 0;
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.3s ease;
+	}
+
+	& :where(.motto-accordion-item.is-open .motto-accordion-item__panel) {
+		max-height: var(--motto-accordion-panel-height, 0px);
+	}
+
+	& :where(.motto-accordion-item__panel-inner) {
+		padding: 0 1em 1em;
+	}
+}

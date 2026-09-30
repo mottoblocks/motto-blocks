@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/* =============================================================================
+   SVG — Frontend Styles
+   Minimal structural selectors for the Motto SVG block.
+   ============================================================================= */
+:where(.motto-svg) :where(.motto-svg__image, .motto-svg__inline) {
+  display: block;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  min-width: 10px;
+}
+
+.motto-svg {
+  position: relative;
+}
+.motto-svg > .motto-svg__link-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  margin: 0;
+}
+.motto-svg > .motto-svg__link-overlay:focus-visible {
+  outline: none;
+}

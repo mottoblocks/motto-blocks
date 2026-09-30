@@ -1,0 +1,6 @@
+// FilterControl — drop-shadow fields
+// .motto-filter-control, .motto-filter-row, .motto-filter-edit-value — layout via primitives
+.motto-filter-shadow {
+	display: grid;
+	gap: var(--motto-space-sm);
+}

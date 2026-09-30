@@ -1,0 +1,180 @@
+/* UI popups — shared styles for Motto-owned popup wrappers
+ *
+ * The main box is always `.components-popover__content` (the node WP
+ * actually paints as the visible card). `.components-popover` (the
+ * positioning wrapper carrying `.motto-popup`) must stay unstyled —
+ * only sizing/z-index concerns belong there. This rule replaces WP's
+ * own default `__content` chrome unconditionally, so individual popups
+ * never need `variant="unstyled"` to look consistent.
+ */
+.motto-popup > .components-popover__content {
+	background: white;
+	border: none;
+	border-radius: var(--motto-popup-border-radius);
+	box-shadow: var(--motto-popup-box-shadow);
+	padding: 0;
+}
+
+.motto-actions-popup {
+	& .components-menu-group {
+		padding: var(--motto-space-sm) 0 !important;
+
+		& + .components-menu-group {
+			border-top: 1px solid var(--wp-components-color-gray-200);
+		}
+	}
+
+	& .components-menu-item__button {
+		gap: var(--motto-space-md);
+		padding: var(--motto-space-sm) var(--motto-space-lg);
+
+		&:focus {
+			outline: none !important;
+			box-shadow: none !important;
+		}
+
+		& .components-menu-item__item {
+			min-width: 120px;
+		}
+
+		& .components-menu-items__item-icon {
+			align-items: center;
+			display: flex;
+			height: 16px;
+			justify-content: center;
+			margin-right: 0;
+			width: 16px;
+		}
+	}
+}
+
+// .motto-autocomplete-popup,
+// .motto-unit-var-menu-popup {
+// 	z-index: 1000000;
+// }
+
+// MottoUnitControl's css-mode popup editor — draft clone of the raw CSS input
+// (styled like the rule-row raw-code view, .motto-css-rule-value) + Confirm.
+.motto-unit-css-popup {
+	& .motto-unit-css-popup-content {
+		align-items: center;
+		display: flex;
+		gap: var(--motto-space-sm);
+		min-width: 22em;
+		padding: var(--motto-space-lg);
+	}
+
+	& .motto-unit-css-popup-input {
+		flex: 1 1 auto;
+
+		& textarea {
+			field-sizing: content;
+			font-family: var(--motto-code-font-family);
+			font-size: var(--motto-font-size-sm, 12px);
+			min-height: var(--motto-input-height, 32px);
+			min-width: 12ch;
+			resize: none;
+			width: 100%;
+		}
+	}
+
+	& .motto-unit-css-popup-confirm {
+		flex: 0 0 auto;
+	}
+}
+
+.motto-transition-property-popup {
+	& .motto-autocomplete-list {
+		min-width: 9em;
+	}
+}
+
+.motto-device-toggle-popup {
+	& .components-popover__content {
+		padding: 4px;
+	}
+}
+
+.motto-color-dropdown-popup {
+	width: var(--motto-popup-width);
+
+	& > .components-popover__content {
+		padding: var(--motto-space-lg);
+	}
+}
+
+.motto-color-gradient-dropdown-popup {
+	width: var(--motto-popup-width);
+
+	& > .components-popover__content {
+		padding: var(--motto-space-lg);
+	}
+}
+
+.motto-class-add-popup {
+	// box-sizing: border-box;
+	// margin: 0;
+	max-width: 100%;
+	min-width: var(--motto-popup-width, 18rem);
+	width: var(--motto-popup-width, 18rem);
+
+	& > .components-popover__content {
+		padding: var(--motto-space-lg);
+		width: 100%;
+	}
+}
+
+.motto-rule-popup {
+	max-width: 100%;
+	min-width: var(--motto-popup-width, 18rem);
+	width: var(--motto-popup-width, 18rem);
+	z-index: 150000;
+
+	& [role="dialog"] {
+		display: grid;
+		gap: var(--motto-space-lg);
+	}
+
+	& .motto-rule-popup-actions {
+		border: 1px solid var(--wp-components-color-gray-400);
+		border-radius: var(--motto-button-border-radius);
+		display: flex;
+		justify-content: flex-end;
+		margin-left: auto;
+
+		& :is(.motto-ui-button) {
+			aspect-ratio: 1;
+			// box-shadow: none !important;
+		}
+	}
+
+	& .components-popover__content {
+		padding: var(--motto-space-lg);
+		// padding-top: 0;
+		width: auto;
+	}
+
+	& .components-h-stack {
+		height: auto;
+
+		& > .components-button {
+			margin: 0 !important;
+		}
+	}
+
+	& :where(.components-button) {
+		& svg:not(.lucide) {
+			height: 20px;
+			width: 20px;
+		}
+	}
+
+	& :where(.motto-control-icon) svg:not(.lucide) {
+		height: 22px;
+		width: 22px;
+	}
+
+	& .components-border-radius-control {
+		margin-bottom: 0;
+	}
+}

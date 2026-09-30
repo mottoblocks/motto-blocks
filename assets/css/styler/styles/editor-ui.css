@@ -1,0 +1,2226 @@
+@charset "UTF-8";
+:root {
+  --wp-components-color-gray-100: hsl(208 65% 98%);
+  --wp-components-color-gray-200: hsl(208, 60%, 92%);
+  --wp-components-color-gray-300: hsl(203, 40%, 88%);
+  --wp-components-color-gray-400: hsl(205, 30%, 81%);
+  --wp-components-color-gray-500: hsl(205, 30%, 78%);
+  --wp-components-color-gray-600: hsl(205, 30%, 75%);
+  --wp-components-color-gray-700: hsl(205, 30%, 60%);
+  --wp-components-color-gray-800: hsl(205, 30%, 50%);
+  --wp-components-color-gray-900: hsl(205, 30%, 35%);
+  --motto-warning-color-100: hsla(30, 70%, 95%, 1);
+  --motto-warning-color-500: hsla(30, 80%, 50%, 1);
+  --motto-warning-color-600: hsl(30, 80%, 40%);
+  --motto-color-white: #fff;
+  --motto-color-black: #111;
+  --motto-button-border-radius: 4px;
+  --motto-card-border-radius: 1rem;
+  --motto-button-font-size: 12px;
+  --motto-button-height: 28px;
+  --motto-button-height-sm: 24px;
+  --motto-icon-size: 1.2em;
+  --motto-tab-height: 36px;
+  --motto-font-size-xs: 8px;
+  --motto-font-size-sm: 10px;
+  --motto-font-size-md: 12px;
+  --motto-font-size-lg: 13px;
+  --motto-font-size-xl: 16px;
+  --motto-font-size-xxl: 18px;
+  --motto-popup-dialog-width: min(700px, 90vw);
+  --motto-code-font-family:
+  	ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+  	monospace;
+  --motto-heading-font-size-md: clamp(1rem, 1rem + (1.6rem - 1rem) * (100vw - 420px) / (1200px - 420px), 1.6rem);
+  --motto-heading-font-size-lg: clamp(1.2rem, 1.2rem + (2rem - 1.2rem) * (100vw - 420px) / (1200px - 420px), 2rem);
+  --motto-heading-font-size-xl: clamp(2rem, 2rem + (3.75rem - 2rem) * (100vw - 420px) / (1200px - 420px), 3.75rem);
+  --motto-gray: #9196a7;
+  --motto-input-border-color: var(--wp-components-color-gray-600);
+  --motto-input-border-radius: 4px;
+  --motto-input-height: 32px;
+  --motto-lucide-stroke-width: 1.8;
+  --motto-popup-border-radius: 10px;
+  --motto-popup-border-color: #eee;
+  --motto-popup-box-shadow: 2px 2px 10px hsla(205, 30%, 35%, 0.3);
+  --motto-popup-width: 250px;
+  --motto-space-xl: 1.25rem;
+  --motto-space-lg: 0.8rem;
+  --motto-space-md: 0.5rem;
+  --motto-space-sm: 0.25rem;
+  --motto-space-xs: 0.125rem;
+  /* Prop-row column widths */
+  --motto-label-width: 5rem;
+  /* text label: "Easing", "Duration", "Delay" */
+  --motto-prop-select-width: 7rem;
+  --motto-font-size-select: var(--motto-font-size-md);
+  --motto-font-size-textarea: var(--motto-font-size-md);
+  /* type select: "Translate X", "Perspective" */
+  --motto-prop-input-width: 5rem;
+  /* numeric/unit input: fixed width in input+slider rows */
+  --motto-prop-slider-width: 11rem;
+  --motto-var-trigger-offset: 25px;
+  --motto-class-editor-min-height: calc(100vh - 220px);
+  --motto-toggle-height-lg: 40px;
+}
+
+/* Motto Panels primitives
+ *
+ * Intention:
+ * - shared panel layout primitives
+ * - reusable control/layout helpers used across repos
+ *
+ */
+/* Layout Primitives
+ * Composable flex/grid helpers — use in combination, not alone.
+ * Example: <div className="motto-flex align-center gap-md">
+ */
+/* Display */
+.motto-flex {
+  display: flex;
+}
+
+.motto-grid {
+  display: grid;
+}
+
+.motto-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.motto-flex-rows {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+.motto-flex-rows > :is(button) {
+  margin-block: var(--motto-space-sm);
+}
+
+/* WP components override: strip default margin inside any flex/grid container */
+:is(.motto-flex, .motto-grid) .components-base-control {
+  margin-bottom: 0 !important;
+}
+:is(.motto-flex, .motto-grid) .components-toggle-control {
+  min-height: var(--motto-input-height);
+}
+
+/* Alignment */
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+/* Gap */
+.gap-xs {
+  gap: var(--motto-space-xs);
+}
+
+.gap-sm {
+  gap: var(--motto-space-sm);
+}
+
+.gap-md {
+  gap: var(--motto-space-md);
+}
+
+.gap-lg {
+  gap: var(--motto-space-lg);
+}
+
+/* Flex items */
+.flex-1 {
+  flex: 1 1 0;
+}
+
+.flex-2 {
+  flex: 2 1 0;
+}
+
+.flex-none {
+  flex: 0 0 auto;
+}
+
+.motto-prop-select {
+  flex: 1 0 auto;
+  width: var(--motto-prop-select-width);
+}
+
+.motto-toggle-large {
+  min-height: var(--motto-toggle-height-lg);
+  align-items: center;
+  display: flex;
+  margin: 0 !important;
+}
+
+:is(.motto-prop-input) {
+  flex: 1 0 0;
+  min-width: var(--motto-prop-input-width);
+}
+
+.motto-prop-input:has(.motto-control-unit) {
+  --motto-prop-input-width: 5.5rem;
+  display: flex;
+  gap: 0.5em;
+  align-items: center;
+}
+.motto-prop-input:has(.motto-control-unit) > :not(.motto-control-unit) {
+  flex-grow: 1;
+}
+
+/* Grid columns */
+.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Focus ring opt-out. WP paints the ring with `outline` at (0,3,0), so !important.
+ * Only outline is cleared: is-secondary buttons draw their border with box-shadow.
+ * Provide another focus indicator where this is used — keyboard users lose the ring.
+ */
+.motto-no-focus-ring:focus, .motto-no-focus-ring:focus-visible {
+  outline: none !important;
+}
+
+/* Shared primitive: color/gradient swatch trigger */
+.motto-color-gradient-swatch-button {
+  min-width: 34px;
+  padding: 6px !important;
+}
+
+.motto-color-gradient-swatch {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 1px solid #d0d5dd;
+}
+
+.motto-label {
+  min-width: var(--motto-label-width);
+  text-transform: uppercase;
+  font-size: var(--motto-font-size-sm);
+  margin: 0;
+  font-weight: normal;
+}
+
+.motto-class-input-with-prefix {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--motto-space-md);
+}
+.motto-class-input-with-prefix .motto-class-input-prefix {
+  font-weight: bold;
+}
+.motto-class-input-with-prefix .motto-class-slug {
+  flex-grow: 1;
+}
+
+.motto-notice {
+  font-size: var(--motto-font-size-sm);
+  line-height: 1.2;
+  padding: var(--motto-space-sm);
+  margin: 0;
+  color: var(--motto-warning-color-500, hsl(40, 80%, 50%));
+  display: flex;
+  align-items: start;
+  gap: var(--motto-space-md);
+}
+.motto-notice .motto-notice-icon {
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+}
+.motto-notice .motto-notice-text {
+  flex-grow: 1;
+}
+.motto-notice :is(p, ol, ul, h1, h2, h3, h4, h5, h6) {
+  font-size: inherit;
+  margin: 0;
+}
+
+/* Motto Panels WP overrides
+ *
+ * Intention:
+ * - targeted overrides for @wordpress/components internals
+ * - avoid mixing WP internals with component-specific styles
+ *
+ */
+svg.motto-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+:is(svg.lucide) {
+  fill: none !important;
+  aspect-ratio: 1;
+  stroke-width: var(--motto-lucide-stroke-width, 1.4) !important;
+}
+:is(svg.lucide) path {
+  fill: none !important;
+}
+
+.block-editor-link-control__search-input-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+.block-editor-autocompleters__block.is-selected .block-editor-block-icon svg.lucide path,
+.block-editor-list-view-leaf.is-selected .block-editor-list-view-block-select-button svg.lucide path {
+  fill: none !important;
+}
+
+:is(.motto-panel-body, .motto-popup, .components-popover[class*=motto-]) {
+  position: relative;
+  font-size: var(--motto-button-font-size);
+}
+
+:is(.motto-panel-body) {
+  min-height: var(--motto-panel-body-min-height, 0);
+  transition: min-height 200ms ease;
+}
+
+:is(.motto-panel-body, .motto-popup) .components-placeholder.is-small {
+  padding: var(--motto-space-sm);
+}
+:is(.motto-panel-body, .motto-popup) .block-editor-html-element-control:where(:not(:last-child)), :is(.motto-panel-body, .motto-popup) .block-editor-image-size-control:where(:not(:last-child)), :is(.motto-panel-body, .motto-popup) .components-base-control:where(:not(:last-child)), :is(.motto-panel-body, .motto-popup) .components-radio-control:where(:not(:last-child)) {
+  margin-bottom: var(--motto-space-md);
+}
+:is(.motto-panel-body, .motto-popup) :is(.components-placeholder, .components-placeholder__fieldset) {
+  gap: var(--motto-space-md);
+}
+:is(.motto-panel-body, .motto-popup) .components-input-base {
+  border-radius: var(--motto-input-border-radius);
+}
+:is(.motto-panel-body, .motto-popup) .components-button:not(.components-panel__body-toggle,
+.motto-ui-button,
+.components-tab-panel__tabs-item,
+.components-circular-option-picker__option,
+.components-custom-gradient-picker__control-point-button,
+.components-border-box-control-linked-button,
+.components-form-token-field__remove-token) {
+  height: var(--motto-button-height);
+  font-size: var(--motto-button-font-size);
+  border-radius: var(--motto-button-border-radius);
+  gap: var(--motto-space-sm);
+}
+:is(.motto-panel-body, .motto-popup) .components-button:not(.components-panel__body-toggle,
+.motto-ui-button,
+.components-tab-panel__tabs-item,
+.components-circular-option-picker__option,
+.components-custom-gradient-picker__control-point-button,
+.components-border-box-control-linked-button,
+.components-form-token-field__remove-token).motto-is-active {
+  background: var(--wp-admin-theme-color) !important;
+  color: white !important;
+}
+:is(.motto-panel-body, .motto-popup) .components-button.motto-fw {
+  width: 100%;
+}
+:is(.motto-panel-body, .motto-popup) .components-button.is-small {
+  height: var(--motto-button-height-sm);
+}
+:is(.motto-panel-body, .motto-popup) input:is([type=text], [type=number], [type=email]):not(.components-form-token-field__input) {
+  font-size: var(--motto-font-size-md) !important;
+  height: var(--motto-input-height) !important;
+  min-height: 0 !important;
+  padding: 8px !important;
+  border-radius: var(--motto-input-border-radius);
+  border-color: var(--wp-components-color-gray-300);
+}
+:is(.motto-panel-body, .motto-popup) :is(textarea) {
+  font-size: var(--motto-font-size-textarea) !important;
+  min-height: var(--motto-input-height) !important;
+  padding: 0.5em !important;
+  border-radius: var(--motto-input-border-radius);
+  border-color: var(--wp-components-color-gray-300);
+}
+:is(.motto-panel-body, .motto-popup) :is(select.components-select-control__input, .components-range-control__root) {
+  font-size: var(--motto-font-size-select) !important;
+  height: var(--motto-input-height) !important;
+  min-height: 0 !important;
+}
+:is(.motto-panel-body, .motto-popup) .components-base-control__field {
+  margin: 0;
+}
+:is(.motto-panel-body, .motto-popup) .components-color-palette__custom-color-value {
+  white-space: wrap !important;
+}
+:is(.motto-panel-body, .motto-popup) .components-toggle-group-control {
+  border: 1px solid var(--wp-components-color-gray-300);
+  width: 100%;
+  height: var(--motto-input-height);
+  border-radius: var(--motto-input-border-radius);
+}
+:is(.motto-panel-body, .motto-popup) .components-toggle-group-control::before {
+  border-radius: var(--motto-input-border-radius);
+}
+:is(.motto-panel-body, .motto-popup) .components-circular-option-picker__swatches {
+  justify-content: center;
+}
+:is(.motto-panel-body, .motto-popup) .components-combobox-control__suggestions-container {
+  border-color: var(--wp-components-color-gray-600);
+  border-radius: var(--motto-input-border-radius);
+}
+:is(.motto-panel-body, .motto-popup) .components-combobox-control__suggestions-container .components-flex {
+  min-height: 0;
+  height: var(--motto-input-height);
+}
+:is(.motto-panel-body, .motto-popup) .components-combobox-control__suggestions-container .components-form-token-field__suggestion {
+  min-height: var(--motto-input-height);
+}
+:is(.motto-panel-body, .motto-popup) .components-range-control {
+  flex: 1 1 var(--motto-prop-slider-width);
+}
+:is(.motto-panel-body, .motto-popup) .components-toggle-control {
+  display: flex;
+  align-items: center;
+}
+:is(.motto-panel-body, .motto-popup) .components-toggle-control:last-child {
+  margin-bottom: 0;
+}
+
+.motto-toolbar-group {
+  align-items: center;
+}
+.motto-toolbar-group .motto-toolbar-logo {
+  padding-inline: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.has-motto-styler .block-list-appender {
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+/* DeviceToggleControl — device-picker breakpoint bar and default icon variant
+ * → src/components/controls/device/DeviceToggleControl.jsx
+ */
+.motto-device-toggle {
+  display: inline-flex;
+  align-items: center;
+}
+.motto-device-toggle .motto-breakpoints {
+  outline: 0 !important;
+}
+.motto-device-toggle .motto-breakpoints::before {
+  border-radius: 2px;
+}
+
+.motto-device-toggle__trigger {
+  min-width: 0;
+  padding: 0 var(--motto-space-sm);
+  height: var(--motto-button-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.motto-device-toggle__icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+.motto-device-toggle__icon svg {
+  display: block;
+  transform-origin: 50% 50%;
+}
+.motto-device-toggle__icon.is-landscape svg {
+  transform: rotate(90deg);
+}
+
+.motto-device-toggle__label {
+  align-items: center;
+  display: inline-flex;
+  gap: var(--motto-space-sm);
+}
+
+.motto-device-toggle__text {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.motto-device-toggle__menu {
+  display: flex;
+  gap: var(--motto-space-md);
+}
+
+.motto-device-toggle__option {
+  min-width: 0;
+  padding: 0 var(--motto-space-sm);
+  height: var(--motto-button-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.motto-device-toggle__option.motto-is-active {
+  background: var(--wp-admin-theme-color) !important;
+  color: white !important;
+}
+
+.motto-device-toggle--extended {
+  background: white;
+  display: block;
+  position: sticky;
+  top: 47px;
+  z-index: 110;
+  width: calc(100% + 32px);
+  margin-left: -16px;
+  margin-bottom: var(--motto-space-lg);
+  border-bottom: 1px solid var(--wp-components-color-gray-300);
+}
+.motto-device-toggle--extended .components-toggle-group-control {
+  width: 100%;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0;
+}
+
+/* ProBadge + PanelSection — upgrade badge and panel content divider */
+.motto-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--motto-font-size-sm);
+  line-height: 1;
+  font-weight: 600;
+  padding: 0.25em 0.5em;
+  border-radius: 999px;
+  border: 1px solid var(--wp-components-color-gray-300);
+  background: var(--wp-components-color-gray-100);
+  color: var(--motto-color-black);
+}
+
+.motto-badge--pro {
+  border-color: rgba(121, 80, 242, 0.25);
+  background: rgba(121, 80, 242, 0.1);
+  color: rgb(68, 45, 150);
+}
+
+.motto-panel-section {
+  padding-top: var(--motto-space-sm);
+  padding-bottom: var(--motto-space-xl);
+  display: grid;
+  gap: var(--motto-space-md);
+  font-size: var(--motto-font-size-md);
+}
+.motto-panel-section + .motto-panel-section {
+  padding-top: var(--motto-space-xl);
+  border-top: 1px solid var(--wp-components-color-gray-300);
+}
+
+/* MottoButton + MottoEnumOption — base panel action button and enum option */
+.motto-ui-button {
+  flex-grow: 1;
+  font-size: var(--motto-button-font-size);
+  height: var(--motto-button-height);
+  border-radius: var(--motto-button-border-radius);
+  justify-content: center;
+  padding: 0.5em var(--motto-space-lg);
+  text-align: center;
+  gap: var(--motto-space-sm);
+}
+.motto-ui-button.motto-fw {
+  width: 100%;
+}
+.motto-ui-button.motto-is-active {
+  background: var(--wp-admin-theme-color) !important;
+  color: white !important;
+}
+.motto-ui-button :is(svg, img) {
+  width: var(--motto-icon-size);
+  height: auto;
+}
+.motto-ui-button:is(.is-icon-only) {
+  flex-grow: 0;
+  padding: var(--motto-space-xs);
+}
+.motto-ui-button:focus:not(:active) {
+  outline-offset: 0;
+}
+
+:is(.motto-section-actions .motto-ui-button,
+.motto-rules-actions .motto-ui-button,
+.is-icon-only.is-primary) {
+  aspect-ratio: 0.9/1;
+}
+
+.motto-enum-option {
+  white-space: wrap !important;
+  line-height: 1;
+  justify-content: flex-start;
+  text-align: left;
+  height: 3em;
+}
+
+/* InlineSelectControl — label + select in a single row */
+.motto-inline-select {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--motto-space-md) + var(--motto-space-sm) / 2);
+}
+.motto-inline-select + .motto-inline-select {
+  margin-top: 8px;
+}
+.motto-inline-select .motto-inline-select-label {
+  flex: 0 0 96px;
+  font-weight: 500;
+}
+.motto-inline-select .motto-inline-select-control {
+  flex: 1 1 auto;
+  margin-bottom: 0;
+}
+.motto-inline-select .motto-inline-select-control .components-base-control__field {
+  margin-bottom: 0;
+}
+
+/* LucideGallery — shared editor icon picker grid */
+.motto-lucide-gallery {
+  --motto-lucide-grid-max-height: 180px;
+  --motto-lucide-row-columns: 6;
+  --motto-lucide-button-height: 30px;
+  --motto-lucide-icon-size: 20px;
+  --motto-lucide-hover-scale: 1.5;
+}
+.motto-lucide-gallery.motto-lucide-gallery--lg {
+  --motto-lucide-grid-max-height: 280px;
+  --motto-lucide-row-columns: 7;
+  --motto-lucide-button-height: 40px;
+  --motto-lucide-icon-size: 26px;
+  --motto-lucide-hover-scale: 1.2;
+}
+.motto-lucide-gallery .motto-lucide-gallery__search {
+  margin-bottom: 8px;
+}
+.motto-lucide-gallery .motto-lucide-gallery__grid {
+  max-height: var(--motto-lucide-grid-max-height);
+  overflow: auto;
+  padding: 2px;
+  border: 1px solid var(--wp-components-color-gray-600);
+  border-radius: 2px;
+}
+.motto-lucide-gallery .motto-lucide-gallery__row {
+  --columns: var(--motto-lucide-row-columns);
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  gap: 3px;
+  margin-bottom: 3px;
+}
+.motto-lucide-gallery .motto-lucide-gallery__row:last-child {
+  margin-bottom: 0;
+}
+.motto-lucide-gallery .motto-lucide-gallery__empty {
+  align-items: center;
+  color: var(--wp-components-color-gray-700);
+  display: flex;
+  font-size: var(--motto-font-size-sm);
+  justify-content: center;
+  min-height: calc(var(--motto-lucide-button-height) * 3);
+  padding: 12px;
+  text-align: center;
+}
+.motto-lucide-gallery .motto-lucide-gallery__button {
+  height: var(--motto-lucide-button-height);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: all 0.1s ease-in-out;
+}
+.motto-lucide-gallery .motto-lucide-gallery__button svg {
+  width: var(--motto-lucide-icon-size);
+  height: var(--motto-lucide-icon-size);
+}
+.motto-lucide-gallery .motto-lucide-gallery__button:is(:hover, :focus) {
+  scale: var(--motto-lucide-hover-scale);
+}
+
+/* UI popups — shared styles for Motto-owned popup wrappers
+ *
+ * The main box is always `.components-popover__content` (the node WP
+ * actually paints as the visible card). `.components-popover` (the
+ * positioning wrapper carrying `.motto-popup`) must stay unstyled —
+ * only sizing/z-index concerns belong there. This rule replaces WP's
+ * own default `__content` chrome unconditionally, so individual popups
+ * never need `variant="unstyled"` to look consistent.
+ */
+.motto-popup > .components-popover__content {
+  background: white;
+  border: none;
+  border-radius: var(--motto-popup-border-radius);
+  box-shadow: var(--motto-popup-box-shadow);
+  padding: 0;
+}
+
+.motto-actions-popup .components-menu-group {
+  padding: var(--motto-space-sm) 0 !important;
+}
+.motto-actions-popup .components-menu-group + .components-menu-group {
+  border-top: 1px solid var(--wp-components-color-gray-200);
+}
+.motto-actions-popup .components-menu-item__button {
+  gap: var(--motto-space-md);
+  padding: var(--motto-space-sm) var(--motto-space-lg);
+}
+.motto-actions-popup .components-menu-item__button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.motto-actions-popup .components-menu-item__button .components-menu-item__item {
+  min-width: 120px;
+}
+.motto-actions-popup .components-menu-item__button .components-menu-items__item-icon {
+  align-items: center;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  margin-right: 0;
+  width: 16px;
+}
+
+.motto-unit-css-popup .motto-unit-css-popup-content {
+  align-items: center;
+  display: flex;
+  gap: var(--motto-space-sm);
+  min-width: 22em;
+  padding: var(--motto-space-lg);
+}
+.motto-unit-css-popup .motto-unit-css-popup-input {
+  flex: 1 1 auto;
+}
+.motto-unit-css-popup .motto-unit-css-popup-input textarea {
+  field-sizing: content;
+  font-family: var(--motto-code-font-family);
+  font-size: var(--motto-font-size-sm, 12px);
+  min-height: var(--motto-input-height, 32px);
+  min-width: 12ch;
+  resize: none;
+  width: 100%;
+}
+.motto-unit-css-popup .motto-unit-css-popup-confirm {
+  flex: 0 0 auto;
+}
+
+.motto-transition-property-popup .motto-autocomplete-list {
+  min-width: 9em;
+}
+
+.motto-device-toggle-popup .components-popover__content {
+  padding: 4px;
+}
+
+.motto-color-dropdown-popup {
+  width: var(--motto-popup-width);
+}
+.motto-color-dropdown-popup > .components-popover__content {
+  padding: var(--motto-space-lg);
+}
+
+.motto-color-gradient-dropdown-popup {
+  width: var(--motto-popup-width);
+}
+.motto-color-gradient-dropdown-popup > .components-popover__content {
+  padding: var(--motto-space-lg);
+}
+
+.motto-class-add-popup {
+  max-width: 100%;
+  min-width: var(--motto-popup-width, 18rem);
+  width: var(--motto-popup-width, 18rem);
+}
+.motto-class-add-popup > .components-popover__content {
+  padding: var(--motto-space-lg);
+  width: 100%;
+}
+
+.motto-rule-popup {
+  max-width: 100%;
+  min-width: var(--motto-popup-width, 18rem);
+  width: var(--motto-popup-width, 18rem);
+  z-index: 150000;
+}
+.motto-rule-popup [role=dialog] {
+  display: grid;
+  gap: var(--motto-space-lg);
+}
+.motto-rule-popup .motto-rule-popup-actions {
+  border: 1px solid var(--wp-components-color-gray-400);
+  border-radius: var(--motto-button-border-radius);
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+.motto-rule-popup .motto-rule-popup-actions :is(.motto-ui-button) {
+  aspect-ratio: 1;
+}
+.motto-rule-popup .components-popover__content {
+  padding: var(--motto-space-lg);
+  width: auto;
+}
+.motto-rule-popup .components-h-stack {
+  height: auto;
+}
+.motto-rule-popup .components-h-stack > .components-button {
+  margin: 0 !important;
+}
+.motto-rule-popup :where(.components-button) svg:not(.lucide) {
+  height: 20px;
+  width: 20px;
+}
+.motto-rule-popup :where(.motto-control-icon) svg:not(.lucide) {
+  height: 22px;
+  width: 22px;
+}
+.motto-rule-popup .components-border-radius-control {
+  margin-bottom: 0;
+}
+
+.motto-wildcards-popup-wrapper {
+  margin-top: var(--motto-space-md);
+}
+
+.motto-wildcards-popup__trigger {
+  width: 100%;
+  justify-content: center;
+  gap: var(--motto-space-xs);
+}
+.motto-wildcards-popup__trigger svg {
+  width: 16px;
+  height: 16px;
+}
+
+.motto-wildcards-popup .components-popover__content {
+  width: min(320px, 100vw - 40px);
+  max-height: 420px;
+  overflow-y: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: var(--motto-border-radius);
+}
+
+.motto-wildcards-popup__content {
+  display: grid;
+  padding: var(--motto-space-md);
+  min-width: 0;
+}
+
+.motto-wildcards-popup__tabs {
+  min-width: 0;
+}
+.motto-wildcards-popup__tabs .components-tab-panel__tabs {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.motto-wildcards-popup__tabs .components-tab-panel__tabs-item {
+  flex-shrink: 0;
+}
+
+.motto-wildcards-popup__list {
+  display: grid;
+}
+.motto-wildcards-popup__list--operators {
+  padding-top: var(--motto-space-sm);
+  border-top: 1px solid var(--wp-components-color-gray-100);
+}
+
+.motto-wildcard-item {
+  padding: var(--motto-space-md);
+  border-bottom: 1px solid;
+  border-color: var(--wp-components-color-gray-300);
+}
+.motto-wildcard-item:hover {
+  background-color: var(--wp-components-color-gray-100);
+}
+
+.motto-wildcard-token {
+  display: inline-block;
+  user-select: all;
+  cursor: text;
+  font-family: var(--motto-code-font-family, monospace);
+  font-size: var(--motto-font-size-sm);
+  font-weight: 600;
+  background-color: var(--wp-components-color-gray-300);
+  padding: 2px 4px;
+  border-radius: var(--motto-border-radius-sm);
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+
+.motto-wildcard-description {
+  font-size: 12px;
+  color: var(--wp-components-color-gray-600);
+  line-height: 1.4;
+}
+
+/* Styler editor UI
+ *
+ * Structure:
+ * 1) Feature partials (large component groups)
+ * 2) Shared local UI blocks used across multiple controls
+ *
+ * Keep this file focused on reusable UI glue. Feature-specific styles
+ * should live in `styles/components/`.
+ */
+/* ClassEditor — attached class manager and inline class editor overlay
+ * → src/styler/classes/components/
+ */
+/* DragReorder — shared native drag-and-drop state/handle styles
+ * → src/components/hooks/use-drag-reorder.js
+ */
+.motto-class-create-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--motto-space-sm);
+  margin: var(--motto-space-sm) 0;
+}
+
+.motto-attached-classes-content {
+  display: grid;
+  gap: var(--motto-space-md);
+  position: relative;
+}
+
+.motto-class-tags {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+.motto-class-tags:empty {
+  display: none;
+}
+
+.motto-class-tag {
+  --motto-icon-size: 12px;
+  user-select: none;
+  font-size: var(--motto-font-size-md);
+  align-items: center;
+  background: var(--wp-components-color-gray-100);
+  border-radius: var(--motto-button-border-radius);
+  display: flex;
+  min-height: var(--motto-input-height);
+  gap: var(--motto-space-sm);
+  color: var(--wp-components-color-accent);
+  padding-inline: 0.25em;
+  border: solid 1px var(--wp-components-color-accent);
+}
+.motto-class-tag .motto-ui-button {
+  padding: var(--motto-space-xs);
+  color: currentColor;
+}
+.motto-class-tag svg {
+  width: var(--motto-icon-size);
+}
+.motto-class-tag.is-dragging {
+  opacity: 0.55;
+}
+.motto-class-tag.is-drop-target {
+  outline: 1px dashed var(--wp-components-color-gray-600);
+  outline-offset: -1px;
+}
+.motto-class-tag[draggable=true] {
+  cursor: grab;
+}
+.motto-class-tag .motto-class-tag-drag {
+  align-items: center;
+  color: var(--wp-components-color-gray-600);
+  cursor: grab;
+  display: inline-flex;
+  justify-content: center;
+}
+.motto-class-tag .motto-class-tag-drag:active {
+  cursor: grabbing;
+}
+.motto-class-tag .motto-class-tag-label {
+  word-break: break-word;
+  flex-grow: 1;
+}
+.motto-class-tag .motto-class-tag-unsaved-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--motto-warning-color-500, hsl(40, 80%, 50%));
+  flex-shrink: 0;
+}
+.motto-class-tag .motto-class-tag-actions {
+  display: flex;
+  gap: var(--motto-space-sm);
+}
+.motto-class-tag .motto-class-tag-actions .motto-ui-button {
+  height: auto;
+}
+.motto-class-tag .motto-class-tag-actions [disabled] {
+  opacity: 0.5;
+}
+
+.motto-class-create-popup-content {
+  gap: var(--motto-space-md);
+}
+
+.motto-class-create-error {
+  color: var(--motto-error, #b42318);
+  font-size: var(--motto-font-size-sm);
+  margin: 0;
+}
+
+.motto-class-editor {
+  --offset: 2px;
+  background-color: #fff;
+  border: none;
+  padding: 16px;
+  position: absolute;
+  inset: 85px 0 auto;
+  display: grid;
+  align-content: start;
+  z-index: 100;
+  margin: 0 !important;
+  animation: motto-slide-in 180ms ease;
+  min-height: 100%;
+  border: var(--offset) solid var(--wp-components-color-gray-200);
+}
+.motto-class-editor .motto-class-editor-header {
+  display: grid;
+  gap: var(--motto-space-md);
+  position: relative;
+  margin-bottom: var(--motto-font-size-md);
+}
+.motto-class-editor .motto-class-editor-title {
+  flex: 1 1 auto;
+  font-size: var(--motto-font-size-xl);
+  font-weight: 500;
+}
+.motto-class-editor .motto-class-editor-actions {
+  display: flex;
+  flex-wrap: wrap;
+  order: -1;
+  gap: var(--motto-space-sm);
+  justify-content: end;
+}
+.motto-class-editor .motto-class-editor-actions .components-button {
+  --motto-button-height: 24px;
+  aspect-ratio: 1;
+}
+.motto-class-editor .motto-class-editor-close {
+  opacity: 0.5;
+}
+.motto-class-editor .motto-class-editor-save-progress {
+  left: 0;
+  padding: 0 12px;
+  position: absolute;
+  right: 0;
+  top: 44px;
+  z-index: 2;
+}
+.motto-class-editor .motto-class-editor-save-progress-control {
+  margin: 0;
+}
+
+.motto-class-editor-content {
+  display: block;
+  position: relative;
+}
+
+.motto-class-editor-loading {
+  align-items: center;
+  display: flex;
+  gap: var(--motto-space-sm);
+  color: var(--wp-components-color-gray-600);
+  font-size: var(--motto-font-size-md);
+  padding: 0.5rem 0;
+}
+
+/* PopupDialog — modal-style popup layout for class editor and preset overlays */
+.motto-popup .motto-popup-content {
+  display: grid;
+  gap: var(--motto-space-md);
+}
+.motto-popup .components-modal__content {
+  max-width: var(--motto-popup-dialog-width);
+  width: var(--motto-popup-dialog-width);
+}
+
+.motto-popup-actions {
+  margin-left: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--motto-space-sm);
+  justify-content: flex-end;
+}
+.motto-popup-actions > button {
+  min-width: 10ch;
+}
+
+.motto-selector-edit-error {
+  color: red;
+}
+
+.motto-presets-popup {
+  --motto-popup-dialog-width: min(1200px, 90vw);
+}
+.motto-presets-popup .motto-popup-tabs {
+  display: grid;
+  gap: var(--motto-space-lg);
+}
+.motto-presets-popup .motto-popup-tabs .components-tab-panel__tabs {
+  align-self: start;
+  position: sticky;
+  display: flex;
+  gap: var(--motto-space-sm);
+  top: 0;
+  background: white;
+}
+.motto-presets-popup .motto-popup-tabs .components-tab-panel__tabs .components-tab-panel__tabs-item {
+  height: var(--motto-tab-height) !important;
+  padding: 0.5em;
+}
+.motto-presets-popup .motto-popup-tabs .components-tab-panel__tab {
+  justify-content: flex-start;
+  width: 100%;
+}
+.motto-presets-popup .motto-popup-tabs .components-tab-panel__tab-content {
+  min-width: 0;
+}
+
+/* StylerCssList, CssRuleRow — CSS property rule list
+ * → src/styler/components/StylerCssList.jsx, CssRuleRow.jsx
+ */
+.motto-css-rules {
+  display: grid;
+  gap: var(--motto-space-lg);
+  justify-content: stretch;
+}
+
+.motto-css-list {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+.motto-css-list:empty {
+  display: none;
+}
+
+.motto-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--motto-space-sm);
+  min-height: var(--motto-button-height);
+}
+.motto-section-heading .motto-section-title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--motto-space-sm);
+  margin: 0;
+  font-size: var(--motto-font-size-lg);
+}
+.motto-section-heading .motto-section-title-text {
+  margin: 0;
+}
+
+.motto-css-rule {
+  align-items: center;
+  display: flex;
+  gap: var(--motto-space-sm);
+  position: relative;
+}
+.motto-css-rule.is-dragging {
+  opacity: 0.55;
+}
+.motto-css-rule.is-drop-target {
+  outline: 1px dashed var(--wp-components-color-gray-600);
+  outline-offset: -1px;
+}
+.motto-css-rule[draggable=true] {
+  cursor: grab;
+}
+.motto-css-rule .components-base-control {
+  margin-bottom: 0 !important;
+}
+.motto-css-rule .motto-css-rule-content {
+  align-items: center;
+  display: flex;
+  gap: var(--motto-space-sm);
+  flex: 1;
+  position: relative;
+}
+.motto-css-rule :is(.motto-css-name-wrapper, .motto-css-rule-value-wrapper) {
+  flex: 1;
+}
+.motto-css-rule .motto-rules-actions {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: var(--motto-input-border-radius);
+}
+.motto-css-rule .motto-rules-actions > * {
+  position: relative;
+  z-index: 1;
+}
+.motto-css-rule.is-reordered {
+  animation: motto-row-reorder-fade 220ms ease-out;
+}
+
+.motto-css-name-wrapper {
+  position: relative;
+}
+
+:is(.motto-css-rule-name, .motto-css-rule-value) :is(input, textarea) {
+  font-family: var(--motto-code-font-family) !important;
+}
+
+.motto-css-rule-name.is-var :is(input) {
+  font-style: italic;
+  color: var(--wp-components-color-gray-800);
+}
+
+.motto-row-value-toggle-font-size {
+  align-items: center;
+  display: inline-flex;
+  font-size: var(--motto-font-size-xs);
+  text-transform: uppercase;
+  justify-content: center;
+  line-height: 1;
+  max-width: 44px;
+  min-width: 16px;
+  overflow: hidden;
+  padding-inline: 1px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.motto-css-rule-value {
+  width: auto;
+}
+.motto-css-rule-value textarea.components-textarea-control__input {
+  field-sizing: content;
+  min-block-size: var(--motto-input-height);
+  min-inline-size: 12ch;
+  max-inline-size: 100%;
+  resize: none;
+}
+
+.motto-tooltip-trigger {
+  margin: 0 0.3em;
+}
+.motto-tooltip-trigger svg {
+  display: block;
+}
+.motto-tooltip-trigger {
+  border-radius: 999em;
+}
+
+.components-button.motto-tooltip-button {
+  background: transparent !important;
+  padding: 0;
+  box-shadow: 0;
+}
+
+.components-tooltip:has(.motto-tooltip-button) {
+  max-width: 200px;
+}
+
+.motto-rule-warnings {
+  display: inline-flex;
+  gap: 0.2em;
+  left: -0.5em;
+  position: absolute;
+  top: -0.5em;
+}
+
+.motto-rule-warning {
+  margin: 0;
+  color: var(--motto-warning-color-600);
+}
+.motto-rule-warning svg {
+  fill: white !important;
+}
+
+.motto-css-rule-drag {
+  align-items: center;
+  color: var(--wp-components-color-gray-600);
+  cursor: grab;
+  display: inline-flex;
+  justify-content: center;
+}
+.motto-css-rule-drag:active {
+  cursor: grabbing;
+}
+
+.motto-css-actions-row {
+  display: flex;
+  gap: var(--motto-space-md);
+}
+.motto-css-actions-row :is(.motto-ui-button) {
+  padding-inline: var(--motto-space-md);
+}
+
+/* BlockSelectorsList — per-selector expandable rule panels
+ * → src/styler/components/BlockSelectorsList.jsx
+ */
+.motto-inner-selectors {
+  display: grid;
+  gap: var(--motto-space-md);
+  justify-content: stretch;
+}
+.motto-inner-selectors .motto-inner-selectors-list {
+  display: grid;
+  gap: var(--motto-space-md);
+  margin-bottom: var(--motto-space-md);
+}
+.motto-inner-selectors .motto-inner-selector-item {
+  border: 1px solid var(--wp-components-color-gray-200);
+  border-radius: var(--motto-button-border-radius);
+}
+.motto-inner-selectors .motto-inner-selector-item.is-dragging {
+  opacity: 0.55;
+}
+.motto-inner-selectors .motto-inner-selector-item.is-drop-target {
+  outline: 1px dashed var(--wp-components-color-gray-600);
+  outline-offset: -1px;
+}
+.motto-inner-selectors .motto-inner-selector-item[draggable=true] {
+  cursor: grab;
+}
+.motto-inner-selectors .motto-inner-selector-item.is-reordered {
+  animation: motto-row-reorder-fade 220ms ease-out;
+}
+.motto-inner-selectors .motto-inner-selector-drag {
+  align-items: center;
+  color: var(--wp-components-color-gray-600);
+  cursor: grab;
+  display: inline-flex;
+  justify-content: center;
+}
+.motto-inner-selectors .motto-inner-selector-drag:active {
+  cursor: grabbing;
+}
+.motto-inner-selectors .motto-inner-selector-row {
+  display: flex;
+  gap: var(--motto-space-sm);
+  align-items: center;
+  padding: var(--motto-space-sm) var(--motto-space-md);
+}
+.motto-inner-selectors .motto-inner-selector-row .motto-inner-selector-summary {
+  flex: 1;
+}
+.motto-inner-selectors .motto-inner-selector-row .motto-inner-selector-header {
+  position: relative;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--motto-space-sm);
+  min-height: var(--motto-input-height);
+}
+.motto-inner-selectors .motto-inner-selector-row .motto-inner-selector-panel-toggle {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--motto-space-sm);
+  padding: 0;
+  text-align: start;
+}
+.motto-inner-selectors .motto-inner-selector-row .motto-inner-selector-panel-toggle:focus {
+  box-shadow: none;
+}
+.motto-inner-selectors .motto-inner-selector-row .motto-inner-selector-label {
+  font-weight: bold;
+  font-size: var(--motto-font-size-lg);
+  margin: 0;
+}
+.motto-inner-selectors .motto-inner-selector-css {
+  border-top: 1px solid var(--wp-components-color-gray-200);
+  animation: motto-inner-selector-reveal 160ms ease-out;
+  transform-origin: top;
+  padding: var(--motto-space-md);
+}
+.motto-inner-selectors .motto-css-rules .motto-section-heading .motto-section-title-text {
+  font-weight: normal;
+  opacity: 0.35;
+  padding-left: var(--motto-space-sm);
+}
+
+@keyframes motto-inner-selector-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes motto-row-reorder-fade {
+  from {
+    opacity: 0.45;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* AutocompleteList — CSS property/value suggestion list
+ * → src/styler/components/AutocompleteList.jsx
+ * → src/styler/components/CssRuleRowHeader.jsx (rule name suggestions)
+ * → src/styler/controls/CssFunctionAutocompleteControl.jsx (value suggestions)
+ */
+.motto-autocomplete-list {
+  background: #fff;
+  box-shadow: var(--motto-popup-box-shadow);
+  border-radius: var(--motto-popup-border-radius);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--motto-space-sm) / 2);
+  max-height: 220px;
+  min-width: 225px;
+  overflow-y: auto;
+  padding: 6px;
+}
+.motto-autocomplete-list .motto-autocomplete-item {
+  font-family: var(--motto-code-font-family);
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  gap: var(--motto-space-xs);
+  justify-content: space-between;
+  padding: 0 var(--motto-space-sm);
+  text-align: left;
+  width: 100%;
+  min-height: var(--motto-button-height);
+}
+.motto-autocomplete-list .motto-autocomplete-item.motto-is-active {
+  background: var(--wp-components-color-gray-200);
+}
+.motto-autocomplete-list .motto-autocomplete-item .motto-autocomplete-meta {
+  color: var(--wp-components-color-gray-800);
+  max-width: 6em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  align-items: center;
+}
+.motto-autocomplete-list .motto-autocomplete-item .motto-autocomplete-preview {
+  border: 1px solid var(--wp-components-color-gray-600);
+  border-radius: 50%;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.motto-autocomplete-list .motto-autocomplete-item .motto-autocomplete-preview.is-gradient {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* EntityTokenPicker — searchable token selector with chip list and inline menu
+ * → src/components/primitives/EntityTokenPicker.jsx
+ */
+.motto-entity-token-picker {
+  position: relative;
+}
+
+.motto-entity-token-picker__chips {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+
+.motto-entity-token-picker__chip {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--motto-space-sm);
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--motto-input-border-color);
+  border-radius: var(--motto-input-border-radius);
+  background: var(--wp-components-color-gray-100);
+  --motto-button-height: 20px;
+}
+.motto-entity-token-picker__chip.is-dragging {
+  opacity: 0.55;
+}
+.motto-entity-token-picker__chip.is-drop-target {
+  outline: 1px dashed var(--wp-components-color-gray-600);
+  outline-offset: -1px;
+}
+.motto-entity-token-picker__chip[draggable=true] {
+  cursor: grab;
+}
+
+.motto-entity-token-picker__chip-drag {
+  align-items: center;
+  color: var(--wp-components-color-gray-600);
+  cursor: grab;
+  display: inline-flex;
+  justify-content: center;
+}
+.motto-entity-token-picker__chip-drag:active {
+  cursor: grabbing;
+}
+
+.motto-entity-token-picker__chip-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.motto-entity-token-picker__chip-description {
+  color: var(--wp-components-color-gray-600);
+}
+
+.motto-entity-token-picker__search {
+  position: relative;
+}
+
+.motto-entity-token-picker__trigger {
+  cursor: pointer;
+}
+
+.motto-entity-token-picker__menu-search {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--motto-space-sm);
+  align-items: center;
+  padding: 0.15rem;
+  border-bottom: 1px solid var(--motto-input-border-color);
+  margin-bottom: 0.2rem;
+}
+
+.motto-dynamic-options-trigger {
+  flex: none;
+}
+
+.motto-entity-token-picker__loading {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.motto-entity-token-picker__menu {
+  display: grid;
+  gap: 1px;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  max-height: 220px;
+  overflow: auto;
+  border: 1px solid var(--motto-input-border-color);
+  border-radius: var(--motto-input-border-radius);
+  background: var(--motto-color-white);
+  padding: 0.25rem;
+}
+
+.motto-entity-token-picker__option,
+.motto-dynamic-options-list__option {
+  display: grid;
+  gap: 0.2rem;
+  text-align: left;
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0.2rem;
+}
+.motto-entity-token-picker__option:hover, .motto-entity-token-picker__option:focus,
+.motto-dynamic-options-list__option:hover,
+.motto-dynamic-options-list__option:focus {
+  background: var(--wp-components-color-gray-100);
+  outline: none;
+}
+
+.motto-entity-token-picker__option-description,
+.motto-dynamic-options-list__option-description {
+  font-size: var(--motto-font-size-sm);
+  color: var(--wp-components-color-gray-600);
+}
+
+/* MottoLinkControl — URL + new-tab toggle control
+ * .motto-link-control--button      → URLInputButton + ToggleControl
+ * .motto-link-control--link-control → core LinkControl
+ */
+.motto-link-control {
+  display: grid;
+  gap: var(--motto-space-md);
+}
+.motto-link-control .components-base-control {
+  min-width: 0;
+  margin-bottom: 0;
+}
+.motto-link-control .block-editor-link-control__preview {
+  padding: var(--motto-space-sm) 0;
+}
+
+.motto-link-control--button .block-editor-url-input__button {
+  display: flex;
+  align-items: center;
+  gap: var(--motto-space-sm);
+}
+.motto-link-control--button .block-editor-url-input__button-modal-line {
+  display: flex;
+  align-items: center;
+}
+.motto-link-control--button .block-editor-url-input__button-modal-line .block-editor-url-input__back {
+  margin: 0;
+  min-width: 30px;
+}
+.motto-link-control--button .block-editor-url-input__button-modal-line svg {
+  width: 20px;
+}
+
+.motto-link-control--link-control .block-editor-link-control {
+  min-width: 0;
+}
+.motto-link-control--link-control .block-editor-url-input {
+  margin: 0;
+}
+.motto-link-control--link-control .block-editor-link-control__search-item.is-current {
+  padding: 0;
+}
+.motto-link-control--link-control .block-editor-link-control__tools {
+  padding: 10px 0;
+}
+.motto-link-control--link-control .block-editor-link-control__search-actions {
+  padding: 0;
+}
+.motto-link-control--link-control .block-editor-link-control__setting {
+  padding: 5px;
+  font-size: inherit;
+}
+.motto-link-control--link-control .block-editor-link-control__search-results {
+  padding: 0;
+  background: white;
+  margin: 0;
+  border-radius: 2px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.motto-link-control--link-control .block-editor-link-control__search-results .components-menu-item__item {
+  max-width: 12em;
+  min-width: 0;
+}
+.motto-link-control--link-control .block-editor-link-control__search-results .block-editor-link-control__search-item {
+  height: auto !important;
+}
+.motto-link-control--link-control .block-editor-link-control__search-results .block-editor-link-control__search-item:is(:hover, :focus) {
+  background-color: var(--wp-components-color-gray-200);
+}
+
+.motto-border-control .components-base-control {
+  margin-bottom: 0 !important;
+}
+.motto-border-control .components-border-control-dropdown button {
+  border: none !important;
+}
+.motto-border-control .components-input-control__container {
+  padding-left: 2px;
+}
+.motto-border-control .components-unit-control__select {
+  margin-right: 4px !important;
+  font-size: 10px !important;
+}
+
+.motto-enum-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(3em, 1fr));
+  gap: var(--motto-space-sm);
+}
+.motto-enum-options .motto-enum-option {
+  padding-inline: var(--motto-space-md);
+}
+
+:is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+  display: block;
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Modifier: flex-direction axis icon rotation
+ * Classes: is-prop-{prop} + is-flex-{direction}
+ * justify-content / justify-items — main axis icons */
+:is(.motto-enum-options, .motto-row-value-toggle):is(.is-prop-justify-content,
+.is-prop-justify-items).is-flex-column :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+  transform: rotate(90deg);
+}
+:is(.motto-enum-options, .motto-row-value-toggle):is(.is-prop-justify-content,
+.is-prop-justify-items).is-flex-column-reverse :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+  transform: rotate(-90deg);
+}
+:is(.motto-enum-options, .motto-row-value-toggle):is(.is-prop-justify-content,
+.is-prop-justify-items).is-flex-row-reverse :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+  transform: rotate(180deg);
+}
+
+/* align-items / align-content — cross axis icons */
+:is(.motto-enum-options, .motto-row-value-toggle):is(.is-prop-align-items, .is-prop-align-content).is-flex-column :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+  transform: rotate(-90deg);
+}
+:is(.motto-enum-options, .motto-row-value-toggle):is(.is-prop-align-items, .is-prop-align-content).is-flex-column-reverse :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+  transform: rotate(90deg);
+}
+:is(.motto-enum-options, .motto-row-value-toggle):is(.is-prop-align-items, .is-prop-align-content).is-flex-row-reverse :is(.motto-enum-option-icon, .motto-row-value-toggle-enum-icon) svg {
+  transform: rotate(180deg);
+}
+
+.motto-box-shadow-fields {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.motto-layer-tabs {
+  --motto-button-height: 24px;
+  display: grid;
+  flex-wrap: wrap;
+  gap: var(--motto-space-sm);
+  padding-bottom: var(--motto-space-sm);
+}
+.motto-layer-tabs :where(.motto-layer-tab-add) {
+  justify-content: center;
+}
+.motto-layer-tabs :where(.motto-layer-tab) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--motto-input-border-color);
+  padding-left: 0.5em;
+  border-radius: var(--motto-input-border-radius);
+  opacity: 0.55;
+}
+.motto-layer-tabs :where(.motto-layer-tab)[draggable=true] {
+  cursor: grab;
+}
+.motto-layer-tabs :where(.motto-layer-tab):hover {
+  opacity: 0.75;
+}
+.motto-layer-tabs :where(.motto-layer-tab).motto-is-active {
+  opacity: 1;
+}
+.motto-layer-tabs :where(.motto-layer-tab).is-dragging {
+  opacity: 0.55;
+}
+.motto-layer-tabs :where(.motto-layer-tab).is-drop-target {
+  outline: 1px dashed var(--wp-components-color-gray-600);
+  outline-offset: -1px;
+}
+.motto-layer-tabs .motto-layer-tab-label {
+  flex-grow: 1;
+  color: inherit !important;
+  background: none !important;
+  box-shadow: none !important;
+  justify-content: start;
+  padding: 0;
+  min-width: 0;
+}
+.motto-layer-tabs .motto-layer-tab-label-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.motto-layer-tabs .motto-layer-tab-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--motto-space-sm) / 4);
+}
+.motto-layer-tabs .motto-layer-tab-drag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  color: var(--wp-components-color-gray-600);
+}
+.motto-layer-tabs .motto-layer-tab-add {
+  flex: 1 0 100%;
+}
+
+.motto-box-shadow-panel {
+  padding: 1em 0;
+  display: grid;
+  gap: var(--motto-space-md);
+}
+
+@keyframes motto-slide-in {
+  from {
+    transform: translateX(25%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.motto-aspect-ratio-control {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+.motto-aspect-ratio-control .components-toggle-group-control-option-base {
+  padding-inline: 5px;
+}
+
+.motto-aspect-ratio-inputs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--motto-space-sm);
+}
+
+.motto-aspect-ratio-separator {
+  color: var(--wp-components-color-gray-600);
+}
+
+/* SpacingControl — size presets and custom value inputs */
+.motto-spacing-sizes-control {
+  --motto-button-height: 28px;
+  --motto-icon-size: 20px;
+  --motto-spacing-control-gap: var(--motto-space-sm);
+}
+.motto-spacing-sizes-control .motto-spacing-sizes-control__body {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+.motto-spacing-sizes-control .motto-spacing-sizes-control__header {
+  margin-bottom: var(--motto-space-md);
+  display: flex;
+  align-items: center;
+}
+.motto-spacing-sizes-control .motto-spacing-sizes-control__header .motto-label {
+  flex: 1;
+}
+.motto-spacing-sizes-control .motto-spacing-control {
+  flex-grow: 1;
+}
+.motto-spacing-sizes-control .motto-control-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--motto-muted-color);
+}
+.motto-spacing-sizes-control .motto-control-icon svg {
+  width: var(--motto-icon-size);
+  height: var(--motto-icon-size);
+}
+.motto-spacing-sizes-control .motto-spacing-sizes-control__custom-value-range {
+  grid-column: 1/-1;
+}
+.motto-spacing-sizes-control :is(.motto-spacing-sizes-control__range-control,
+.motto-spacing-sizes-control__custom-value-input) {
+  margin-bottom: 0 !important;
+}
+.motto-spacing-sizes-control .components-unit-control__select {
+  width: 24px;
+}
+.motto-spacing-sizes-control .components-base-control__field {
+  margin-bottom: 0;
+}
+.motto-spacing-sizes-control .components-range-control__root {
+  min-height: var(--motto-input-height);
+}
+.motto-spacing-sizes-control .components-toggle-control {
+  align-self: end;
+}
+
+.motto-spacing-preview-control {
+  --motto-spacing-control-gap: var(--motto-space-md);
+  display: grid;
+  gap: var(--motto-spacing-control-gap);
+}
+
+.motto-spacing-preview-body {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+
+.motto-spacing-single-control {
+  display: grid;
+  gap: var(--motto-space-sm);
+  flex: 1;
+}
+
+.motto-background-layers-control {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+
+.motto-background-base-color-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.motto-background-base-color-control .motto-color-picker {
+  padding: 4px;
+  background-color: transparent !important;
+}
+
+.motto-background-layer-panel {
+  display: grid;
+  gap: var(--motto-space-sm);
+  padding: var(--motto-space-md) 0;
+}
+
+.motto-background-layer-type .components-base-control__field > div:first-child {
+  display: none;
+}
+.motto-background-layer-type .components-toggle-group-control {
+  width: 100%;
+}
+
+:is(.motto-background-image-control,
+.motto-image-source-position-control,
+.motto-image-source-control) {
+  display: grid;
+  gap: var(--motto-space-lg);
+  justify-content: stretch;
+}
+:is(.motto-background-image-control,
+.motto-image-source-position-control,
+.motto-image-source-control) .components-base-control {
+  margin-bottom: 0;
+}
+
+.motto-background-image-control .motto-background-image-control__layout {
+  width: 100%;
+}
+
+.motto-image-url-input {
+  flex: 1 1 auto;
+  margin-bottom: 0 !important;
+}
+.motto-image-url-input .components-base-control__field {
+  margin-bottom: 0 !important;
+}
+
+.motto-image-select-button,
+.motto-image-remove-button {
+  flex: 0 0 auto;
+}
+
+.motto-focal-point-controls .focal-point-picker__controls-position-unit-control.components-base-control {
+  margin-bottom: 0 !important;
+  width: 100%;
+}
+
+.motto-presets-list {
+  align-content: start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--motto-space-lg);
+  min-height: 400px;
+}
+
+.motto-apply-preset-button {
+  --motto-button-height: 150px;
+  --motto-button-border-radius: 8px;
+  justify-content: flex-start;
+  min-height: var(--motto-button-height);
+  display: grid;
+  padding: var(--motto-space-lg);
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  gap: var(--motto-space-md);
+  white-space: normal !important;
+  align-content: start;
+  line-height: 1.3;
+  transition: background 0.15s ease-in-out;
+}
+.motto-apply-preset-button .motto-preset-text {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+.motto-apply-preset-button .motto-preset-text > * {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.motto-apply-preset-button .motto-preset-name {
+  font-size: var(--motto-font-size-xxl);
+}
+.motto-apply-preset-button .motto-preset-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.motto-html-attributes-list {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+
+.motto-html-attribute-row {
+  display: flex;
+  gap: var(--motto-space-sm);
+  align-items: flex-end;
+}
+.motto-html-attribute-row .components-base-control {
+  flex: 1 1 10rem;
+}
+.motto-html-attribute-row .motto-ui-button {
+  flex: 0 0 auto;
+}
+
+.motto-filter-shadow {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+
+.motto-shape-region-control {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+.motto-shape-region-control .motto-shape-region-type {
+  margin-bottom: 0 !important;
+}
+.motto-shape-region-control .motto-shape-region-args {
+  margin-bottom: 0 !important;
+}
+
+.motto-toggle-group-compact {
+  --motto-input-height: 28px;
+  width: auto;
+  flex: 1;
+}
+.motto-toggle-group-compact button {
+  text-transform: uppercase;
+  font-size: 10px;
+}
+.motto-toggle-group-compact button * {
+  font-size: inherit;
+}
+
+.motto-breakpoint-styles-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.motto-breakpoint-styles-title svg {
+  display: block;
+}
+
+.motto-transition-control {
+  display: grid;
+  gap: var(--motto-space-sm);
+}
+
+.motto-transition-panel {
+  display: grid;
+  gap: var(--motto-space-sm);
+  padding-top: var(--motto-space-xs);
+}
+
+.motto-transition-field-row {
+  display: flex;
+  align-items: center;
+  gap: var(--motto-space-md);
+}
+.motto-transition-field-row :is(.components-base-control) {
+  margin-bottom: 0;
+}
+
+.motto-transition-easing-field {
+  align-items: center;
+}
+
+.motto-transform-row :is(.components-base-control) {
+  margin-bottom: 0;
+}
+
+/* MottoUnitControl — wrapper, var-mode chip, and css-mode overlay/popup editor
+ * → src/components/controls/units/MottoUnitControl.jsx
+ * → src/components/primitives/NumericUnitField.jsx (isVarMode branch)
+ * → src/styler/controls/SpacingControl.jsx (isCssUnitActive branch)
+ */
+.motto-unit-control {
+  flex: 1 0 0;
+  min-width: var(--motto-prop-input-width);
+  position: relative;
+}
+.motto-unit-control.is-var-mode :is(.components-unit-control__input, .components-number-control__input) {
+  opacity: 0;
+  pointer-events: none;
+}
+.motto-unit-control.is-var-mode .components-input-control__container {
+  position: relative;
+}
+.motto-unit-control.is-css-mode :is(.components-unit-control__input, .components-number-control__input) {
+  opacity: 0;
+  pointer-events: none;
+}
+.motto-unit-control.is-css-mode .components-input-control__container {
+  position: relative;
+}
+.motto-unit-control.is-css-mode:focus-within {
+  z-index: 10;
+}
+.motto-unit-control .components-unit-control__select {
+  font-size: 10px !important;
+  width: var(--motto-var-trigger-offset) !important;
+  margin-right: 4px !important;
+  padding: 2px !important;
+}
+
+.motto-unit-css-mode-overlay {
+  align-items: center;
+  background: white;
+  border: 1px solid var(--wp-components-color-gray-600);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  cursor: pointer;
+  display: flex;
+  left: 0;
+  min-height: var(--motto-button-height, 28px);
+  overflow: hidden;
+  padding: 2px 6px;
+  position: absolute;
+  right: calc(var(--motto-var-trigger-offset) + 8px);
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+.motto-unit-css-mode-overlay:hover {
+  background: var(--wp-components-color-accent-inverted, #f0f0f0);
+}
+.motto-unit-css-mode-overlay:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.motto-unit-css-mode-overlay-value {
+  font-family: monospace;
+  font-size: var(--motto-font-size-sm, 12px);
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* GridTemplateTracksControl
+ * → src/styler/controls/GridTemplateTracksControl.jsx
+ */
+.motto-grid-template-tracks-control .motto-grid-template-tracks-control__panel {
+  align-items: stretch;
+}
+.motto-grid-template-tracks-control .motto-grid-template-tracks-control__content {
+  align-items: stretch;
+}
+.motto-grid-template-tracks-control .motto-grid-template-tracks-control__track-group {
+  align-items: stretch;
+}
+.motto-grid-template-tracks-control .motto-grid-template-tracks-control__repeat-group {
+  border-top: 1px solid var(--wp-components-color-gray-500);
+  padding-top: var(--motto-space-lg);
+  padding-bottom: var(--motto-space-md);
+}
+
+.motto-row-value-toggle-color {
+  background: var(--motto-toggle-preview-color, transparent);
+  border: 1px solid var(--wp-components-color-gray-300);
+  border-radius: 999px;
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  background-size: cover;
+}
+
+.motto-select select.components-select-control__input {
+  font-size: var(--motto-font-size-md) !important;
+  height: var(--motto-input-height) !important;
+  min-height: 0 !important;
+}
+
+:is(.motto-section-help, .motto-inner-selector-description) {
+  color: var(--wp-components-color-gray-600);
+  margin-bottom: var(--motto-space-sm);
+  font-size: var(--motto-font-size-sm);
+  line-height: 1.2;
+}
+
+iframe.motto-preview-custom-width {
+  width: var(--motto-preview-width, 600px) !important;
+  max-width: 100%;
+}
+
+.motto-section-actions {
+  --motto-button-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--motto-space-sm);
+}
+
+.motto-info {
+  color: var(--wp-components-color-gray-600);
+  margin-bottom: var(--motto-space-sm);
+  font-size: var(--motto-font-size-sm);
+  line-height: 1.2;
+}
+
+.motto-info.is-error {
+  color: var(--motto-error, #b42318);
+}
+
+/* Block toolbar icons */
+.motto-block-icon {
+  width: 18px;
+  height: 18px;
+  fill: none !important;
+  stroke-width: var(--motto-lucide-stroke-width, 1.4) !important;
+}
+
+/* Editor canvas fixes */
+:where(.wp-block-post-featured-image) {
+  align-self: stretch;
+}
+
+.post-type-motto_css_class .edit-post-sidebar__panel-tab[id=block] {
+  display: none;
+}
+
+div:has(> .motto-panel-body) {
+  display: grid;
+}
+div:has(> .motto-panel-body) > .motto-styler-panel {
+  order: 10;
+}

@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/tabs",
+	"version": "0.1.0",
+	"title": "Motto Tabs",
+	"category": "design",
+	"icon": "table-col-after",
+	"description": "Tabbed content block with InnerBlocks-based tab panels.",
+	"attributes": {
+		"activeTabId": {
+			"type": "string",
+			"default": ""
+		},
+		"syncUrlHash": {
+			"type": "boolean",
+			"default": false
+		},
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"providesContext": {
+		"motto/tabs-activeTabId": "activeTabId",
+		"motto/tabs-syncUrlHash": "syncUrlHash"
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["wide", "full"]
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Tabbed content block. Structure: motto/tabs → [motto/tab-container, motto/tab-panels]. The tab-container holds one motto/tab-button per tab; the tab-panels holds one motto/tab per tab. Each button and its panel share the same tabId string. Set activeTabId on motto/tabs to the first tab's tabId.",
+		"examplePrompts": ["create a tabbed section", "add tabs", "organize content in tabs"]
+	}
+}

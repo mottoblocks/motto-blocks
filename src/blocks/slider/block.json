@@ -1,0 +1,153 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/slider",
+	"version": "0.1.1",
+	"title": "Motto Slider",
+	"category": "design",
+	"icon": "images-alt2",
+	"description": "Slider block with configurable Swiper options.",
+	"attributes": {
+		"slidesPerView": {
+			"type": "number",
+			"default": 1
+		},
+		"slidesPerViewAuto": {
+			"type": "boolean",
+			"default": false
+		},
+		"spaceBetween": {
+			"type": "number",
+			"default": 16
+		},
+		"responsiveOptions": {
+			"type": "object",
+			"default": {}
+		},
+		"swiperBreakpoints": {
+			"type": "object",
+			"default": {}
+		},
+		"speed": {
+			"type": "number",
+			"default": 300
+		},
+		"loop": {
+			"type": "boolean",
+			"default": false
+		},
+		"centeredSlides": {
+			"type": "boolean",
+			"default": false
+		},
+		"freeMode": {
+			"type": "boolean",
+			"default": false
+		},
+		"freeModeSticky": {
+			"type": "boolean",
+			"default": false
+		},
+		"mousewheelEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"mousewheelForceToAxis": {
+			"type": "boolean",
+			"default": true
+		},
+		"mousewheelReleaseOnEdges": {
+			"type": "boolean",
+			"default": true
+		},
+		"mousewheelSensitivity": {
+			"type": "number",
+			"default": 1
+		},
+		"autoplayEnabled": {
+			"type": "boolean",
+			"default": false
+		},
+		"autoplayDelay": {
+			"type": "number",
+			"default": 3000
+		},
+		"navigation": {
+			"type": "boolean",
+			"default": true
+		},
+		"navigationIcons": {
+			"type": "object",
+			"default": {
+				"prev": {
+					"type": "default",
+					"image": {
+						"id": 0,
+						"url": ""
+					},
+					"svg": {
+						"source": "inline",
+						"inline": "",
+						"lucideIcon": "arrow-left"
+					}
+				},
+				"next": {
+					"type": "default",
+					"image": {
+						"id": 0,
+						"url": ""
+					},
+					"svg": {
+						"source": "inline",
+						"inline": "",
+						"lucideIcon": "arrow-right"
+					}
+				}
+			}
+		},
+		"pagination": {
+			"type": "boolean",
+			"default": true
+		},
+		"paginationClickable": {
+			"type": "boolean",
+			"default": true
+		},
+		"scrollbar": {
+			"type": "boolean",
+			"default": false
+		},
+		"transitionEffect": {
+			"type": "string",
+			"default": "translate"
+		},
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["wide", "full"]
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Slider/carousel block powered by Swiper. Add motto/slide blocks inside it.",
+		"examplePrompts": ["create a carousel", "add a slider", "create an image slideshow"],
+		"features": {
+			"slides": "slidesPerView (number, default 1) or set slidesPerViewAuto:true to size by content. spaceBetween (number px, default 16). centeredSlides (bool).",
+			"loop": "loop (bool): enables continuous loop mode.",
+			"mousewheel": "mousewheelEnabled (bool): enables mouse wheel control. mousewheelForceToAxis (bool, default true), mousewheelReleaseOnEdges (bool, default true), mousewheelSensitivity (number, default 1).",
+			"autoplay": "autoplayEnabled (bool): enables autoplay. autoplayDelay (number ms, default 3000).",
+			"navigation": "navigation (bool, default true): shows prev/next arrow buttons.",
+			"pagination": "pagination (bool, default true): shows dot indicators. paginationClickable (bool, default true).",
+			"effect": "transitionEffect (string): 'translate' (default), 'fade', 'cube', 'flip', 'cards'.",
+			"speed": "speed (number ms, default 300): transition duration."
+		}
+	},
+	"mottoDefaults": {
+		"presetSlug":"standard-motto-slider"
+	}
+}

@@ -1,0 +1,16 @@
+// BorderControl — WP BorderControl trigger + "None" toggle
+.motto-border-control {
+	& .components-base-control {
+		margin-bottom: 0 !important;
+	}
+	& .components-border-control-dropdown button {
+		border: none !important;
+	}
+	& .components-input-control__container {
+		padding-left: 2px;
+	}
+	& .components-unit-control__select {
+		margin-right: 4px !important;
+		font-size: 10px !important;
+	}
+}

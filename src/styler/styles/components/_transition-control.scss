@@ -1,0 +1,46 @@
+// TransitionControl, TransitionPropertyField, TransitionEasingField, TransitionDurationField
+// → src/components/controls/transition/TransitionControl.jsx
+// → src/components/primitives/Transition{Property,Easing,Duration}Field.jsx
+
+// ─── Outer container ──────────────────────────────────────────────────────────
+
+.motto-transition-control {
+	display: grid;
+	gap: var(--motto-space-sm);
+}
+
+// ─── Panel (fields stacked below the tabs) ────────────────────────────────────
+
+.motto-transition-panel {
+	display: grid;
+	gap: var(--motto-space-sm);
+	padding-top: var(--motto-space-xs);
+}
+
+// ─── Shared row: label left · control right ───────────────────────────────────
+
+.motto-transition-field-row {
+	display: flex;
+	align-items: center;
+	gap: var(--motto-space-md);
+
+	// Strip WP component bottom margin inside rows
+	& :is(.components-base-control) {
+		margin-bottom: 0;
+	}
+}
+
+// ─── Easing field — top-align when the custom input appears below the select ──
+
+.motto-transition-easing-field {
+	align-items: center;
+}
+
+// ─── TransformControl — type select + value in a flex row ─────────────────────
+
+.motto-transform-row {
+	// Strip WP component bottom margin inside the row
+	& :is(.components-base-control) {
+		margin-bottom: 0;
+	}
+}

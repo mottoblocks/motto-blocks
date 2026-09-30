@@ -1,0 +1,120 @@
+/* =============================================================================
+   Container — Frontend Styles
+   Block gap reset and background layer z-index stacking system.
+   ============================================================================= */
+
+:where(.motto-container) {
+	// Block gap: reset margins so the container controls spacing via gap
+	& > * {
+		margin-block-start: 0;
+		margin-block-end: 0;
+		& + * {
+			margin-block-start: var(--wp--style--block-gap, 1em);
+		}
+	}
+}
+.motto-container {
+	--motto-parallax-offset: 120px;
+	position: relative;
+	box-sizing: border-box;
+
+	// Clip overflow when background layers are present
+	&:has(> .motto-container__bg-media, > .motto-container__bg-overlay) {
+		overflow: hidden;
+	}
+
+	// ---------------------------------------------------------------------------
+	// Background layers — shared base (media wrapper + overlay)
+	// ---------------------------------------------------------------------------
+	& > :is(.motto-container__bg-media, .motto-container__bg-overlay) {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		margin: 0 !important;
+		overflow: hidden;
+		max-width: none;
+	}
+
+	// Background media layer (z-index 0). `.motto-container__bg-media` is
+	// always a <div>. It either wraps an <img>/<video> child (default path)
+	// or paints itself directly via background-position/size/repeat when
+	// JS sets an inline background-image on it — the <div> fallback used
+	// only when backgroundRepeat/backgroundAttachment need a real CSS
+	// background (repeat, attachment:fixed have no <img> equivalent; see
+	// containerBackgroundNeedsDivFallback in index.jsx). These properties
+	// are inert when there's no background-image (child-wrapping path).
+	& > .motto-container__bg-media {
+		z-index: 0;
+		background-position: center center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		user-select: none;
+		overflow: clip;
+	}
+
+	// Parallax on the <div> fallback itself (no child media element)
+	& > .motto-container__bg-media.is-parallax {
+		inset: calc(var(--motto-parallax-offset) * -1) 0;
+		transform: translate3d(0, 0, 0);
+		will-change: transform;
+	}
+
+	// The actual <img>/<video> child — fills the wrapper
+	& > .motto-container__bg-media > :is(img, video) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	// Parallax lives on the child media element, not the wrapper — same
+	// inset/transform trick, just applied one level down.
+	& > .motto-container__bg-media > :is(img, video).is-parallax {
+		position: absolute;
+		inset: calc(var(--motto-parallax-offset) * -1) 0;
+		width: 100%;
+		height: calc(100% + var(--motto-parallax-offset) * 2);
+		max-width: none;
+		transform: translate3d(0, 0, 0);
+		will-change: transform;
+	}
+
+	// Overlay layer (z-index 1)
+	& > :where(.motto-container__bg-overlay) {
+		z-index: 1;
+	}
+
+	// ---------------------------------------------------------------------------
+	// Z-index stacking
+	// ---------------------------------------------------------------------------
+
+	// Full-cover link overlay (z-index 3, above content)
+	& > :where(.motto-container__link-overlay) {
+		position: absolute;
+		inset: 0;
+		z-index: 3;
+		display: block;
+		margin: 0;
+		max-width: none;
+	}
+	& > :where(.motto-container__link-overlay):focus-visible {
+		outline: none;
+	}
+
+	// All other children sit above background layers (z-index 2)
+	&
+		> :where(
+			:not(
+				.motto-container__bg-media,
+				.motto-container__bg-overlay,
+				.motto-container__link-overlay
+			)
+		) {
+		position: relative;
+		z-index: 2;
+	}
+
+	& > :where(.motto-container__bg-media, .motto-container__link-overlay) + * {
+		margin-block-start: 0;
+	}
+}

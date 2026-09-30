@@ -1,0 +1,182 @@
+/* Admin Cards — shared card primitive for admin-tab grids (Blocks, Classes, future Target) */
+
+// ---------------------------------------------------------------------------
+// Base
+// ---------------------------------------------------------------------------
+:root :is(.motto-admin-card) {
+	border: 1px solid var(--wp-components-color-gray-500);
+	border-radius: var(--motto-card-border-radius);
+	padding: var(--motto-space-lg);
+	margin: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Block toggle card (Blocks tab) — a <label> wrapping a checkbox
+// ---------------------------------------------------------------------------
+.motto-admin-card--block {
+	cursor: pointer;
+	display: grid;
+	justify-items: start;
+	align-content: flex-start;
+	gap: var(--motto-space-lg);
+	// padding: var(--motto-space-lg);
+	user-select: none;
+	height: 14rem;
+	// &:has(:checked) {
+	// 	border-color: var(--wp-components-color-gray-500);
+	// }
+	&.is-disabled {
+		opacity: 0.7;
+		cursor: default;
+		& .motto-toggle__track {
+			opacity: 0.5;
+		}
+	}
+}
+
+// Target tab's block card: same toggle-card base, but title-only content —
+// the tall Blocks-tab height (icon/badges/description) doesn't apply here.
+.motto-admin-card--block-target {
+	height: auto;
+	// gap: var(--motto-space-sm, 8px);
+}
+
+// ---------------------------------------------------------------------------
+// CSS class card (Classes tab) — an <article>, no toggle.
+//
+// This element is also the live-preview canvas for the class's OWN arbitrary
+// mottoStyler CSS (see admin-setup.php's `:where(.motto-admin-card--class).<slug>`
+// selector) — so it only holds box resets/spacing, never the fixed-height
+// flex layout. That lives one level down on .motto-admin-card-content, so a
+// class that sets its own `display`/`height`/`transform` can't clobber the
+// admin grid's card box.
+// ---------------------------------------------------------------------------
+:root .motto-admin-card--class {
+	display: block;
+	width: auto;
+	height: auto;
+	min-width: 0;
+	min-height: 0;
+	position: static;
+	aspect-ratio: unset;
+	translate: initial;
+	scale: initial;
+	rotate: initial;
+	transform: initial;
+
+	& .motto-admin-card-content {
+		display: flex;
+		flex: 1 1 auto;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: 100%;
+		height: 10rem;
+		width: 100%;
+	}
+}
+
+// ---------------------------------------------------------------------------
+// Structural shell (BEM __, per motto-visual-system control-naming.md:
+// header/body/actions/footer only)
+// ---------------------------------------------------------------------------
+.motto-admin-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--motto-space-3xs, 6px);
+	align-items: start;
+}
+
+.motto-admin-card__actions {
+	display: flex;
+	align-items: center;
+	gap: var(--motto-space-md, 6px);
+	background-color: white;
+	padding: 0.5rem;
+	border-radius: var(--motto-button-border-radius);
+	align-self: end;
+	// font-size: 0.8rem;
+	& :is(a, button) {
+		background: none;
+		border: none;
+		padding: 0;
+		color: #222;
+		cursor: pointer;
+		line-height: 1;
+		text-decoration: none;
+	}
+	& :is(.dashicons, .dashicons:before) {
+		width: 1em;
+		height: 1em;
+		font-size: 1rem !important;
+	}
+}
+
+// ---------------------------------------------------------------------------
+// Content rows (flat naming, not BEM — motto-visual-system control-naming.md)
+// ---------------------------------------------------------------------------
+.motto-admin-card-title {
+	font-size: inherit;
+	font-weight: 600;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+}
+
+.motto-admin-card-icon {
+	flex-shrink: 0;
+	width: 1.1em;
+	height: 1.1em;
+}
+
+.motto-admin-card-badges {
+	display: flex;
+	align-items: center;
+	gap: var(--motto-space-2xs, 6px);
+}
+
+.motto-admin-card-description {
+	margin: 0;
+	font-size: var(--motto-font-size-sm);
+	color: var(--wp-components-color-gray-600);
+}
+
+.motto-admin-card-slug {
+	display: block;
+	overflow-wrap: anywhere;
+	word-break: break-word;
+	margin-block: 0;
+	font-size: 0.9rem !important;
+	background: white;
+	color: #222;
+	border-radius: var(--motto-button-border-radius);
+	padding: 0.5em 0.75em;
+	line-height: 1;
+	font-weight: normal;
+}
+
+// ---------------------------------------------------------------------------
+// Badges (card-only today; promote out of this partial if reused elsewhere)
+// ---------------------------------------------------------------------------
+.motto-badge {
+	display: inline-flex;
+	align-items: center;
+	font-size: var(--motto-font-size-sm);
+	line-height: 1;
+	font-weight: 600;
+	padding: 0.25em 0.5em;
+	border-radius: 999px;
+	border: 1px solid var(--wp-components-color-gray-300);
+	background: var(--wp-components-color-gray-100);
+	color: var(--motto-color-black);
+}
+.motto-badge--pro {
+	border-color: rgba(121, 80, 242, 0.25);
+	background: rgba(121, 80, 242, 0.1);
+	color: rgba(68, 45, 150, 1);
+}
+.motto-badge--soon {
+	border-color: var(--wp-components-color-gray-300);
+	background: var(--wp-components-color-gray-100);
+	color: var(--wp-components-color-gray-600);
+}

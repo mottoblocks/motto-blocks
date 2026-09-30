@@ -1,0 +1,46 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/accordion-item",
+	"version": "0.1.0",
+	"title": "Accordion Item",
+	"category": "design",
+	"icon": "excerpt-view",
+	"description": "Single item for Motto Accordion.",
+	"parent": ["motto/accordion"],
+	"usesContext": ["motto/accordion-closeOtherItems"],
+	"providesContext": {
+		"motto/accordion-item-itemId": "itemId",
+		"motto/accordion-item-isOpen": "isOpen"
+	},
+	"attributes": {
+		"itemId": {
+			"type": "string",
+			"default": ""
+		},
+		"isOpen": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"reusable": false
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Single accordion item. Must be placed inside motto/accordion. Structure: motto/accordion-item → [motto/accordion-trigger, motto/accordion-panel]. isOpen (bool): starts the panel open by default. Set the trigger's text on its inner motto/accordion-trigger block.",
+		"examplePrompts": ["add an accordion item", "add a FAQ item"]
+	},
+	"mottoDefaults": {
+		"css": {
+			"desktop": [
+				{ "name": "border-color" },
+				{ "name": "border-radius" },
+				{ "name": "background-color" }
+			]
+		}
+	}
+}

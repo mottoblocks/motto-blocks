@@ -1,0 +1,90 @@
+.motto-wildcards-popup-wrapper {
+	margin-top: var(--motto-space-md);
+}
+
+.motto-wildcards-popup__trigger {
+	width: 100%;
+	justify-content: center;
+	gap: var(--motto-space-xs);
+
+	svg {
+		width: 16px;
+		height: 16px;
+	}
+}
+
+.motto-wildcards-popup {
+	& .components-popover__content {
+		width: min(320px, calc(100vw - 40px));
+		max-height: 420px;
+		overflow-y: auto;
+		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+		border-radius: var(--motto-border-radius);
+	}
+}
+
+.motto-wildcards-popup__content {
+	display: grid;
+	// gap: var(--motto-space-sm);
+	padding: var(--motto-space-md);
+	min-width: 0;
+}
+
+.motto-wildcards-popup__tabs {
+	min-width: 0;
+
+	& .components-tab-panel__tabs {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		background: white;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	& .components-tab-panel__tabs-item {
+		flex-shrink: 0;
+	}
+}
+
+.motto-wildcards-popup__list {
+	display: grid;
+
+	&--operators {
+		padding-top: var(--motto-space-sm);
+		border-top: 1px solid var(--wp-components-color-gray-100);
+	}
+}
+
+.motto-wildcard-item {
+	padding: var(--motto-space-md);
+	border-bottom: 1px solid;
+	border-color: var(--wp-components-color-gray-300);
+	// border-radius: var(--motto-border-radius-sm);
+	// border-top: 1px solid;
+
+	&:hover {
+		background-color: var(--wp-components-color-gray-100);
+	}
+}
+
+.motto-wildcard-token {
+	display: inline-block;
+	user-select: all;
+	cursor: text;
+	font-family: var(--motto-code-font-family, monospace);
+	font-size: var(--motto-font-size-sm);
+	font-weight: 600;
+	background-color: var(--wp-components-color-gray-300);
+	padding: 2px 4px;
+	border-radius: var(--motto-border-radius-sm);
+	white-space: nowrap;
+	margin-bottom: 2px;
+}
+
+.motto-wildcard-description {
+	font-size: 12px;
+	color: var(--wp-components-color-gray-600);
+	line-height: 1.4;
+}

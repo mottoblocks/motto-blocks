@@ -1,0 +1,51 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/buttons",
+	"version": "0.1.0",
+	"title": "Motto Buttons",
+	"category": "design",
+	"icon": "button",
+	"description": "Buttons container block that only accepts Motto Button items.",
+	"attributes": {
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["left", "center", "right", "wide", "full"]
+	},
+	"mottoBaseLayout": "flex",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Button group container. Must contain motto/button inner blocks. Use for CTA groups.",
+		"examplePrompts": [
+			"add CTA buttons",
+			"create a button group",
+			"add two buttons side by side"
+		]
+	},
+	"mottoDefaults": {
+		"css": {
+			"desktop": [
+				{
+					"name": "display",
+					"value": "flex"
+				},
+				{
+					"name": "flex-direction"
+				},
+				{
+					"name": "flex-wrap"
+				},
+				{
+					"name": "justify-content",
+					"value": ""
+				}
+			]
+		}
+	}
+}

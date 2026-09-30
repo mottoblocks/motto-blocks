@@ -1,0 +1,13 @@
+// ShapeRegionControl — clip-path shape region picker
+.motto-shape-region-control {
+	display: grid;
+	gap: var(--motto-space-sm);
+
+	& .motto-shape-region-type {
+		margin-bottom: 0 !important;
+	}
+
+	& .motto-shape-region-args {
+		margin-bottom: 0 !important;
+	}
+}

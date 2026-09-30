@@ -1,0 +1,250 @@
+@use "./styles/tokens";
+@use "./styles/primitives";
+@use "./styles/admin-cards";
+@use "ui/styles/toggle";
+
+* {
+	box-sizing: border-box;
+}
+
+// Buttons
+:root .button {
+	display: inline-flex;
+	align-items: center;
+}
+
+:where(.motto-blocks-settings-page) {
+	font-size: 16px;
+	line-height: 1.4;
+	& .postbox {
+		--padding: 1.25rem;
+		border-radius: 0.75em;
+		box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.1);
+		border-color: #eee;
+
+		max-width: 80rem;
+		& .postbox-header {
+			padding-inline: var(--padding);
+			border-color: inherit;
+		}
+		& .inside {
+			font-size: inherit;
+			padding: var(--padding);
+			margin: 0;
+		}
+	}
+	& .nav-tab {
+		border-top-left-radius: 0.25em;
+		border-top-right-radius: 0.25em;
+	}
+	& :is(h2, h3, h4, h5, h6) {
+		margin-block: 1.5rem;
+	}
+	& h2 {
+		font-size: var(--motto-heading-font-size-xl);
+		margin-block: 1rem;
+		line-height: 1;
+	}
+	& h3 {
+		font-size: var(--motto-heading-font-size-lg);
+		line-height: 1;
+	}
+	& .lead {
+		font-size: var(--motto-heading-font-size-md) !important;
+		line-height: 1.4;
+		& > * {
+			line-height: inherit;
+		}
+	}
+
+	& p {
+		font-size: inherit;
+	}
+}
+
+.motto-blocks-settings-tabs {
+	margin-bottom: 1em;
+}
+
+.motto-styler-overview-card {
+	max-width: 50em;
+}
+
+.motto-blocks-logo {
+	width: 300px;
+	display: block;
+	max-width: 100%;
+	margin: 1.5em;
+	&.inline {
+		width: auto;
+		height: 1.25em;
+		margin: 0;
+		display: inline-flex;
+	}
+}
+
+.motto-custom-css-editor {
+	& .motto-custom-css-editor__textarea,
+	& .CodeMirror {
+		min-height: 32rem;
+		resize: vertical;
+	}
+
+	& .CodeMirror {
+		height: 32rem;
+		overflow: auto;
+	}
+
+	& .CodeMirror-scroll {
+		min-height: inherit;
+	}
+}
+
+/* Shared Controls */
+.motto-styler-tab-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--motto-space-2xs, 10px);
+	flex-wrap: wrap;
+	margin: 0 0 1em;
+}
+
+.motto-styler-tab-header-actions {
+	display: flex;
+	align-items: center;
+	gap: var(--motto-space-2xs, 10px);
+	flex-wrap: wrap;
+}
+
+.motto-styler-classes-toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--motto-space-2xs, 10px);
+	margin: 0;
+}
+
+.button.motto-styler-icon-action {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	border-color: rgba($color: black, $alpha: 0.1);
+	& .dashicons {
+		line-height: 1;
+	}
+}
+
+/* Classes */
+
+/* Variables */
+.motto-styler-variables-table {
+	&.widefat {
+		border-color: var(--wp-components-color-gray-500);
+		border-radius: var(--motto-card-border-radius);
+		overflow: hidden;
+		& :is(td, th) {
+			padding: 1em;
+		}
+	}
+	& .motto-styler-variable-drag-column,
+	& .motto-styler-variable-drag-cell {
+		width: 44px;
+		text-align: center;
+	}
+
+	& .motto-styler-variable-row.is-dragging {
+		opacity: 0.5;
+	}
+
+	& .motto-styler-variable-actions {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: var(--motto-space-3xs, 6px);
+
+		& [hidden] {
+			display: none !important;
+		}
+	}
+
+	& .motto-styler-variable-drag-handle {
+		cursor: grab;
+	}
+
+	& .motto-styler-variable-edit-actions[hidden] {
+		display: none;
+	}
+
+	& .motto-styler-variable-edit-actions:not([hidden]) {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--motto-space-3xs, 6px);
+	}
+}
+
+.motto-styler-variable-input[disabled] {
+	background-color: transparent;
+	border: none;
+	box-shadow: none;
+	color: currentColor;
+}
+
+/* Targeting & Blocks */
+.motto-styler-target-groups {
+	// max-width: 900px;
+	&.is-disabled {
+		opacity: 0.65;
+		pointer-events: none;
+	}
+}
+
+.motto-styler-target-group {
+	margin-bottom: 1em;
+	border-radius: var(--motto-card-border-radius);
+}
+
+.motto-target-group-title {
+	align-items: center;
+	display: flex;
+	gap: var(--motto-space-2xs, 10px);
+	cursor: pointer;
+	user-select: none;
+	margin-block: 1rem;
+}
+:is(.motto-blocks-grid, .motto-styler-classes-grid) {
+	display: grid;
+	gap: var(--motto-space-lg, 1rem);
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.motto-styler-namespace-section {
+	flex: 0 0 100%;
+	width: 100%;
+}
+
+.motto-namespace-section-blocks {
+	display: flex;
+	gap: var(--motto-space-md);
+	flex-wrap: wrap;
+	margin-top: var(--motto-space-md);
+	& > * {
+		flex: 0 1 18%;
+		min-width: 15rem;
+	}
+}
+
+// Notice
+.motto-admin-notice {
+	border-radius: 0.2em;
+	& .notice-dismiss {
+		top: 50%;
+		translate: 0 -50%;
+	}
+}
+
+.progress-bar {
+	width: 100%;
+	margin: 1em 0;
+}

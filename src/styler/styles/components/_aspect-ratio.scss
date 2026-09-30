@@ -1,0 +1,25 @@
+// AspectRatioControl — preset grid + custom W×H inputs
+.motto-aspect-ratio-control {
+	display: grid;
+	gap: var(--motto-space-sm);
+	& .components-toggle-group-control-option-base {
+		padding-inline: 5px;
+	}
+}
+
+.motto-aspect-ratio-presets {
+	// display: grid;
+	// grid-template-columns: repeat(3, minmax(0, 1fr));
+	// gap: var(--motto-space-sm);
+}
+
+.motto-aspect-ratio-inputs {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+	align-items: center;
+	gap: var(--motto-space-sm);
+}
+
+.motto-aspect-ratio-separator {
+	color: var(--wp-components-color-gray-600);
+}

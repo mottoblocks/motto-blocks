@@ -1,0 +1,101 @@
+/* DeviceToggleControl — device-picker breakpoint bar and default icon variant
+ * → src/components/controls/device/DeviceToggleControl.jsx
+ */
+
+// DeviceToggleControl (variant="default") — icon-only trigger + device-picker popup
+
+.motto-device-toggle {
+	display: inline-flex;
+	align-items: center;
+	& .motto-breakpoints {
+		outline: 0 !important;
+		&::before {
+			border-radius: 2px;
+		}
+	}
+}
+
+.motto-device-toggle__trigger {
+	min-width: 0;
+	padding: 0 var(--motto-space-sm);
+	height: var(--motto-button-height);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.motto-device-toggle__icon {
+	align-items: center;
+	display: inline-flex;
+	justify-content: center;
+	& svg {
+		display: block;
+		transform-origin: 50% 50%;
+	}
+	&.is-landscape svg {
+		transform: rotate(90deg);
+	}
+}
+
+.motto-device-toggle__label {
+	align-items: center;
+	display: inline-flex;
+	gap: var(--motto-space-sm);
+}
+
+.motto-device-toggle__text {
+	// visually hidden, screen-reader only
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+.motto-device-toggle__menu {
+	display: flex;
+	gap: var(--motto-space-md);
+}
+
+.motto-device-toggle__option {
+	min-width: 0;
+	padding: 0 var(--motto-space-sm);
+	height: var(--motto-button-height);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+
+	&.motto-is-active {
+		background: var(--wp-admin-theme-color) !important;
+		color: white !important;
+	}
+}
+
+// DeviceToggleControl (variant="extended") — sticky full-width breakpoint bar
+.motto-device-toggle--extended {
+	background: white;
+	display: block;
+	position: sticky;
+	top: 47px;
+	z-index: 110;
+	width: calc(100% + 32px);
+	margin-left: -16px;
+	margin-bottom: var(--motto-space-lg);
+	// box-shadow: 0 0px 4px rgba($color: #000000, $alpha: 0.2);
+	border-bottom: 1px solid var(--wp-components-color-gray-300);
+
+	& .components-toggle-group-control {
+		width: 100%;
+		box-shadow: none !important;
+		border: none !important;
+		border-radius: 0;
+	}
+	// & .components-base-control__field > div:first-child {
+	// 	display: none !important;
+	// }
+}

@@ -1,0 +1,102 @@
+// Just to ensure images and videos are responsive
+:where(img, video) {
+	max-width: 100%;
+	height: auto;
+}
+:where(.motto-svg__image, .motto-svg__inline) {
+	max-width: 2em;
+	height: auto;
+}
+
+:where(.has-motto-styler) {
+	box-sizing: border-box;
+}
+
+:where(.motto-has-border-radius) {
+	overflow: clip;
+}
+
+:root .has-global-padding .has-position-absolute {
+	margin-inline: 0;
+}
+
+:where(.motto-has-aspect-ratio) {
+	width: 100%;
+	height: auto;
+}
+
+:where(.motto-has-editor-preview-label) {
+	position: relative;
+}
+
+:where(.motto-editor-preview-label) {
+	text-transform: uppercase;
+	display: inline-flex;
+	align-items: center;
+	width: fit-content;
+	max-width: 100%;
+	padding: 2px 6px;
+	border-radius: 2px;
+	line-height: 1;
+	// background: var(--wp-admin-theme-color, #007cba);
+	background: #eee;
+	color: #666;
+	font-size: var(--motto-font-size-sm, 11px);
+	letter-spacing: 0;
+	// font-weight: bold;
+	vertical-align: middle;
+	user-select: none;
+}
+
+:where(.motto-editor-preview-label--overlay) {
+	position: absolute;
+	inset-block-end: 100%;
+	inset-inline-start: 0;
+	z-index: 2;
+	max-width: min(100%, 360px);
+	// transform: translateY(calc(-100% - 2px));
+	pointer-events: none;
+}
+
+/*--------------------------------------------------------------
+## Base Layout
+--------------------------------------------------------------*/
+
+.motto-base-layout-grid {
+	display: grid;
+}
+
+.motto-base-layout-inline-grid {
+	display: inline-grid;
+}
+
+.motto-base-layout-flex {
+	display: flex;
+}
+
+.motto-base-layout-inline-flex {
+	display: inline-flex;
+}
+
+.motto-base-layout-flow {
+	display: block;
+}
+
+:is(
+	.motto-base-layout-grid,
+	.motto-base-layout-inline-grid,
+	.motto-base-layout-flex,
+	.motto-base-layout-inline-flex
+) {
+	gap: var(--wp--style--block-gap, 1em);
+}
+
+:is(.motto-base-layout-flow) {
+	& > * {
+		margin-block: 0;
+	}
+
+	& > * + * {
+		margin-block-start: var(--wp--style--block-gap, 1em);
+	}
+}

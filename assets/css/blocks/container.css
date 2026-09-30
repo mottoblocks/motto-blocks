@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* =============================================================================
+   Container — Frontend Styles
+   Block gap reset and background layer z-index stacking system.
+   ============================================================================= */
+:where(.motto-container) > * {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+:where(.motto-container) > * + * {
+  margin-block-start: var(--wp--style--block-gap, 1em);
+}
+
+.motto-container {
+  --motto-parallax-offset: 120px;
+  position: relative;
+  box-sizing: border-box;
+}
+.motto-container:has(> .motto-container__bg-media, > .motto-container__bg-overlay) {
+  overflow: hidden;
+}
+.motto-container > :is(.motto-container__bg-media, .motto-container__bg-overlay) {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  margin: 0 !important;
+  overflow: hidden;
+  max-width: none;
+}
+.motto-container > .motto-container__bg-media {
+  z-index: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  user-select: none;
+  overflow: clip;
+}
+.motto-container > .motto-container__bg-media.is-parallax {
+  inset: calc(var(--motto-parallax-offset) * -1) 0;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+.motto-container > .motto-container__bg-media > :is(img, video) {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.motto-container > .motto-container__bg-media > :is(img, video).is-parallax {
+  position: absolute;
+  inset: calc(var(--motto-parallax-offset) * -1) 0;
+  width: 100%;
+  height: calc(100% + var(--motto-parallax-offset) * 2);
+  max-width: none;
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+.motto-container > :where(.motto-container__bg-overlay) {
+  z-index: 1;
+}
+.motto-container > :where(.motto-container__link-overlay) {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: block;
+  margin: 0;
+  max-width: none;
+}
+.motto-container > :where(.motto-container__link-overlay):focus-visible {
+  outline: none;
+}
+.motto-container > :where(:not(.motto-container__bg-media,
+.motto-container__bg-overlay,
+.motto-container__link-overlay)) {
+  position: relative;
+  z-index: 2;
+}
+.motto-container > :where(.motto-container__bg-media, .motto-container__link-overlay) + * {
+  margin-block-start: 0;
+}

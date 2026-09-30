@@ -1,0 +1,30 @@
+// BackgroundLayersControl — base color + layer stack
+.motto-background-layers-control {
+	display: grid;
+	gap: var(--motto-space-sm);
+}
+
+.motto-background-base-color-control {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	& .motto-color-picker {
+		padding: 4px;
+		background-color: transparent !important;
+	}
+}
+
+.motto-background-layer-panel {
+	display: grid;
+	gap: var(--motto-space-sm);
+	padding: var(--motto-space-md) 0;
+}
+
+.motto-background-layer-type {
+	& .components-base-control__field > div:first-child {
+		display: none;
+	}
+	& .components-toggle-group-control {
+		width: 100%;
+	}
+}

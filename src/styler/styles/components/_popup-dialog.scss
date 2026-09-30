@@ -1,0 +1,54 @@
+/* PopupDialog — modal-style popup layout for class editor and preset overlays */
+
+.motto-popup {
+	& .motto-popup-content {
+		display: grid;
+		gap: var(--motto-space-md);
+	}
+	& .components-modal__content {
+		max-width: var(--motto-popup-dialog-width);
+		width: var(--motto-popup-dialog-width);
+	}
+}
+
+.motto-popup-actions {
+	margin-left: auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--motto-space-sm);
+	justify-content: flex-end;
+	& > button {
+		min-width: 10ch;
+	}
+}
+
+.motto-selector-edit-error {
+	color: red;
+}
+
+.motto-presets-popup {
+	--motto-popup-dialog-width: min(1200px, 90vw);
+	& .motto-popup-tabs {
+		display: grid;
+		gap: var(--motto-space-lg);
+		& .components-tab-panel__tabs {
+			align-self: start;
+			position: sticky;
+			display: flex;
+			gap: var(--motto-space-sm);
+			top: 0;
+			background: white;
+			& .components-tab-panel__tabs-item {
+				height: var(--motto-tab-height) !important;
+				padding: 0.5em;
+			}
+		}
+		& .components-tab-panel__tab {
+			justify-content: flex-start;
+			width: 100%;
+		}
+		& .components-tab-panel__tab-content {
+			min-width: 0;
+		}
+	}
+}

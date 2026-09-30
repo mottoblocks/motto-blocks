@@ -1,0 +1,31 @@
+{
+	"context": [
+		{ "label": "Active parent", "before": ".is-active" },
+		{ "label": "Open state", "before": ".is-open" },
+		{ "label": "Dark mode", "before": ".is-dark" },
+		{ "label": "Focused parent", "before": ":focus-within" },
+		{ "label": "Has attribute", "before": "[data-active]" }
+	],
+	"common": [
+		{ "label": "Headings", "selector": " :is(h1,h2,h3,h4,h5,h6)" },
+		{ "label": "Items", "selector": " :is(.item)" },
+		{ "label": "Buttons", "selector": " :is(.button)" },
+		{ "label": "Links", "selector": " :is(a)" },
+		{ "label": "Paragraphs", "selector": " :is(p)" },
+		{ "label": "Lists", "selector": " :is(ul,ol)" }
+	],
+	"state": [
+		{ "label": "Hover", "selector": ":hover" },
+		{ "label": "Focus", "selector": ":focus" },
+		{ "label": "Active", "selector": ":active" },
+		{ "label": "Disabled", "selector": ":disabled" }
+	],
+	"structure": [
+		{ "label": "Children", "selector": " > :is(*)" },
+		{ "label": "Direct Item", "selector": " > :is(.item)" }
+	],
+	"pseudo": [
+		{ "label": "Before", "selector": "::before" },
+		{ "label": "After", "selector": "::after" }
+	]
+}

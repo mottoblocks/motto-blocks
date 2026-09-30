@@ -1,0 +1,53 @@
+@use "./tokens";
+@use "./primitives";
+@use "./wp-overrides";
+@use "ui/styles/device-toggle";
+@use "ui/styles/panel-section";
+@use "ui/styles/buttons";
+@use "ui/styles/inline-select";
+@use "ui/styles/lucide-gallery";
+@use "ui/styles/ui-popups";
+@use "ui/styles/wildcards-popup";
+@use "./styler-ui";
+
+/* Block toolbar icons */
+// `.motto-block-icon` is set directly on the <svg> root (see BlockIcon.jsx),
+// not on a wrapper. Lucide-style icons (assets/icons/blocks/*.svg) draw with
+// stroke only (fill="none" on that root). Core Gutenberg CSS sets
+// fill: currentColor on several icon selectors (inserter, toolbar, list
+// view); since fill is inherited and a CSS rule wins over the presentational
+// attribute by specificity, it fills the icon in. Force it back off.
+.motto-block-icon {
+	width: 18px;
+	height: 18px;
+	fill: none !important;
+	stroke-width: var(--motto-lucide-stroke-width, 1.4) !important;
+}
+
+/* Editor canvas fixes */
+:not(.is-iframed)
+	> .editor-resizable-editor
+	> :is(div[style*="height: 100%"], div[style*="height:100%"]) {
+	// height: auto !important;
+}
+
+:where(.wp-block-post-featured-image) {
+	align-self: stretch;
+}
+
+// Hide the Block tab in the Settings sidebar when editing CSS Class posts.
+// WordPress adds .post-type-motto_css_class to the admin body automatically.
+// The Block tab button uses id="block" in Gutenberg 6.4+ (Ariakit Tabs).
+.post-type-motto_css_class {
+	.edit-post-sidebar__panel-tab[id="block"] {
+		display: none;
+	}
+}
+
+// Hack to position styler at bottom of the panel.
+div:has(> .motto-panel-body) {
+	display: grid;
+	& > .motto-styler-panel {
+		order: 10;
+	}
+}

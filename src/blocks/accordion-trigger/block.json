@@ -1,0 +1,38 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/accordion-trigger",
+	"version": "0.1.0",
+	"title": "Accordion Trigger",
+	"category": "design",
+	"icon": "button",
+	"description": "Trigger button for a single Motto Accordion item.",
+	"parent": ["motto/accordion-item"],
+	"usesContext": [
+		"motto/accordion-item-itemId",
+		"motto/accordion-item-isOpen",
+		"motto/accordion-closeOtherItems"
+	],
+	"attributes": {
+		"itemId": {
+			"type": "string",
+			"default": ""
+		},
+		"isOpen": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"inserter": false,
+		"reusable": false
+	},
+	"mottoBaseLayout": "flex",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Trigger button inside motto/accordion-item. Content is a core/paragraph text child plus an optional motto/svg icon child, in either order.",
+		"examplePrompts": []
+	}
+}

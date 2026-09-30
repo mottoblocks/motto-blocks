@@ -1,0 +1,113 @@
+@charset "UTF-8";
+/* =============================================================================
+   List — Frontend Styles
+   Covers both `.motto-list` and `.motto-list-item`.
+   Bullet rendering is driven by `data-resolved-bullet-type` on each item.
+   Types: default | none | image | icon | svg | counter
+   ============================================================================= */
+.motto-list {
+  --bullet-size: 1em;
+  --bullet-gap: 0.5em;
+  --list-gap: 1em;
+  --bullet-color: currentColor;
+  box-sizing: border-box;
+  padding: 0;
+  counter-reset: motto-list-item 0;
+}
+.motto-list :where(.motto-list-item) {
+  box-sizing: border-box;
+  position: relative;
+  list-style: none;
+  align-items: flex-start;
+  gap: var(--bullet-gap);
+}
+.motto-list :where(.motto-list-item) :where(.motto-list-item__bullet) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--bullet-size);
+  height: 1em;
+  flex: 0 0 var(--bullet-size);
+  margin-top: 0.2em;
+  color: var(--bullet-color);
+}
+.motto-list :where(.motto-list-item) :where(.motto-list-item__bullet)::before {
+  content: "";
+}
+.motto-list :where(.motto-list-item) :where(.motto-list-item__bullet) :is(svg, img) {
+  display: block;
+}
+.motto-list :where(.motto-list-item) .motto-list-item__text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=default]) .motto-list-item__bullet::before {
+  width: max(0.35em, var(--bullet-size) * 0.2);
+  height: max(0.35em, var(--bullet-size) * 0.2);
+  border-radius: 999px;
+  background: currentColor;
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=none]) {
+  gap: 0;
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=none]) .motto-list-item__bullet {
+  width: 0;
+  flex-basis: 0;
+  margin-top: 0;
+  overflow: hidden;
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=counter]) {
+  counter-increment: motto-list-item;
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=counter] .motto-list-item__bullet--counter)::before {
+  display: inline-block;
+  min-width: var(--bullet-size);
+  text-align: right;
+  font-size: var(--bullet-size);
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=counter] .motto-list-item__bullet--counter-decimal)::before {
+  content: counter(motto-list-item, decimal) ".";
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=counter] .motto-list-item__bullet--counter-decimal-leading-zero)::before {
+  content: counter(motto-list-item, decimal-leading-zero) ".";
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=counter] .motto-list-item__bullet--counter-lower-alpha)::before {
+  content: counter(motto-list-item, lower-alpha) ".";
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=counter] .motto-list-item__bullet--counter-upper-alpha)::before {
+  content: counter(motto-list-item, upper-alpha) ".";
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=counter] .motto-list-item__bullet--counter-lower-roman)::before {
+  content: counter(motto-list-item, lower-roman) ".";
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=counter] .motto-list-item__bullet--counter-upper-roman)::before {
+  content: counter(motto-list-item, upper-roman) ".";
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=image] .motto-list-item__bullet-media,
+.motto-list-item[data-resolved-bullet-type=icon] .motto-list-item__bullet-media,
+.motto-list-item[data-resolved-bullet-type=svg] .motto-list-item__bullet-media) {
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=image] .motto-list-item__bullet-media--image) {
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  object-fit: contain;
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=icon] .motto-list-item__bullet-media--svg,
+.motto-list-item[data-resolved-bullet-type=svg] .motto-list-item__bullet-media--svg) {
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  fill: var(--bullet-color);
+}
+.motto-list :where(.motto-list-item[data-resolved-bullet-type=icon] .motto-list-item__bullet-media--svg,
+.motto-list-item[data-resolved-bullet-type=svg] .motto-list-item__bullet-media--svg).lucide {
+  stroke: var(--bullet-color);
+  fill: none !important;
+}

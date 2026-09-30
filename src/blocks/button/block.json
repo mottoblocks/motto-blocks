@@ -1,0 +1,82 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/button",
+	"version": "0.1.0",
+	"title": "Button",
+	"category": "design",
+	"icon": "button",
+	"description": "Button block with optional image, Lucide, or inline SVG icon.",
+	"parent": ["motto/buttons"],
+	"attributes": {
+		"text": {
+			"type": "string",
+			"source": "html",
+			"selector": ".motto-button__text"
+		},
+		"url": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".motto-button",
+			"attribute": "href"
+		},
+		"linkTarget": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".motto-button",
+			"attribute": "target"
+		},
+		"rel": {
+			"type": "string",
+			"source": "attribute",
+			"selector": ".motto-button",
+			"attribute": "rel"
+		},
+		"iconPosition": {
+			"type": "string",
+			"default": "left"
+		},
+		"iconOptions": {
+			"type": "object",
+			"default": {
+				"type": "none",
+				"image": {
+					"id": 0,
+					"url": ""
+				},
+				"svg": {
+					"source": "inline",
+					"inline": "",
+					"lucideIcon": "check"
+				}
+			}
+		},
+		"noFollow": {
+			"type": "boolean",
+			"default": false
+		},
+		"linkDynamic": {
+			"type": "object",
+			"default": {}
+		},
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["left", "center", "right", "wide", "full"]
+	},
+	"mottoBaseLayout": "inline-flex",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Individual button. Must be placed inside motto/buttons. Key attributes: text (string, button label), url (string, href), linkTarget ('_blank' for new tab), noFollow (bool). Supports optional icon.",
+		"supportsIcon": true,
+		"examplePrompts": ["add a button", "create a call to action button"]
+	},
+	"mottoDefaults": {
+		"presetSlug": "motto-button"
+	}
+}

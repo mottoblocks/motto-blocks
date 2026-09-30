@@ -1,0 +1,117 @@
+/* EntityTokenPicker — searchable token selector with chip list and inline menu
+ * → src/components/primitives/EntityTokenPicker.jsx
+ */
+
+@use "drag-reorder";
+
+.motto-entity-token-picker {
+	position: relative;
+}
+
+.motto-entity-token-picker__chips {
+	display: grid;
+	gap: var(--motto-space-sm);
+}
+
+.motto-entity-token-picker__chip {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: var(--motto-space-sm);
+	padding: 0.35rem 0.5rem;
+	border: 1px solid var(--motto-input-border-color);
+	border-radius: var(--motto-input-border-radius);
+	background: var(--wp-components-color-gray-100);
+	--motto-button-height: 20px;
+
+	@include drag-reorder.states;
+
+	&[draggable="true"] {
+		cursor: grab;
+	}
+}
+
+.motto-entity-token-picker__chip-drag {
+	@include drag-reorder.handle;
+}
+
+.motto-entity-token-picker__chip-label {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.motto-entity-token-picker__chip-description {
+	color: var(--wp-components-color-gray-600);
+}
+
+.motto-entity-token-picker__search {
+	position: relative;
+}
+
+.motto-entity-token-picker__trigger {
+	cursor: pointer;
+}
+
+.motto-entity-token-picker__menu-search {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: var(--motto-space-sm);
+	align-items: center;
+	padding: 0.15rem;
+	border-bottom: 1px solid var(--motto-input-border-color);
+	margin-bottom: 0.2rem;
+}
+
+.motto-dynamic-options-trigger {
+	flex: none;
+}
+
+.motto-entity-token-picker__loading {
+	position: absolute;
+	top: 50%;
+	right: 0.5rem;
+	transform: translateY(-50%);
+	pointer-events: none;
+}
+
+.motto-entity-token-picker__menu {
+	display: grid;
+	gap: 1px;
+	position: absolute;
+	z-index: 10;
+	left: 0;
+	right: 0;
+	max-height: 220px;
+	overflow: auto;
+	border: 1px solid var(--motto-input-border-color);
+	border-radius: var(--motto-input-border-radius);
+	background: var(--motto-color-white);
+	padding: 0.25rem;
+}
+
+.motto-entity-token-picker__option,
+.motto-dynamic-options-list__option {
+	display: grid;
+	gap: 0.2rem;
+	text-align: left;
+	width: 100%;
+	padding: 0.4rem 0.5rem;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	border-radius: 0.2rem;
+
+	&:hover,
+	&:focus {
+		background: var(--wp-components-color-gray-100);
+		outline: none;
+	}
+}
+
+.motto-entity-token-picker__option-description,
+.motto-dynamic-options-list__option-description {
+	font-size: var(--motto-font-size-sm);
+	color: var(--wp-components-color-gray-600);
+}

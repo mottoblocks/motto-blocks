@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "motto/slide",
+  "version": "0.1.0",
+  "title": "Slide",
+  "category": "design",
+  "icon": "slides",
+  "description": "Single slide item for Motto Slider.",
+  "parent": ["motto/slider"],
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "reusable": false
+  },
+  "mottoBaseLayout": "flow",
+  "textdomain": "motto-blocks",
+  "mottoAI": {
+    "description": "Single slide inside a motto/slider. Accepts any inner blocks as slide content (images, headings, containers, etc.).",
+    "examplePrompts": ["add a slide"]
+  }
+}

@@ -1,0 +1,71 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/accordion",
+	"version": "0.1.0",
+	"title": "Motto Accordion",
+	"category": "design",
+	"icon": "menu-alt3",
+	"description": "Accordion block with item-based toggle panels.",
+	"providesContext": {
+		"motto/accordion-closeOtherItems": "closeOtherItems"
+	},
+	"attributes": {
+		"closeOtherItems": {
+			"type": "boolean",
+			"default": false
+		},
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["wide", "full"]
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Accordion block for FAQ or toggle content. Add motto/accordion-item blocks inside it. closeOtherItems (bool): if true, opening one item automatically closes the others.",
+		"examplePrompts": ["create a FAQ section", "add an accordion", "create collapsible content"]
+	},
+	"mottoDefaults": {
+		"css": {
+			"desktop": [
+				{ "name": "display", "value": "flex" },
+				{ "name": "flex-direction", "value": "column" },
+				{ "name": "gap", "value": "1em" }
+			]
+		},
+		"blockSelectors": [
+			{
+				"selector": "&{BLOCK} :is(.motto-accordion-item__trigger)",
+				"label": "Accordion trigger",
+				"css": {
+					"desktop": [
+						{ "name": "padding", "value": "0.75em 1em" },
+						{ "name": "border-bottom", "value": "solid 1px #eee" },
+						{ "name": "color" },
+						{ "name": "font-size" }
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.is-open .motto-accordion-item__trigger)",
+				"label": "Accordion trigger (open)",
+				"css": {
+					"desktop": [{ "name": "border-color" }]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-accordion-item__panel-inner)",
+				"label": "Accordion panel content",
+				"css": {
+					"desktop": [{ "name": "padding", "value": "0 1em 1em" }, { "name": "color" }]
+				}
+			}
+		]
+	}
+}

@@ -1,0 +1,80 @@
+/* MottoLinkControl — URL + new-tab toggle control
+ * .motto-link-control--button      → URLInputButton + ToggleControl
+ * .motto-link-control--link-control → core LinkControl
+ */
+
+.motto-link-control {
+	display: grid;
+	gap: var(--motto-space-md);
+	& .components-base-control {
+		min-width: 0;
+		margin-bottom: 0;
+	}
+	& .block-editor-link-control__preview {
+		padding: var(--motto-space-sm) 0;
+	}
+}
+
+.motto-link-control--button {
+	& .block-editor-url-input__button {
+		display: flex;
+		align-items: center;
+		gap: var(--motto-space-sm);
+	}
+
+	& .block-editor-url-input__button-modal-line {
+		display: flex;
+		align-items: center;
+
+		& .block-editor-url-input__back {
+			margin: 0;
+			min-width: 30px;
+		}
+
+		svg {
+			width: 20px;
+		}
+	}
+}
+
+.motto-link-control--link-control {
+	& .block-editor-link-control {
+		min-width: 0;
+	}
+
+	& .block-editor-url-input {
+		margin: 0;
+	}
+
+	& .block-editor-link-control__search-item.is-current {
+		padding: 0;
+	}
+	& .block-editor-link-control__tools {
+		padding: 10px 0;
+	}
+	& .block-editor-link-control__search-actions {
+		padding: 0;
+	}
+	& .block-editor-link-control__setting {
+		padding: 5px;
+		font-size: inherit;
+	}
+
+	& .block-editor-link-control__search-results {
+		padding: 0;
+		background: white;
+		margin: 0;
+		border-radius: 2px;
+		box-shadow: 0 0 5px rgba($color: #000000, $alpha: 0.1);
+		& .components-menu-item__item {
+			max-width: 12em;
+			min-width: 0;
+		}
+		& .block-editor-link-control__search-item {
+			height: auto !important;
+			&:is(:hover, :focus) {
+				background-color: var(--wp-components-color-gray-200);
+			}
+		}
+	}
+}

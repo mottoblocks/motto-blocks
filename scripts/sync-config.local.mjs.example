@@ -1,0 +1,11 @@
+// Copiá este archivo a sync-config.local.mjs (gitignorado) y agregá las rutas
+// absolutas de TUS sitios WordPress locales. No lo compartas ni lo commitees.
+
+export const SYNC_TARGETS = {
+	free: [
+		"/Users/tu-usuario/Local Sites/mi-sitio/app/public/wp-content/plugins/motto-blocks",
+	],
+	pro: [
+		"/Users/tu-usuario/Local Sites/mi-sitio/app/public/wp-content/plugins/motto-blocks-pro",
+	],
+};

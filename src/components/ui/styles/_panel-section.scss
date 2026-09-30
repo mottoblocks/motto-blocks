@@ -1,0 +1,35 @@
+/* ProBadge + PanelSection — upgrade badge and panel content divider */
+
+// ProBadge
+.motto-badge {
+	display: inline-flex;
+	align-items: center;
+	font-size: var(--motto-font-size-sm);
+	line-height: 1;
+	font-weight: 600;
+	padding: 0.25em 0.5em;
+	border-radius: 999px;
+	border: 1px solid var(--wp-components-color-gray-300);
+	background: var(--wp-components-color-gray-100);
+	color: var(--motto-color-black);
+}
+
+.motto-badge--pro {
+	border-color: rgba(121, 80, 242, 0.25);
+	background: rgba(121, 80, 242, 0.1);
+	color: rgba(68, 45, 150, 1);
+}
+
+// PanelSection — vertical grid divider for panel content blocks
+.motto-panel-section {
+	padding-top: var(--motto-space-sm);
+	padding-bottom: var(--motto-space-xl);
+	display: grid;
+	gap: var(--motto-space-md);
+	font-size: var(--motto-font-size-md);
+
+	& + .motto-panel-section {
+		padding-top: var(--motto-space-xl);
+		border-top: 1px solid var(--wp-components-color-gray-300);
+	}
+}

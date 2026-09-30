@@ -1,0 +1,219 @@
+/* Motto Panels primitives
+ *
+ * Intention:
+ * - shared panel layout primitives
+ * - reusable control/layout helpers used across repos
+ *
+ */
+
+/* Layout Primitives
+ * Composable flex/grid helpers — use in combination, not alone.
+ * Example: <div className="motto-flex align-center gap-md">
+ */
+
+/* Display */
+.motto-flex {
+	display: flex;
+}
+
+.motto-grid {
+	display: grid;
+}
+
+.motto-flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.motto-flex-rows {
+	display: grid;
+	gap: var(--motto-space-sm);
+
+	& > :is(button) {
+		margin-block: var(--motto-space-sm);
+	}
+}
+
+/* WP components override: strip default margin inside any flex/grid container */
+:is(.motto-flex, .motto-grid) {
+	& .components-base-control {
+		margin-bottom: 0 !important;
+	}
+
+	& .components-toggle-control {
+		min-height: var(--motto-input-height);
+	}
+}
+
+/* Alignment */
+.align-center {
+	align-items: center;
+}
+
+.align-start {
+	align-items: flex-start;
+}
+
+.align-end {
+	align-items: flex-end;
+}
+
+.justify-between {
+	justify-content: space-between;
+}
+
+.justify-center {
+	justify-content: center;
+}
+
+.justify-end {
+	justify-content: flex-end;
+}
+
+/* Gap */
+.gap-xs {
+	gap: var(--motto-space-xs);
+}
+
+.gap-sm {
+	gap: var(--motto-space-sm);
+}
+
+.gap-md {
+	gap: var(--motto-space-md);
+}
+
+.gap-lg {
+	gap: var(--motto-space-lg);
+}
+
+/* Flex items */
+.flex-1 {
+	flex: 1 1 0;
+}
+
+.flex-2 {
+	flex: 2 1 0;
+}
+
+.flex-none {
+	flex: 0 0 auto;
+}
+
+.motto-prop-select {
+	flex: 1 0 auto;
+	width: var(--motto-prop-select-width);
+}
+
+.motto-toggle-large {
+	min-height: var(--motto-toggle-height-lg);
+	align-items: center;
+	display: flex;
+	margin: 0 !important;
+}
+
+:is(.motto-prop-input) {
+	flex: 1 0 0;
+	min-width: var(--motto-prop-input-width);
+}
+
+.motto-prop-input:has(.motto-control-unit) {
+	--motto-prop-input-width: 5.5rem;
+	display: flex;
+	gap: 0.5em;
+	align-items: center;
+
+	& > :not(.motto-control-unit) {
+		flex-grow: 1;
+	}
+}
+
+/* Grid columns */
+.cols-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cols-3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cols-4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* Focus ring opt-out. WP paints the ring with `outline` at (0,3,0), so !important.
+ * Only outline is cleared: is-secondary buttons draw their border with box-shadow.
+ * Provide another focus indicator where this is used — keyboard users lose the ring.
+ */
+.motto-no-focus-ring {
+	&:focus,
+	&:focus-visible {
+		outline: none !important;
+	}
+}
+
+/* Shared primitive: color/gradient swatch trigger */
+.motto-color-gradient-swatch-button {
+	min-width: 34px;
+	padding: 6px !important;
+}
+
+.motto-color-gradient-swatch {
+	display: block;
+	width: 22px;
+	height: 22px;
+	border-radius: 999px;
+	border: 1px solid #d0d5dd;
+}
+
+.motto-label {
+	min-width: var(--motto-label-width);
+	text-transform: uppercase;
+	font-size: var(--motto-font-size-sm);
+	margin: 0;
+	font-weight: normal;
+}
+
+.motto-class-input-with-prefix {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: var(--motto-space-md);
+
+	& .motto-class-input-prefix {
+		font-weight: bold;
+	}
+
+	// & .motto-class-input.has-prefix input {
+	// 	padding-left: 22px;
+	// }
+	& .motto-class-slug {
+		flex-grow: 1;
+	}
+}
+
+.motto-notice {
+	font-size: var(--motto-font-size-sm);
+	line-height: 1.2;
+	padding: var(--motto-space-sm);
+	margin: 0;
+	color: var(--motto-warning-color-500, hsla(40, 80%, 50%, 1));
+	display: flex;
+	align-items: start;
+	gap: var(--motto-space-md);
+
+	& .motto-notice-icon {
+		width: 1.3em;
+		height: 1.3em;
+		flex-shrink: 0;
+	}
+
+	& .motto-notice-text {
+		flex-grow: 1;
+	}
+
+	& :is(p, ol, ul, h1, h2, h3, h4, h5, h6) {
+		font-size: inherit;
+		margin: 0;
+	}
+}

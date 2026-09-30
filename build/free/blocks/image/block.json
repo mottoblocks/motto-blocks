@@ -1,0 +1,107 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/image",
+	"version": "0.1.0",
+	"title": "Motto Image",
+	"category": "design",
+	"icon": "format-image",
+	"description": "Image block with shared media source control and Styler support.",
+	"usesContext": ["postId", "termId"],
+	"attributes": {
+		"mediaId": {
+			"type": "number",
+			"default": 0,
+			"role": "content"
+		},
+		"url": {
+			"type": "string",
+			"default": "",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src",
+			"role": "content"
+		},
+		"alt": {
+			"type": "string",
+			"default": "",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "alt",
+			"role": "content"
+		},
+		"title": {
+			"type": "string",
+			"default": "",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "title",
+			"role": "content"
+		},
+		"width": {
+			"type": "number",
+			"default": 0
+		},
+		"height": {
+			"type": "number",
+			"default": 0
+		},
+		"sizeSlug": {
+			"type": "string",
+			"default": ""
+		},
+		"sizes": {
+			"type": "array",
+			"default": []
+		},
+		"objectPosition": {
+			"type": "string",
+			"default": "center center"
+		},
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		},
+		"imageDynamic": {
+			"type": "object",
+			"default": {}
+		},
+		"imageParallax": {
+			"type": "boolean",
+			"default": false
+		},
+		"imageParallaxOffset": {
+			"type": "number",
+			"default": 120
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["left", "center", "right", "wide", "full"]
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoAI": {
+		"description": "Image block for displaying images. AI cannot set the url attribute — leave it empty; the user will pick the media from the editor.",
+		"examplePrompts": ["add an image", "insert a photo", "add a full-width image"]
+	},
+	"mottoDefaults": {
+		"css": {
+			"desktop": [
+				{ "name": "aspect-ratio" },
+				{ "name": "object-fit" },
+				{ "name": "width", "value": "auto" }
+			]
+		},
+		"blockSelectors": [
+			{
+				"selector": "&{BLOCK} :is(.motto-image__media)",
+				"label": "Image Element",
+				"css": {
+					"desktop": []
+				}
+			}
+		]
+	}
+}

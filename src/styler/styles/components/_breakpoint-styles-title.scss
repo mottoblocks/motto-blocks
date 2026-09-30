@@ -1,0 +1,10 @@
+// BreakpointStylesTitle — icon + "Styles" heading used in StylerCssList
+.motto-breakpoint-styles-title {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+
+	& svg {
+		display: block;
+	}
+}

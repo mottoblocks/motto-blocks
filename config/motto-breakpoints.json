@@ -1,0 +1,6 @@
+{
+  "desktop": { "media": "", "maxWidth": null, "ui": { "color": "#2563eb" } },
+  "tablet": { "media": "@media (max-width: 900px)", "maxWidth": 900, "ui": { "color": "#0f766e" } },
+  "landscapePhone": { "media": "@media (max-width: 700px)", "maxWidth": 700, "ui": { "color": "#d97706" } },
+  "phone": { "media": "@media (max-width: 430px)", "maxWidth": 430, "ui": { "color": "#dc2626" } }
+}

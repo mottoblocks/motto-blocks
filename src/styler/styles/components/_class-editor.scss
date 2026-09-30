@@ -1,0 +1,182 @@
+/* ClassEditor — attached class manager and inline class editor overlay
+ * → src/styler/classes/components/
+ */
+
+@use "drag-reorder";
+
+// AttachedClassesSection — class creation/management rows
+.motto-class-create-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--motto-space-sm);
+	margin: var(--motto-space-sm) 0;
+}
+
+.motto-attached-classes-content {
+	// --motto-button-height: 24px;
+	// --motto-input-height: 36px;
+	display: grid;
+	gap: var(--motto-space-md);
+	position: relative;
+}
+
+// ClassTag — attached class chip with label and remove action
+.motto-class-tags {
+	// display: flex;
+	// flex-wrap: wrap;
+	display: grid;
+	gap: var(--motto-space-sm);
+
+	&:empty {
+		display: none;
+	}
+}
+
+.motto-class-tag {
+	--motto-icon-size: 12px;
+	user-select: none;
+	font-size: var(--motto-font-size-md);
+	align-items: center;
+	background: var(--wp-components-color-gray-100);
+	border-radius: var(--motto-button-border-radius);
+	display: flex;
+	min-height: var(--motto-input-height);
+	// justify-content: space-between;
+	gap: var(--motto-space-sm);
+	color: var(--wp-components-color-accent);
+	padding-inline: 0.25em;
+	border: solid 1px var(--wp-components-color-accent);
+
+	& .motto-ui-button {
+		padding: var(--motto-space-xs);
+		color: currentColor;
+	}
+	& svg {
+		width: var(--motto-icon-size);
+	}
+
+	@include drag-reorder.states;
+
+	&[draggable="true"] {
+		cursor: grab;
+	}
+
+	& .motto-class-tag-drag {
+		@include drag-reorder.handle;
+	}
+
+	// font-family: monospace;
+	& .motto-class-tag-label {
+		word-break: break-word;
+		flex-grow: 1;
+	}
+
+	& .motto-class-tag-unsaved-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--motto-warning-color-500, hsla(40, 80%, 50%, 1));
+		flex-shrink: 0;
+	}
+
+	& .motto-class-tag-actions {
+		display: flex;
+		gap: var(--motto-space-sm);
+		& .motto-ui-button {
+			height: auto;
+		}
+		& [disabled] {
+			opacity: 0.5;
+		}
+	}
+}
+
+.motto-class-create-popup-content {
+	gap: var(--motto-space-md);
+}
+
+.motto-class-create-error {
+	color: var(--motto-error, #b42318);
+	font-size: var(--motto-font-size-sm);
+	margin: 0;
+}
+
+// ClassEditorPanel — inline editor overlay (slides in over the panel)
+.motto-class-editor {
+	--offset: 2px;
+	background-color: #fff;
+	border: none;
+	padding: 16px;
+	position: absolute;
+	// inset: calc(85px + var(--offset)) var(--offset) auto var(--offset);
+	// inset: calc(85px + var(--offset)) var(--offset) auto var(--offset);
+	inset: calc(85px) 0 auto;
+	display: grid;
+	align-content: start;
+	z-index: 100;
+	margin: 0 !important;
+	animation: motto-slide-in 180ms ease;
+	// min-height: var(--motto-class-editor-min-height, auto);
+	min-height: 100%;
+	border: var(--offset) solid var(--wp-components-color-gray-200);
+	// box-shadow: 0 0 0 var(--offset) var(--wp-components-color-gray-300);
+
+	& .motto-class-editor-header {
+		display: grid;
+		gap: var(--motto-space-md);
+		position: relative;
+		margin-bottom: var(--motto-font-size-md);
+	}
+
+	& .motto-class-editor-title {
+		flex: 1 1 auto;
+		font-size: var(--motto-font-size-xl);
+		font-weight: 500;
+	}
+
+	& .motto-class-editor-actions {
+		display: flex;
+		flex-wrap: wrap;
+		order: -1;
+		gap: var(--motto-space-sm);
+		// border-bottom: solid 1px var(--wp-components-color-gray-300);
+		justify-content: end;
+		// padding-bottom: 10px;
+
+		& .components-button {
+			--motto-button-height: 24px;
+			aspect-ratio: 1;
+		}
+	}
+
+	& .motto-class-editor-close {
+		opacity: 0.5;
+	}
+
+	& .motto-class-editor-save-progress {
+		left: 0;
+		padding: 0 12px;
+		position: absolute;
+		right: 0;
+		top: 44px;
+		z-index: 2;
+	}
+
+	& .motto-class-editor-save-progress-control {
+		margin: 0;
+	}
+}
+
+.motto-class-editor-content {
+	display: block;
+	position: relative;
+}
+
+.motto-class-editor-loading {
+	align-items: center;
+	display: flex;
+	gap: var(--motto-space-sm);
+	color: var(--wp-components-color-gray-600);
+	font-size: var(--motto-font-size-md);
+	padding: 0.5rem 0;
+}

@@ -1,0 +1,11 @@
+@charset "UTF-8";
+/* =============================================================================
+   Classic Menu — Editor Styles
+   Resets placeholder margins and disables pointer events on nav links.
+   ============================================================================= */
+.motto-classic-menu .components-placeholder, .motto-classic-menu .wp-block {
+  margin: 0;
+}
+.motto-classic-menu .motto-classic-menu__item-content {
+  pointer-events: none;
+}

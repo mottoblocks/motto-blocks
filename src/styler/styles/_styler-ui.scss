@@ -1,0 +1,87 @@
+/* Styler editor UI
+ *
+ * Structure:
+ * 1) Feature partials (large component groups)
+ * 2) Shared local UI blocks used across multiple controls
+ *
+ * Keep this file focused on reusable UI glue. Feature-specific styles
+ * should live in `styles/components/`.
+ */
+
+// Feature partials
+@use "components/class-editor";
+@use "components/popup-dialog";
+@use "components/css-rules";
+@use "components/block-selectors";
+@use "components/autocomplete";
+@use "components/entity-token-picker";
+@use "components/link-control";
+@use "components/border-control";
+
+// Styler control components
+@use "components/enum-control";
+@use "components/layer-tabs";
+@use "components/aspect-ratio";
+@use "components/spacing-control";
+@use "components/background-layers";
+@use "components/image-source";
+@use "components/css-presets";
+@use "components/html-attributes";
+@use "components/filter-control";
+@use "components/shape-region-control";
+@use "components/toggle-group-compact";
+@use "components/breakpoint-styles-title";
+@use "components/transition-control";
+@use "components/motto-unit-control";
+@use "components/grid-template-tracks-control";
+
+// Inline value preview — color swatch and enum icon for row toggle buttons
+.motto-row-value-toggle-color {
+	background: var(--motto-toggle-preview-color, transparent);
+	border: 1px solid var(--wp-components-color-gray-300);
+	border-radius: 999px;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+	background-size: cover;
+}
+
+.motto-select {
+	& select.components-select-control__input {
+		font-size: var(--motto-font-size-md) !important;
+		height: var(--motto-input-height) !important;
+		min-height: 0 !important;
+	}
+}
+
+:is(.motto-section-help, .motto-inner-selector-description) {
+	color: var(--wp-components-color-gray-600);
+	margin-bottom: var(--motto-space-sm);
+	font-size: var(--motto-font-size-sm);
+	line-height: 1.2;
+}
+
+// Custom-width preview iframe (responsive preview mode)
+iframe.motto-preview-custom-width {
+	width: var(--motto-preview-width, 600px) !important;
+	max-width: 100%;
+}
+
+.motto-section-actions {
+	--motto-button-height: 26px;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--motto-space-sm);
+}
+
+// MottoInfo — alias for section help text (with error state)
+.motto-info {
+	color: var(--wp-components-color-gray-600);
+	margin-bottom: var(--motto-space-sm);
+	font-size: var(--motto-font-size-sm);
+	line-height: 1.2;
+}
+
+.motto-info.is-error {
+	color: var(--motto-error, #b42318);
+}

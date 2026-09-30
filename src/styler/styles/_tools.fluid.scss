@@ -1,0 +1,34 @@
+@use "sass:math";
+
+@function motto-fluid-clamp($min-size, $max-size, $min-viewport: 420px, $max-viewport: 1200px) {
+	@if math.compatible($min-size, $max-size) == false {
+		@error "$min-size and $max-size must use compatible units.";
+	}
+
+	@if math.compatible($min-viewport, $max-viewport) == false {
+		@error "$min-viewport and $max-viewport must use compatible units.";
+	}
+
+	@if $min-viewport == $max-viewport {
+		@error "$min-viewport and $max-viewport must be different values.";
+	}
+
+	@return clamp(
+		#{$min-size},
+		calc(
+			#{$min-size} + (#{$max-size} - #{$min-size}) *
+				((100vw - #{$min-viewport}) / (#{$max-viewport} - #{$min-viewport}))
+		),
+		#{$max-size}
+	);
+}
+
+@mixin motto-fluid-property(
+	$property,
+	$min-size,
+	$max-size,
+	$min-viewport: 420px,
+	$max-viewport: 1200px
+) {
+	#{$property}: motto-fluid-clamp($min-size, $max-size, $min-viewport, $max-viewport);
+}

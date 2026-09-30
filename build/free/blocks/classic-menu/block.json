@@ -1,0 +1,163 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "motto/classic-menu",
+	"version": "0.1.0",
+	"title": "Motto Classic Menu",
+	"category": "design",
+	"icon": "menu",
+	"description": "Classic menu block rendered from WordPress menus.",
+	"attributes": {
+		"useLocation": {
+			"type": "boolean",
+			"default": false
+		},
+		"menuSlug": {
+			"type": "string",
+			"default": ""
+		},
+		"menuLocation": {
+			"type": "string",
+			"default": ""
+		},
+		"orientation": {
+			"type": "string",
+			"default": "horizontal"
+		},
+		"submenuPosition": {
+			"type": "string",
+			"default": "floating"
+		},
+		"toggleEvent": {
+			"type": "string",
+			"default": "rollover"
+		},
+		"mottoStyler": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["wide", "full"]
+	},
+	"mottoBaseLayout": "flow",
+	"textdomain": "motto-blocks",
+	"mottoDefaults": {
+		"css": {
+			"desktop": [
+				{
+					"name": "display",
+					"value": "flex"
+				},
+				{
+					"name": "justify-content"
+				}
+			]
+		},
+		"blockSelectors": [
+			{
+				"selector": "&{BLOCK} :is(.motto-classic-menu__container)",
+				"label": "Menu Element",
+				"description": "",
+				"css": {
+					"desktop": [
+						{
+							"name": "gap",
+							"value": "0.5em"
+						},
+						{
+							"name": "display",
+							"value": "flex"
+						},
+						{
+							"name": "flex-direction",
+							"value": "row"
+						}
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-classic-menu__item)",
+				"label": "Menu Items",
+				"description": "",
+				"css": {
+					"desktop": [
+						{
+							"name": "position",
+							"value": "relative"
+						}
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-classic-menu__item-content)",
+				"label": "Menu Links",
+				"description": "",
+				"css": {
+					"desktop": [
+						{
+							"name": "padding",
+							"value": "0.5em"
+						},
+						{
+							"name": "text-decoration",
+							"value": "none"
+						}
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-classic-menu__submenu-container)",
+				"label": "Submenu Wrapper",
+				"description": "",
+				"css": {
+					"desktop": [
+						{
+							"name": "min-width",
+							"value": "200px"
+						}
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-classic-menu__submenu)",
+				"label": "Submenu",
+				"description": "",
+				"css": {
+					"desktop": [
+						{
+							"name": "background-color"
+						},
+						{
+							"name": "padding",
+							"value": "0.5em"
+						}
+					]
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-classic-menu__submenu .motto-classic-menu__item-content)",
+				"label": "Submenu Links",
+				"description": "",
+				"css": {
+					"desktop": []
+				}
+			},
+			{
+				"selector": "&{BLOCK} :is(.motto-classic-menu__submenu-icon)",
+				"label": "Submenu Toggle",
+				"description": "",
+				"css": {
+					"desktop": [
+						{
+							"name": "cursor",
+							"value": "pointer"
+						}
+					]
+				}
+			}
+		]
+	}
+}
